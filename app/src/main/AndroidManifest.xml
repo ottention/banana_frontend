@@ -13,21 +13,6 @@
         android:theme="@style/Theme.Banana"
         tools:targetApi="31">
         <activity
-            android:name=".CreateQRActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MakeActivity"
-            android:exported="false" />
-        <activity
-            android:name=".FragmentActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name=".launcher.SplashActivity"
             android:exported="true">
             <intent-filter>
@@ -38,8 +23,18 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true" />
-
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".CreateQRActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MakeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FragmentActivity"
+            android:exported="true">
+        </activity>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
