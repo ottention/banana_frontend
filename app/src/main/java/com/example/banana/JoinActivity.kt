@@ -1,5 +1,8 @@
 package com.example.banana
 
+import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +11,15 @@ import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.tasks.Task
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.ClientError
 import com.kakao.sdk.common.model.ClientErrorCause
@@ -18,6 +30,7 @@ import com.kakao.sdk.user.UserApiClient
 class JoinActivity : AppCompatActivity() {
 
     val TAG = "JoinActivity"
+    private lateinit var mGoogleSignInClient : GoogleSignInClient
 
     internal val callback : (OAuthToken?, Throwable?) -> Unit = { token, error ->
         if (error != null) {
@@ -30,7 +43,7 @@ class JoinActivity : AppCompatActivity() {
                         "\n회원번호: ${user.id}" +
                         "\n이메일: ${user.kakaoAccount?.email}" +
                         "\n닉네임: ${user.kakaoAccount?.profile?.nickname}")
-                // token을 백에 보내기
+                goHome(this)
             }
         }
     }
@@ -39,8 +52,18 @@ class JoinActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_join)
 
+
+        // google 가져오기
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestEmail()
+//            .requestIdToken(getString(R.string.server_client_id_forGoogle))
+            .build()
+
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
+
         // google joining
         findViewById<LinearLayout>(R.id.google_join_btn).setOnClickListener {
+            signIn()
         }
         // kakao joining
         findViewById<LinearLayout>(R.id.kakao_join_btn).setOnClickListener {
@@ -62,11 +85,61 @@ class JoinActivity : AppCompatActivity() {
                         UserApiClient.instance.loginWithKakaoAccount(this, callback = callback)
                     } else if (token != null) {
                         Log.d(TAG, "카카오톡으로 로그인 성공 ${token.accessToken}")
+                        goHome(this)
                     }
                 }
             } else {
                 UserApiClient.instance.loginWithKakaoAccount(this, callback = callback)
             }
         }
+    }
+
+    fun goHome(context : Context) {
+//        intent = Intent(context, HomeActivity::class.java)
+//        startActivity(intent)
+    }
+
+    private fun signIn(){
+        val signInIntent = mGoogleSignInClient.signInIntent
+        resultLauncher.launch(signInIntent)
+        Log.d(TAG, "signIn")
+    }
+
+    private var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val data: Intent? = result.data
+            val task: Task<GoogleSignInAccount> =
+                GoogleSignIn.getSignedInAccountFromIntent(data)
+            handleSignInResult(task)
+        } else {
+            Log.d(TAG, "something wrong")
+        }
+    }
+
+    private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>){
+        try {
+            // token이 안받아진다는 문제.. 네...
+            val account = completedTask.getResult(ApiException::class.java)
+            Log.i(TAG, "사용자 정보 요청 성공" +
+                    "\n토큰: ${account?.idToken.toString()}" +
+                    "\nid: ${account?.id.toString()}" +
+                    "\n이메일: ${account?.email.toString()}" +
+                    "\n이름: ${account?.displayName.toString()}")
+            goHome(this)
+
+            // 로그아웃 되게 함
+            logout()
+        } catch (e: ApiException){
+            Log.w("failed", "signInResult:failed code=" + e.statusCode)
+        }
+    }
+
+    private fun logout() {
+        mGoogleSignInClient.signOut()
+            .addOnCompleteListener(this) {
+                // 로그아웃 성공시 실행
+                // 로그아웃 이후의 이벤트들(토스트 메세지, 화면 종료)을 여기서 수행하면 됨
+
+            }
     }
 }
