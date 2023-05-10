@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.Toast
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.kakao.sdk.auth.AuthApiClient
 import com.kakao.sdk.common.model.KakaoSdkError
 import com.kakao.sdk.common.util.Utility
@@ -22,6 +23,12 @@ class MainActivity : AppCompatActivity() {
         val launchBtn = findViewById<Button>(R.id.launch_button)
 
         launchBtn.setOnClickListener {
+
+            val account = this?.let { GoogleSignIn.getLastSignedInAccount(it) }
+            if (account!=null){
+                Toast.makeText(this, "로그인 정보 저장된 것 없음", Toast.LENGTH_SHORT).show()
+            }
+
             if (AuthApiClient.instance.hasToken()) {
                 UserApiClient.instance.accessTokenInfo { _, error ->
                     if (error != null) {
