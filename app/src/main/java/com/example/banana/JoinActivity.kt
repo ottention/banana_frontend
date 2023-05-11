@@ -10,6 +10,7 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.constraintlayout.core.motion.utils.Utils
+import com.example.banana.auth.LoginRepository
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -47,7 +48,6 @@ class JoinActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_join)
-
 
         // google 가져오기
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -124,6 +124,7 @@ class JoinActivity : AppCompatActivity() {
                     "\nserverAuthCode: ${account?.serverAuthCode.toString()}" +
                     "\n이메일: ${account?.email.toString()}" +
                     "\n이름: ${account?.displayName.toString()}")
+            LoginRepository().getAccessToken(account?.serverAuthCode.toString()!!)
             goHome(this)
             googleLogout()
         } catch (e: ApiException){
