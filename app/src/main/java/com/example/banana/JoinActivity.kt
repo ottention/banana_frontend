@@ -6,14 +6,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.Toast
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.constraintlayout.core.motion.utils.Utils
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -56,7 +52,8 @@ class JoinActivity : AppCompatActivity() {
         // google 가져오기
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestEmail()
-//            .requestIdToken(getString(R.string.server_client_id_forGoogle))
+            .requestIdToken(getString(R.string.server_client_id_forGoogle))
+            .requestServerAuthCode(getString(R.string.server_client_id_forGoogle))
             .build()
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
@@ -121,25 +118,35 @@ class JoinActivity : AppCompatActivity() {
             // token이 안받아진다는 문제.. 네...
             val account = completedTask.getResult(ApiException::class.java)
             Log.i(TAG, "사용자 정보 요청 성공" +
-                    "\n토큰: ${account?.idToken.toString()}" +
+                    "\n토큰: ${account?.idToken.toString()}" + // 요게 토큰값
+                    "\n아이디: ${account?.id.toString()}" +
                     "\nid: ${account?.id.toString()}" +
+                    "\nserverAuthCode: ${account?.serverAuthCode.toString()}" +
                     "\n이메일: ${account?.email.toString()}" +
                     "\n이름: ${account?.displayName.toString()}")
             goHome(this)
-
-            // 로그아웃 되게 함
-            logout()
+            googleLogout()
         } catch (e: ApiException){
             Log.w("failed", "signInResult:failed code=" + e.statusCode)
         }
     }
 
-    private fun logout() {
+    private fun googleLogout() {
         mGoogleSignInClient.signOut()
             .addOnCompleteListener(this) {
                 // 로그아웃 성공시 실행
                 // 로그아웃 이후의 이벤트들(토스트 메세지, 화면 종료)을 여기서 수행하면 됨
 
             }
+    }
+
+    fun kakaoLogout() {
+        // 로그아웃
+        UserApiClient.instance.logout { error ->
+            if (error != null) {
+                Log.e("Hello", "로그아웃 실패", error)
+            } else {
+                Log.i("Hello", "로그아웃 성공") }
+        }
     }
 }
