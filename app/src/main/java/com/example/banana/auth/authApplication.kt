@@ -14,6 +14,7 @@ class authApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         appContext = this
+        // kakao auth 초기화
         KakaoSdk.init(this,getString(R.string.kakao_app_key))
     }
 
