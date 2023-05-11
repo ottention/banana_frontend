@@ -1,5 +1,6 @@
 package com.example.banana
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -24,36 +25,48 @@ class MainActivity : AppCompatActivity() {
 
         launchBtn.setOnClickListener {
 
-            val account = this?.let { GoogleSignIn.getLastSignedInAccount(it) }
-            if (account!=null){
-                Toast.makeText(this, "로그인 정보 저장된 것 없음", Toast.LENGTH_SHORT).show()
-            }
 
-            if (AuthApiClient.instance.hasToken()) {
-                UserApiClient.instance.accessTokenInfo { _, error ->
-                    if (error != null) {
-                        if (error is KakaoSdkError && error.isInvalidTokenError() == true) {
-                            //로그인 필요
-                        }
-                        else {
-                            //기타 에러
+            // 1. 구글 로그인 정보 먼저 찾음
+            // 2. 있다면 구글 로그인, 없다면 카카오 로그인 정보 찾음
+            // 3. 둘 다 없으면, joinActivity로 감
+
+            val account = this?.let { GoogleSignIn.getLastSignedInAccount(it) }
+            if (account != null) {
+                // 구글 로그인 성공!
+                Toast.makeText(
+                    this,
+                    "로그인 정보 있음. 구글 로그인 \n token : " + account.idToken,
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
+                if (AuthApiClient.instance.hasToken()) {
+                    UserApiClient.instance.accessTokenInfo { token, error ->
+                        if (error != null) {
+                            if (error is KakaoSdkError && error.isInvalidTokenError() == true) {
+                                goJoin(this)
+                            } else {
+                                //기타 에러
+                            }
+                        } else {
+                            Toast.makeText(this, "로그인 정보 있음. 카카오 로그인" + token, Toast.LENGTH_SHORT).show()
+                            Log.d("MainActivty", token.toString())
+                            // 이거 테스트 하려면 카카오 앱 필요... 흑흑
                         }
                     }
-                    else {
-                        //토큰 유효성 체크 성공(필요 시 토큰 갱신됨)
-                    }
+                } else {
+                    goJoin(this)
                 }
             }
-            else {
-                //로그인 필요
-            }
-            Toast.makeText(this, "회원가입이 필요합니다.", Toast.LENGTH_SHORT).show()
-        }
 
-        joinBtn.setOnClickListener{
+            joinBtn.setOnClickListener {
+                goJoin(this)
+            }
+        }
+    }
+
+        fun goJoin(context: Context) {
             Log.d("clicekd", "clicked");
             val intent = Intent(this, JoinActivity::class.java)
             startActivity(intent)
         }
     }
-}
