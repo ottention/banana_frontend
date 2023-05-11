@@ -6,6 +6,7 @@
 
 
     <application
+        android:usesCleartextTraffic="true"
         android:hardwareAccelerated="true"
         android:name=".auth.authApplication"
         android:allowBackup="true"

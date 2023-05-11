@@ -3,6 +3,7 @@
     <string name="kakao_app_key">b7fa000994bd917a090b2eda8a5f0242</string>
     <string name="kakao_native_key">kakaob7fa000994bd917a090b2eda8a5f0242</string>
     <string name="server_client_id_forGoogle">418803016352-m76e2uci5o15ode6am21dpqf602uogkq.apps.googleusercontent.com</string>
+    <string name="secret_pw_forGoogle">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</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

@@ -25,7 +25,6 @@ class MainActivity : AppCompatActivity() {
 
         launchBtn.setOnClickListener {
 
-
             // 1. 구글 로그인 정보 먼저 찾음
             // 2. 있다면 구글 로그인, 없다면 카카오 로그인 정보 찾음
             // 3. 둘 다 없으면, joinActivity로 감
@@ -65,7 +64,11 @@ class MainActivity : AppCompatActivity() {
     }
 
         fun goJoin(context: Context) {
-            Log.d("clicekd", "clicked");
+            Toast.makeText(
+                this,
+                "정보 없음. 이동",
+                Toast.LENGTH_SHORT
+            ).show()
             val intent = Intent(this, JoinActivity::class.java)
             startActivity(intent)
         }
