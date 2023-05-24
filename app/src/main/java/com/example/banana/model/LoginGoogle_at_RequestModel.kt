@@ -2,7 +2,7 @@ package com.example.banana.model
 
 import com.google.gson.annotations.SerializedName
 
-data class LoginGoogleRequestModel (
+data class LoginGoogle_at_RequestModel (
     @SerializedName("grant_type")
     private val grant_type: String,
     @SerializedName("client_id")
