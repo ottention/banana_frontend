@@ -2,10 +2,17 @@ package com.example.banana.fragment
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
+import android.view.ContextMenu
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
+import android.widget.PopupMenu
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.banana.R
 import com.example.banana.databinding.FragmentHomeBinding
 
@@ -14,8 +21,12 @@ class HomeFragment : Fragment() {
     private var _binding : FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
 
     }
 
@@ -28,9 +39,11 @@ class HomeFragment : Fragment() {
         val view = binding.root
 
         return view
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnCard01.setBackgroundColor(Color.parseColor("#000000"))
@@ -70,6 +83,7 @@ class HomeFragment : Fragment() {
         }
 
         binding.btnCard03.setOnClickListener {
+            Log.d("card3","card3")
             //버튼 색 변경
             binding.btnCard03.setBackgroundColor(Color.parseColor("#000000"))
             binding.btnCard03.setTextColor(Color.parseColor("#ffffff"))
@@ -82,8 +96,51 @@ class HomeFragment : Fragment() {
 
             binding.imageView.setImageResource(R.drawable.card031)
             binding.imageView2.setImageResource(R.drawable.card032)
+
+        }
+
+        //qr코드 버튼
+        binding.btnQr.setOnClickListener {
+
+            val mDialogView = LayoutInflater.from(context).inflate(R.layout.qr_dialog,null)
+
+            val mBuilder = AlertDialog.Builder(requireContext())
+                .setView(mDialogView)
+
+           val mAlertDialog = mBuilder.show()
+
+            val btn_x = mDialogView.findViewById<ImageButton>(R.id.btn_x)
+            btn_x.setOnClickListener {
+                mAlertDialog.dismiss()
+            }
+        }
+
+
+
+        //소셜 공유 버튼
+        binding.btnSocialShare.setOnClickListener {
+            val popupBase = binding.btnSocialShare
+            Log.d("social","click")
+            var pop = PopupMenu(context, popupBase)
+
+            pop.menuInflater?.inflate(R.menu.social_popup,pop.menu)
+
+            pop.show()
+
+            pop.setOnMenuItemClickListener { item ->
+                when(item.itemId) {
+                    R.id.kakaotalk ->
+                        Toast.makeText(context,"kakaotalk",Toast.LENGTH_SHORT).show()
+                    R.id.instagram ->
+                        Toast.makeText(context, "instagram",Toast.LENGTH_SHORT).show()
+
+                }
+                false
+            }
         }
     }
+
+
 
 
 }
