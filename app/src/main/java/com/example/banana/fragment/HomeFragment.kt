@@ -1,5 +1,6 @@
 package com.example.banana.fragment
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -13,6 +14,7 @@ import android.widget.ImageButton
 import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import com.example.banana.CreateQRActivity
 import com.example.banana.R
 import com.example.banana.databinding.FragmentHomeBinding
 
@@ -100,20 +102,28 @@ class HomeFragment : Fragment() {
         }
 
         //qr코드 버튼
+//        binding.btnQr.setOnClickListener {
+//
+//            val mDialogView = LayoutInflater.from(context).inflate(R.layout.qr_dialog,null)
+//
+//            val mBuilder = AlertDialog.Builder(requireContext())
+//                .setView(mDialogView)
+//
+//           val mAlertDialog = mBuilder.show()
+//
+//            val btn_x = mDialogView.findViewById<ImageButton>(R.id.btn_x)
+//            btn_x.setOnClickListener {
+//                mAlertDialog.dismiss()
+//            }
+//        }
+
+        //qr코드 버튼
         binding.btnQr.setOnClickListener {
-
-            val mDialogView = LayoutInflater.from(context).inflate(R.layout.qr_dialog,null)
-
-            val mBuilder = AlertDialog.Builder(requireContext())
-                .setView(mDialogView)
-
-           val mAlertDialog = mBuilder.show()
-
-            val btn_x = mDialogView.findViewById<ImageButton>(R.id.btn_x)
-            btn_x.setOnClickListener {
-                mAlertDialog.dismiss()
-            }
+            val intent = Intent(context, CreateQRActivity::class.java)
+            startActivity(intent)
         }
+
+
 
 
 
