@@ -21,9 +21,9 @@ class FragmentActivity : AppCompatActivity() {
         setContentView(R.layout.activity_fragment)
 
         val transaction = manager.beginTransaction()
-        val Homefragment = HomeFragment()
-        val ChartFragment = ChartFragment()
-        val WalletFragment = WalletFragment()
+        val Homefragment = HomeFragment().newInstance()
+        val ChartFragment = ChartFragment().newInstance()
+        val WalletFragment = WalletFragment().newInstance()
         transaction.replace(R.id.frameArea, Homefragment)
         transaction.addToBackStack(null)
         transaction.commit()

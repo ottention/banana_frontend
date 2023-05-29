@@ -10,6 +10,10 @@ import com.example.banana.R
 
 class WalletFragment : Fragment() {
 
+    fun newInstance() : WalletFragment{
+        return WalletFragment()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

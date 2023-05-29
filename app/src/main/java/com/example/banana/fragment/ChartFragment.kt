@@ -9,6 +9,10 @@ import com.example.banana.R
 
 class ChartFragment : Fragment() {
 
+    fun newInstance() : ChartFragment{
+        return ChartFragment()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

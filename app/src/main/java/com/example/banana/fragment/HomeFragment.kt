@@ -20,6 +20,10 @@ import com.example.banana.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
 
+    fun newInstance() : HomeFragment{
+        return HomeFragment()
+    }
+
     private var _binding : FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
@@ -101,21 +105,6 @@ class HomeFragment : Fragment() {
 
         }
 
-        //qr코드 버튼
-//        binding.btnQr.setOnClickListener {
-//
-//            val mDialogView = LayoutInflater.from(context).inflate(R.layout.qr_dialog,null)
-//
-//            val mBuilder = AlertDialog.Builder(requireContext())
-//                .setView(mDialogView)
-//
-//           val mAlertDialog = mBuilder.show()
-//
-//            val btn_x = mDialogView.findViewById<ImageButton>(R.id.btn_x)
-//            btn_x.setOnClickListener {
-//                mAlertDialog.dismiss()
-//            }
-//        }
 
         //qr코드 버튼
         binding.btnQr.setOnClickListener {
