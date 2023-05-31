@@ -38,8 +38,35 @@ class WalletFragment : Fragment() {
         _binding = FragmentWalletBinding.inflate(inflater, container, false)
         val view = binding.root
 
+
+
+        //기본 명함 지갑 설정
+        binding.walletText.setText("최근 저장된 명함")
+        binding.walletText.visibility = View.VISIBLE
+        binding.btnAll.setBackgroundResource(R.drawable.border_underline)
+        binding.btnMarked.setBackgroundColor(Color.parseColor("#ffffff"))
+        binding.btnFolder.setBackgroundColor(Color.parseColor("#ffffff"))
+        walletData.clear()
+
+        walletData.add(WalletData(R.drawable.default_card,"[잇타] 한윤이(디자이너)"))
+        walletData.add(WalletData(R.drawable.default_card,"[잇타] 한윤이(디자이너)"))
+        walletData.add(WalletData(R.drawable.default_card,"[잇타] 한윤이(디자이너)"))
+        walletData.add(WalletData(R.drawable.default_card,"[잇타] 한윤이(디자이너)"))
+        walletData.add(WalletData(R.drawable.default_card,"[잇타] 한윤이(디자이너)"))
+        walletData.add(WalletData(R.drawable.default_card,"[잇타] 한윤이(디자이너)"))
+        walletData.add(WalletData(R.drawable.default_card,"[잇타] 한윤이(디자이너)"))
+        walletData.add(WalletData(R.drawable.default_card,"[잇타] 한윤이(디자이너)"))
+        walletData.add(WalletData(R.drawable.default_card,"[잇타] 한윤이(디자이너)"))
+        walletData.add(WalletData(R.drawable.default_card,"[잇타] 한윤이(디자이너)"))
+
+        walletAdapter = WalletAdapter(walletData)
+        binding.rvWallet.adapter = walletAdapter
+        binding.rvWallet.layoutManager = GridLayoutManager(context,2)
+
         //전체 명함 버튼
         binding.btnAll.setOnClickListener{
+            binding.walletText.setText("최근 저장된 명함")
+            binding.walletText.visibility = View.VISIBLE
             binding.btnAll.setBackgroundResource(R.drawable.border_underline)
             binding.btnMarked.setBackgroundColor(Color.parseColor("#ffffff"))
             binding.btnFolder.setBackgroundColor(Color.parseColor("#ffffff"))
@@ -63,6 +90,7 @@ class WalletFragment : Fragment() {
 
         //즐겨 찾기 버튼
         binding.btnMarked.setOnClickListener {
+            binding.walletText.visibility = View.INVISIBLE
             binding.btnMarked.setBackgroundResource(R.drawable.border_underline)
             binding.btnAll.setBackgroundColor(Color.parseColor("#ffffff"))
             binding.btnFolder.setBackgroundColor(Color.parseColor("#ffffff"))
@@ -85,6 +113,8 @@ class WalletFragment : Fragment() {
 
         //저장 폴더 버튼
         binding.btnFolder.setOnClickListener {
+            binding.walletText.setText("저장 카테고리")
+            binding.walletText.visibility = View.VISIBLE
             binding.btnFolder.setBackgroundResource(R.drawable.border_underline)
             binding.btnMarked.setBackgroundColor(Color.parseColor("#ffffff"))
             binding.btnAll.setBackgroundColor(Color.parseColor("#ffffff"))
