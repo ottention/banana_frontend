@@ -52,12 +52,15 @@ class HomeFragment : Fragment() {
 
         super.onViewCreated(view, savedInstanceState)
 
+        //초기 card 01
         binding.btnCard01.setBackgroundColor(Color.parseColor("#000000"))
         binding.btnCard01.setTextColor(Color.parseColor("#ffffff"))
 
         binding.imageView.setImageResource(R.drawable.card011)
         binding.imageView2.setImageResource(R.drawable.card012)
 
+
+        //card 01 버튼
         binding.btnCard01.setOnClickListener {
             //버튼 색 변경
             binding.btnCard01.setBackgroundColor(Color.parseColor("#000000"))
@@ -73,6 +76,7 @@ class HomeFragment : Fragment() {
             binding.imageView2.setImageResource(R.drawable.card012)
         }
 
+        //card 02 버튼
         binding.btnCard02.setOnClickListener {
             //버튼 색 변경
             binding.btnCard02.setBackgroundColor(Color.parseColor("#000000"))
@@ -88,6 +92,7 @@ class HomeFragment : Fragment() {
             binding.imageView2.setImageResource(R.drawable.card022)
         }
 
+        //card 03 버튼
         binding.btnCard03.setOnClickListener {
             Log.d("card3","card3")
             //버튼 색 변경
@@ -136,6 +141,16 @@ class HomeFragment : Fragment() {
                 }
                 false
             }
+        }
+
+        //검색 버튼
+        binding.btnSearch.setOnClickListener {
+            Toast.makeText(context, "search",Toast.LENGTH_SHORT).show()
+        }
+
+        //알람 버튼
+        binding.btnAlarm.setOnClickListener {
+            Toast.makeText(context, "alarm",Toast.LENGTH_SHORT).show()
         }
     }
 
