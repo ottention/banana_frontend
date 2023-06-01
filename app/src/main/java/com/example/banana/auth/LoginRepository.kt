@@ -5,6 +5,7 @@ import android.content.Intent
 import android.util.Log
 import androidx.core.content.ContextCompat.startActivity
 import com.example.banana.FragmentActivity
+import com.example.banana.MainActivity
 import com.example.banana.model.LoginGoogleResponseModel
 import com.example.banana.model.LoginKaKaoResponseModel
 import com.example.banana.model.reIssueResponseModel
@@ -136,7 +137,9 @@ class LoginRepository {
                 } else {
                     if(response.code().toString() == "401") {
                         reissue(authApplication.prefs.getString("userId", ""))
+
                     }
+
                     Log.d(TAG, response.code().toString())
                 }
             }
@@ -145,9 +148,9 @@ class LoginRepository {
     }
 
 
-    fun reissue(requestToken : String) {
+    fun reissue(refreshToken : String) {
         LoginService.loginRetrofit(sendTokenBaseUrl).reissue(
-            requestToken
+            refreshToken
         ).enqueue(object : retrofit2.Callback<reIssueResponseModel> {
 
             override fun onFailure(call: Call<reIssueResponseModel>, t: Throwable) {
@@ -162,13 +165,12 @@ class LoginRepository {
                     updateJWT(response.body()!!.accessToken);
                 } else {
                     Log.d(TAG, response.code().toString())
+                    Log.d(TAG, response.message())
                 }
             }
 
         })
     }
-
-
 
         fun saveJWT(accessToken: String, refreshToken: String) {
             authApplication.prefs.setString("accessToken", accessToken)
@@ -180,9 +182,11 @@ class LoginRepository {
         }
 
         // 로그아웃
-        fun removeJWT() {
+        fun removeJWT(context: Context) {
         authApplication.prefs.setString("accessToken", "")
         authApplication.prefs.setString("refreshToken", "")
+        var intent = Intent(context, MainActivity::class.java)
+        startActivity(context, intent, null)
     }
 
 

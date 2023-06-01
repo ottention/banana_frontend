@@ -13,6 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface LoginService {
@@ -39,9 +40,8 @@ interface LoginService {
 
     // request updated accessToken
     @POST("reissue")
-    @FormUrlEncoded
     fun reissue(
-        @Field("refreshToken") refreshToken: String
+        @Header("refreshToken") refreshToken: String
     ):Call<reIssueResponseModel>
 
     companion object {
