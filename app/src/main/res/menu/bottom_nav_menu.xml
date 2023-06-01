@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/tab1"
+        android:enabled="true"
+        android:icon="@drawable/bottom_nav_1"
+        android:title="명함 차트"/>
+
+    <item
+        android:id="@+id/tab2"
+        android:enabled="true"
+        android:icon="@drawable/bottom_nav_2"
+        android:title="홈"/>
+
+    <item
+        android:id="@+id/tab3"
+        android:enabled="true"
+        android:icon="@drawable/bottom_nav_3"
+        android:title="명함 지갑"/>
+
+    <item
+        android:id="@+id/tab4"
+        android:enabled="true"
+        android:icon="@drawable/bottom_nav_4"
+        android:title="명함 제작"/>
+</menu>
