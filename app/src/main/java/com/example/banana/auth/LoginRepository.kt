@@ -1,6 +1,10 @@
 package com.example.banana.auth
 
 import android.content.Context
+import android.content.Intent
+import android.util.Log
+import androidx.core.content.ContextCompat.startActivity
+import com.example.banana.FragmentActivity
 import android.util.Log
 import android.widget.Toast
 import com.example.banana.model.LoginGoogleResponseModel
@@ -14,6 +18,7 @@ import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Response
 import java.security.AccessController.getContext
+
 
 
 class LoginRepository {
@@ -68,6 +73,8 @@ class LoginRepository {
     }
 
     fun goHome(context: Context) {
+        var intent = Intent(context, FragmentActivity::class.java)
+        startActivity(context, intent, null)
 //        intent = Intent(context, HomeActivity::class.java)
 //        startActivity(intent)
     }
