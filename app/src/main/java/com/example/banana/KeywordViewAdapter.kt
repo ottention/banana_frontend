@@ -6,6 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.flexbox.AlignSelf
+
+import com.google.android.flexbox.FlexboxLayoutManager
+
+
+
 
 class KeywordViewAdapter(val context : Context, val stringList : List<String>) : RecyclerView.Adapter<KeywordViewAdapter.ViewHolder>() {
 
@@ -29,6 +35,12 @@ class KeywordViewAdapter(val context : Context, val stringList : List<String>) :
 
         fun bind(item : String) {
             itemView.findViewById<TextView>(com.example.banana.R.id.keyword_box).text = item
+//            var lp = itemView.getLayoutParams()
+//            if (lp is FlexboxLayoutManager.getLayoutParams()) {
+//                val flexboxLp = lp as FlexboxLayoutManager.LayoutParams
+//                flexboxLp.flexGrow = 1.0f
+//                flexboxLp.alignSelf = AlignSelf.FLEX_END
+//            }
         }
 
     }

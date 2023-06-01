@@ -99,7 +99,8 @@
 
         </LinearLayout>
 
-        <com.example.banana.customView.Card
+        <FrameLayout
+            android:orientation="vertical"
             android:id="@+id/detailed_card"
             android:layout_width="300dp"
             android:layout_height="160dp"
@@ -107,7 +108,10 @@
             app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+
+        </FrameLayout>
 
     </LinearLayout>
 
