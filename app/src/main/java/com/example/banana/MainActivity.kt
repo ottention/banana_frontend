@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         Log.d(TAG, "keyhash : ${com.kakao.sdk.common.util.Utility.getKeyHash(this)}")
-
         // 처음 어플 켜서 아직 정보가 있다면? -> 바로 시작
         // 없다면? 시작하기 혹은 회원가입
         if ((authApplication.prefs.getString("accessToken", "") != "")) {
