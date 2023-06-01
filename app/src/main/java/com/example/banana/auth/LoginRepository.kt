@@ -143,9 +143,9 @@ class LoginRepository {
     }
 
 
-    fun reissue(userId : String) {
+    fun reissue(requestToken : String) {
         LoginService.loginRetrofit(sendTokenBaseUrl).reissue(
-            userId
+            requestToken
         ).enqueue(object : retrofit2.Callback<reIssueResponseModel> {
 
             override fun onFailure(call: Call<reIssueResponseModel>, t: Throwable) {

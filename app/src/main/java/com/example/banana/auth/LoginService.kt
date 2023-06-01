@@ -22,6 +22,7 @@ interface LoginService {
         @Body request: LoginGoogle_at_RequestModel
     ):Call<LoginGoogle_at_ResponseModel>
 
+    // kakao login
     @POST("token")
     @FormUrlEncoded
     fun sendkakaoToken(
@@ -29,16 +30,18 @@ interface LoginService {
     ):Call<LoginKaKaoResponseModel>
 
 
+    // google login
     @POST("idToken")
     @FormUrlEncoded
     fun sendGoogleToken(
         @Field("idToken") idToken: String
     ):Call<LoginGoogleResponseModel>
 
+    // request updated accessToken
     @POST("reissue")
     @FormUrlEncoded
     fun reissue(
-        @Field("userId") userId: String
+        @Field("refreshToken") refreshToken: String
     ):Call<reIssueResponseModel>
 
     companion object {
