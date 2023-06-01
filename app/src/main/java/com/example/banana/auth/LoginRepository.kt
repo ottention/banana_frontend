@@ -5,7 +5,7 @@ import android.content.Intent
 import android.util.Log
 import androidx.core.content.ContextCompat.startActivity
 import com.example.banana.FragmentActivity
-import android.util.Log
+
 import android.widget.Toast
 import com.example.banana.model.LoginGoogleResponseModel
 import com.example.banana.model.LoginKaKaoResponseModel

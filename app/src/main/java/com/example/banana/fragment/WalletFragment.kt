@@ -133,6 +133,8 @@ class WalletFragment : Fragment() {
             binding.rvWallet.adapter = walletAdapter
             binding.rvWallet.layoutManager = GridLayoutManager(context,2)
 
+
+
         }
 
         //검색 버튼
