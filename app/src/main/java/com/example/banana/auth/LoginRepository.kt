@@ -2,11 +2,17 @@ package com.example.banana.auth
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.BitmapFactory
+import android.util.Base64
 import android.util.Log
+import android.view.View
+import android.widget.ImageView
 import androidx.core.content.ContextCompat.startActivity
 import com.example.banana.FragmentActivity
 
 import android.widget.Toast
+import com.example.banana.R
+import com.example.banana.data.ResponseGetQRCode
 import com.example.banana.model.LoginGoogleResponseModel
 import com.example.banana.model.LoginKaKaoResponseModel
 import com.example.banana.model.reIssueResponseModel
@@ -168,6 +174,31 @@ class LoginRepository {
                 } else {
                     Log.d(TAG, response.code().toString())
                 }
+            }
+
+        })
+    }
+
+
+    public fun getQRCode() {
+        LoginService.loginRetrofit(sendTokenBaseUrl).getQRCode().enqueue(object : retrofit2.Callback<ResponseGetQRCode>{
+            override fun onResponse(call: Call<ResponseGetQRCode>, response: Response<ResponseGetQRCode>) {
+                if (response.isSuccessful) {
+                    var imageString = response.body()?.qrImage
+//                    var toBitmap = BitmapFactory.decodeByteArray(image,0,image!!.size)
+//                    var bitmap = BitmapFactory.decodeStream(imageString)
+                    val imageBytes = Base64.decode(imageString,0)
+                    val image = BitmapFactory.decodeByteArray(imageBytes,0,imageBytes.size)
+//                    val imageViewQrCode: ImageView = findViewById<View>(R.id.imageViewQrCode) as ImageView
+//                    imageViewQrCode.setImageBitmap(image)
+                    Log.d("getQr Response : ", "goood 1")
+
+                } else {
+                    Log.d("getQr Response : ", "Fail 1")
+                }
+            }
+            override fun onFailure(call: Call<ResponseGetQRCode>, t: Throwable) {
+                Log.d("getQr Response : ", "Fail 2")
             }
 
         })
