@@ -16,6 +16,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.banana.CreateQRActivity
 import com.example.banana.R
+import com.example.banana.auth.LoginRepository
 import com.example.banana.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -52,6 +53,7 @@ class HomeFragment : Fragment() {
 
         super.onViewCreated(view, savedInstanceState)
 
+        LoginRepository().getQRCode()
         //초기 card 01
         binding.btnCard01.setBackgroundColor(Color.parseColor("#000000"))
         binding.btnCard01.setTextColor(Color.parseColor("#ffffff"))

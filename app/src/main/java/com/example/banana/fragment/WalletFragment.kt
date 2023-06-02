@@ -67,6 +67,8 @@ class WalletFragment : Fragment() {
         binding.btnAll.setOnClickListener{
             binding.walletText.setText("최근 저장된 명함")
             binding.walletText.visibility = View.VISIBLE
+            binding.linearLayoutMarked.visibility = View.VISIBLE
+            binding.markedText.visibility = View.VISIBLE
             binding.btnAll.setBackgroundResource(R.drawable.border_underline)
             binding.btnMarked.setBackgroundColor(Color.parseColor("#ffffff"))
             binding.btnFolder.setBackgroundColor(Color.parseColor("#ffffff"))
@@ -91,6 +93,8 @@ class WalletFragment : Fragment() {
         //즐겨 찾기 버튼
         binding.btnMarked.setOnClickListener {
             binding.walletText.visibility = View.INVISIBLE
+            binding.linearLayoutMarked.visibility = View.GONE
+            binding.markedText.visibility = View.GONE
             binding.btnMarked.setBackgroundResource(R.drawable.border_underline)
             binding.btnAll.setBackgroundColor(Color.parseColor("#ffffff"))
             binding.btnFolder.setBackgroundColor(Color.parseColor("#ffffff"))
@@ -115,6 +119,8 @@ class WalletFragment : Fragment() {
         binding.btnFolder.setOnClickListener {
             binding.walletText.setText("저장 카테고리")
             binding.walletText.visibility = View.VISIBLE
+            binding.linearLayoutMarked.visibility = View.VISIBLE
+            binding.markedText.visibility = View.VISIBLE
             binding.btnFolder.setBackgroundResource(R.drawable.border_underline)
             binding.btnMarked.setBackgroundColor(Color.parseColor("#ffffff"))
             binding.btnAll.setBackgroundColor(Color.parseColor("#ffffff"))
