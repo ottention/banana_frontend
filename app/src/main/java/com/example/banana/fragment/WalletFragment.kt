@@ -68,12 +68,12 @@ class WalletFragment : Fragment() {
 
         //검색 버튼
         binding.btnSearch.setOnClickListener {
-            Toast.makeText(context, "search", Toast.LENGTH_SHORT).show()
+           search()
         }
 
         //알람 버튼
         binding.btnAlarm.setOnClickListener {
-            Toast.makeText(context, "alarm", Toast.LENGTH_SHORT).show()
+            alarm()
         }
 
         return view
@@ -245,6 +245,13 @@ class WalletFragment : Fragment() {
 
     }
 
+    fun alarm() {
+        Toast.makeText(context, "alarm", Toast.LENGTH_SHORT).show()
+    }
+
+    fun search() {
+        Toast.makeText(context, "search", Toast.LENGTH_SHORT).show()
+    }
 
 
 }
