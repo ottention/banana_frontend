@@ -154,6 +154,19 @@ class ChartFragment : Fragment() {
         binding.btnTag9.setBackgroundColor(Color.parseColor("#E6E6E6"))
         binding.btnTag10.setBackgroundColor(Color.parseColor("#E6E6E6"))
 
+        chartData.clear()
+
+        chartData.add(ChartData(R.drawable.card011,"Top1","24"))
+        chartData.add(ChartData(R.drawable.card011,"Top2","23"))
+        chartData.add(ChartData(R.drawable.card011,"Top3","22"))
+        chartData.add(ChartData(R.drawable.card011,"Top4","21"))
+        chartData.add(ChartData(R.drawable.card011,"Top5","20"))
+        chartData.add(ChartData(R.drawable.card011,"Top6","19"))
+        chartData.add(ChartData(R.drawable.card011,"Top7","18"))
+        chartData.add(ChartData(R.drawable.card011,"Top8","17"))
+        chartData.add(ChartData(R.drawable.card011,"Top9","16"))
+        chartData.add(ChartData(R.drawable.card011,"Top10","15"))
+
         chartAdapter = ChartAdapter(chartData)
         binding.rvChart.adapter = chartAdapter
         binding.rvChart.layoutManager = GridLayoutManager(context,1)
@@ -178,6 +191,21 @@ class ChartFragment : Fragment() {
         binding.btnTag8.setBackgroundColor(Color.parseColor("#E6E6E6"))
         binding.btnTag9.setBackgroundColor(Color.parseColor("#E6E6E6"))
         binding.btnTag10.setBackgroundColor(Color.parseColor("#E6E6E6"))
+
+        chartData.clear()
+
+        chartData.add(ChartData(R.drawable.card021,"Top1","24"))
+        chartData.add(ChartData(R.drawable.card021,"Top2","23"))
+        chartData.add(ChartData(R.drawable.card021,"Top3","22"))
+        chartData.add(ChartData(R.drawable.card021,"Top4","21"))
+        chartData.add(ChartData(R.drawable.card021,"Top5","20"))
+        chartData.add(ChartData(R.drawable.card021,"Top6","19"))
+        chartData.add(ChartData(R.drawable.card021,"Top7","18"))
+        chartData.add(ChartData(R.drawable.card021,"Top8","17"))
+        chartData.add(ChartData(R.drawable.card021,"Top9","16"))
+        chartData.add(ChartData(R.drawable.card021,"Top10","15"))
+
+
 
         chartAdapter = ChartAdapter(chartData)
         binding.rvChart.adapter = chartAdapter
@@ -205,6 +233,19 @@ class ChartFragment : Fragment() {
         binding.btnTag9.setBackgroundColor(Color.parseColor("#E6E6E6"))
         binding.btnTag10.setBackgroundColor(Color.parseColor("#E6E6E6"))
 
+        chartData.clear()
+
+        chartData.add(ChartData(R.drawable.card031,"Top1","24"))
+        chartData.add(ChartData(R.drawable.card031,"Top2","23"))
+        chartData.add(ChartData(R.drawable.card031,"Top3","22"))
+        chartData.add(ChartData(R.drawable.card031,"Top4","21"))
+        chartData.add(ChartData(R.drawable.card031,"Top5","20"))
+        chartData.add(ChartData(R.drawable.card031,"Top6","19"))
+        chartData.add(ChartData(R.drawable.card031,"Top7","18"))
+        chartData.add(ChartData(R.drawable.card031,"Top8","17"))
+        chartData.add(ChartData(R.drawable.card031,"Top9","16"))
+        chartData.add(ChartData(R.drawable.card031,"Top10","15"))
+
         chartAdapter = ChartAdapter(chartData)
         binding.rvChart.adapter = chartAdapter
         binding.rvChart.layoutManager = GridLayoutManager(context,1)
@@ -229,6 +270,19 @@ class ChartFragment : Fragment() {
         binding.btnTag8.setBackgroundColor(Color.parseColor("#E6E6E6"))
         binding.btnTag9.setBackgroundColor(Color.parseColor("#E6E6E6"))
         binding.btnTag10.setBackgroundColor(Color.parseColor("#E6E6E6"))
+
+        chartData.clear()
+
+        chartData.add(ChartData(R.drawable.card011,"Top1","24"))
+        chartData.add(ChartData(R.drawable.card011,"Top2","23"))
+        chartData.add(ChartData(R.drawable.card011,"Top3","22"))
+        chartData.add(ChartData(R.drawable.card011,"Top4","21"))
+        chartData.add(ChartData(R.drawable.card011,"Top5","20"))
+        chartData.add(ChartData(R.drawable.card011,"Top6","19"))
+        chartData.add(ChartData(R.drawable.card011,"Top7","18"))
+        chartData.add(ChartData(R.drawable.card011,"Top8","17"))
+        chartData.add(ChartData(R.drawable.card011,"Top9","16"))
+        chartData.add(ChartData(R.drawable.card011,"Top10","15"))
 
         chartAdapter = ChartAdapter(chartData)
         binding.rvChart.adapter = chartAdapter
@@ -256,6 +310,19 @@ class ChartFragment : Fragment() {
         binding.btnTag9.setBackgroundColor(Color.parseColor("#E6E6E6"))
         binding.btnTag10.setBackgroundColor(Color.parseColor("#E6E6E6"))
 
+        chartData.clear()
+
+        chartData.add(ChartData(R.drawable.card021,"Top1","24"))
+        chartData.add(ChartData(R.drawable.card021,"Top2","23"))
+        chartData.add(ChartData(R.drawable.card021,"Top3","22"))
+        chartData.add(ChartData(R.drawable.card021,"Top4","21"))
+        chartData.add(ChartData(R.drawable.card021,"Top5","20"))
+        chartData.add(ChartData(R.drawable.card021,"Top6","19"))
+        chartData.add(ChartData(R.drawable.card021,"Top7","18"))
+        chartData.add(ChartData(R.drawable.card021,"Top8","17"))
+        chartData.add(ChartData(R.drawable.card021,"Top9","16"))
+        chartData.add(ChartData(R.drawable.card021,"Top10","15"))
+
         chartAdapter = ChartAdapter(chartData)
         binding.rvChart.adapter = chartAdapter
         binding.rvChart.layoutManager = GridLayoutManager(context,1)
@@ -280,6 +347,19 @@ class ChartFragment : Fragment() {
         binding.btnTag8.setBackgroundColor(Color.parseColor("#E6E6E6"))
         binding.btnTag9.setBackgroundColor(Color.parseColor("#E6E6E6"))
         binding.btnTag10.setBackgroundColor(Color.parseColor("#E6E6E6"))
+
+        chartData.clear()
+
+        chartData.add(ChartData(R.drawable.card031,"Top1","24"))
+        chartData.add(ChartData(R.drawable.card031,"Top2","23"))
+        chartData.add(ChartData(R.drawable.card031,"Top3","22"))
+        chartData.add(ChartData(R.drawable.card031,"Top4","21"))
+        chartData.add(ChartData(R.drawable.card031,"Top5","20"))
+        chartData.add(ChartData(R.drawable.card031,"Top6","19"))
+        chartData.add(ChartData(R.drawable.card031,"Top7","18"))
+        chartData.add(ChartData(R.drawable.card031,"Top8","17"))
+        chartData.add(ChartData(R.drawable.card031,"Top9","16"))
+        chartData.add(ChartData(R.drawable.card031,"Top10","15"))
 
         chartAdapter = ChartAdapter(chartData)
         binding.rvChart.adapter = chartAdapter
@@ -307,6 +387,19 @@ class ChartFragment : Fragment() {
         binding.btnTag9.setBackgroundColor(Color.parseColor("#E6E6E6"))
         binding.btnTag10.setBackgroundColor(Color.parseColor("#E6E6E6"))
 
+        chartData.clear()
+
+        chartData.add(ChartData(R.drawable.card011,"Top1","24"))
+        chartData.add(ChartData(R.drawable.card011,"Top2","23"))
+        chartData.add(ChartData(R.drawable.card011,"Top3","22"))
+        chartData.add(ChartData(R.drawable.card011,"Top4","21"))
+        chartData.add(ChartData(R.drawable.card011,"Top5","20"))
+        chartData.add(ChartData(R.drawable.card011,"Top6","19"))
+        chartData.add(ChartData(R.drawable.card011,"Top7","18"))
+        chartData.add(ChartData(R.drawable.card011,"Top8","17"))
+        chartData.add(ChartData(R.drawable.card011,"Top9","16"))
+        chartData.add(ChartData(R.drawable.card011,"Top10","15"))
+
         chartAdapter = ChartAdapter(chartData)
         binding.rvChart.adapter = chartAdapter
         binding.rvChart.layoutManager = GridLayoutManager(context,1)
@@ -332,6 +425,19 @@ class ChartFragment : Fragment() {
         binding.btnTag7.setBackgroundColor(Color.parseColor("#E6E6E6"))
         binding.btnTag9.setBackgroundColor(Color.parseColor("#E6E6E6"))
         binding.btnTag10.setBackgroundColor(Color.parseColor("#E6E6E6"))
+
+        chartData.clear()
+
+        chartData.add(ChartData(R.drawable.card021,"Top1","24"))
+        chartData.add(ChartData(R.drawable.card021,"Top2","23"))
+        chartData.add(ChartData(R.drawable.card021,"Top3","22"))
+        chartData.add(ChartData(R.drawable.card021,"Top4","21"))
+        chartData.add(ChartData(R.drawable.card021,"Top5","20"))
+        chartData.add(ChartData(R.drawable.card021,"Top6","19"))
+        chartData.add(ChartData(R.drawable.card021,"Top7","18"))
+        chartData.add(ChartData(R.drawable.card021,"Top8","17"))
+        chartData.add(ChartData(R.drawable.card021,"Top9","16"))
+        chartData.add(ChartData(R.drawable.card021,"Top10","15"))
 
         chartAdapter = ChartAdapter(chartData)
         binding.rvChart.adapter = chartAdapter
@@ -359,6 +465,19 @@ class ChartFragment : Fragment() {
         binding.btnTag8.setBackgroundColor(Color.parseColor("#E6E6E6"))
         binding.btnTag10.setBackgroundColor(Color.parseColor("#E6E6E6"))
 
+        chartData.clear()
+
+        chartData.add(ChartData(R.drawable.card031,"Top1","24"))
+        chartData.add(ChartData(R.drawable.card031,"Top2","23"))
+        chartData.add(ChartData(R.drawable.card031,"Top3","22"))
+        chartData.add(ChartData(R.drawable.card031,"Top4","21"))
+        chartData.add(ChartData(R.drawable.card031,"Top5","20"))
+        chartData.add(ChartData(R.drawable.card031,"Top6","19"))
+        chartData.add(ChartData(R.drawable.card031,"Top7","18"))
+        chartData.add(ChartData(R.drawable.card031,"Top8","17"))
+        chartData.add(ChartData(R.drawable.card031,"Top9","16"))
+        chartData.add(ChartData(R.drawable.card031,"Top10","15"))
+
         chartAdapter = ChartAdapter(chartData)
         binding.rvChart.adapter = chartAdapter
         binding.rvChart.layoutManager = GridLayoutManager(context,1)
@@ -384,6 +503,19 @@ class ChartFragment : Fragment() {
         binding.btnTag8.setBackgroundColor(Color.parseColor("#E6E6E6"))
         binding.btnTag9.setBackgroundColor(Color.parseColor("#E6E6E6"))
 
+        chartData.clear()
+
+        chartData.add(ChartData(R.drawable.default_card,"Top1","24"))
+        chartData.add(ChartData(R.drawable.default_card,"Top2","23"))
+        chartData.add(ChartData(R.drawable.default_card,"Top3","22"))
+        chartData.add(ChartData(R.drawable.default_card,"Top4","21"))
+        chartData.add(ChartData(R.drawable.default_card,"Top5","20"))
+        chartData.add(ChartData(R.drawable.default_card,"Top6","19"))
+        chartData.add(ChartData(R.drawable.default_card,"Top7","18"))
+        chartData.add(ChartData(R.drawable.default_card,"Top8","17"))
+        chartData.add(ChartData(R.drawable.default_card,"Top9","16"))
+        chartData.add(ChartData(R.drawable.default_card,"Top10","15"))
+
         chartAdapter = ChartAdapter(chartData)
         binding.rvChart.adapter = chartAdapter
         binding.rvChart.layoutManager = GridLayoutManager(context,1)
@@ -402,5 +534,9 @@ class ChartFragment : Fragment() {
 
     fun search() {
         Toast.makeText(context, "search", Toast.LENGTH_SHORT).show()
+    }
+
+    fun like() {
+
     }
 }

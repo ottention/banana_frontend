@@ -8,17 +8,21 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.banana.data.ChartData
 
-class ChartAdapter (private val chartData: ArrayList<ChartData>) : RecyclerView.Adapter<ChartAdapter.ViewHolder>(){
+class ChartAdapter (
+    private val chartData: ArrayList<ChartData>,
+    ) : RecyclerView.Adapter<ChartAdapter.ViewHolder>(){
 
    class ViewHolder(view : View) : RecyclerView.ViewHolder(view) {
        var rv_chart_card : ImageView
        var rv_rank_text : TextView
        var rv_favorite_count : TextView
+       var rv_btn_heart : ImageView
 
        init {
            rv_chart_card = view.findViewById(R.id.chart_card_image)
            rv_rank_text = view.findViewById(R.id.chart_rank)
            rv_favorite_count = view.findViewById(R.id.favorite_count)
+           rv_btn_heart = view.findViewById(R.id.btn_heart)
        }
 
    }
@@ -44,6 +48,8 @@ class ChartAdapter (private val chartData: ArrayList<ChartData>) : RecyclerView.
                 itemClick!!.onClick(v,position)
             }
         }
+
+
     }
 
     override fun getItemCount(): Int {
