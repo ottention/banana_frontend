@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.banana.ChartAdapter
@@ -22,8 +23,10 @@ import com.example.banana.databinding.FragmentWalletBinding
 class ChartFragment : Fragment() {
 
     private lateinit var chartAdapter: ChartAdapter
-    private var _binding : FragmentChartBinding? = null
-    private val binding get() = _binding!!
+//    private var _binding : FragmentChartBinding? = null
+//    private val binding get() = _binding!!
+    private lateinit var binding : FragmentChartBinding
+
     private var chartData = ArrayList<ChartData>()
 
     fun newInstance() : ChartFragment{
@@ -33,17 +36,19 @@ class ChartFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentChartBinding.inflate(inflater, container, false)
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_chart,container,false)
         val view = binding.root
 
         //차트 초기 설정
         initChart()
+
 
 
         //태그 1
@@ -107,6 +112,8 @@ class ChartFragment : Fragment() {
         }
 
 
+
+
         return view
 
     }
@@ -129,16 +136,22 @@ class ChartFragment : Fragment() {
         chartData.add(ChartData(R.drawable.default_card,"Top9","16"))
         chartData.add(ChartData(R.drawable.default_card,"Top10","15"))
 
-        chartAdapter = ChartAdapter(chartData)
+        Log.d(javaClass.name,"어댑터 생성")
+        chartAdapter = ChartAdapter(chartData,::onCardClick,::onLikeClick)
         binding.rvChart.adapter = chartAdapter
         binding.rvChart.layoutManager = GridLayoutManager(context,1)
 
-        chartAdapter.itemClick = object : ChartAdapter.ItemClick{
-            override fun onClick(view: View, position: Int) {
+    }
 
-                Toast.makeText(context, "명함 상세페이지 이동",Toast.LENGTH_SHORT).show()
-            }
-        }
+    //하트 버튼 클릭
+    fun onLikeClick(){
+
+    }
+
+    //카드 클릭
+    fun onCardClick(){
+
+
     }
 
     //tag 1
@@ -156,27 +169,21 @@ class ChartFragment : Fragment() {
 
         chartData.clear()
 
-        chartData.add(ChartData(R.drawable.card011,"Top1","24"))
-        chartData.add(ChartData(R.drawable.card011,"Top2","23"))
-        chartData.add(ChartData(R.drawable.card011,"Top3","22"))
-        chartData.add(ChartData(R.drawable.card011,"Top4","21"))
-        chartData.add(ChartData(R.drawable.card011,"Top5","20"))
-        chartData.add(ChartData(R.drawable.card011,"Top6","19"))
-        chartData.add(ChartData(R.drawable.card011,"Top7","18"))
-        chartData.add(ChartData(R.drawable.card011,"Top8","17"))
-        chartData.add(ChartData(R.drawable.card011,"Top9","16"))
-        chartData.add(ChartData(R.drawable.card011,"Top10","15"))
+        chartData.add(ChartData(R.drawable.default_card,"Top1","24"))
+        chartData.add(ChartData(R.drawable.default_card,"Top2","23"))
+        chartData.add(ChartData(R.drawable.default_card,"Top3","22"))
+        chartData.add(ChartData(R.drawable.default_card,"Top4","21"))
+        chartData.add(ChartData(R.drawable.default_card,"Top5","20"))
+        chartData.add(ChartData(R.drawable.default_card,"Top6","19"))
+        chartData.add(ChartData(R.drawable.default_card,"Top7","18"))
+        chartData.add(ChartData(R.drawable.default_card,"Top8","17"))
+        chartData.add(ChartData(R.drawable.default_card,"Top9","16"))
+        chartData.add(ChartData(R.drawable.default_card,"Top10","15"))
 
-        chartAdapter = ChartAdapter(chartData)
+        chartAdapter = ChartAdapter(chartData,::onCardClick,::onLikeClick)
         binding.rvChart.adapter = chartAdapter
         binding.rvChart.layoutManager = GridLayoutManager(context,1)
 
-        chartAdapter.itemClick = object : ChartAdapter.ItemClick{
-            override fun onClick(view: View, position: Int) {
-
-                Toast.makeText(context, "명함 상세페이지 이동",Toast.LENGTH_SHORT).show()
-            }
-        }
     }
 
     //태그 2
@@ -207,16 +214,11 @@ class ChartFragment : Fragment() {
 
 
 
-        chartAdapter = ChartAdapter(chartData)
+        chartAdapter = ChartAdapter(chartData,::onCardClick,::onLikeClick)
         binding.rvChart.adapter = chartAdapter
         binding.rvChart.layoutManager = GridLayoutManager(context,1)
 
-        chartAdapter.itemClick = object : ChartAdapter.ItemClick{
-            override fun onClick(view: View, position: Int) {
 
-                Toast.makeText(context, "명함 상세페이지 이동",Toast.LENGTH_SHORT).show()
-            }
-        }
     }
 
     //태그 3
@@ -246,16 +248,11 @@ class ChartFragment : Fragment() {
         chartData.add(ChartData(R.drawable.card031,"Top9","16"))
         chartData.add(ChartData(R.drawable.card031,"Top10","15"))
 
-        chartAdapter = ChartAdapter(chartData)
+        chartAdapter = ChartAdapter(chartData,::onCardClick,::onLikeClick)
         binding.rvChart.adapter = chartAdapter
         binding.rvChart.layoutManager = GridLayoutManager(context,1)
 
-        chartAdapter.itemClick = object : ChartAdapter.ItemClick{
-            override fun onClick(view: View, position: Int) {
 
-                Toast.makeText(context, "명함 상세페이지 이동",Toast.LENGTH_SHORT).show()
-            }
-        }
     }
 
     //태그 4
@@ -284,16 +281,11 @@ class ChartFragment : Fragment() {
         chartData.add(ChartData(R.drawable.card011,"Top9","16"))
         chartData.add(ChartData(R.drawable.card011,"Top10","15"))
 
-        chartAdapter = ChartAdapter(chartData)
+        chartAdapter = ChartAdapter(chartData,::onCardClick,::onLikeClick)
         binding.rvChart.adapter = chartAdapter
         binding.rvChart.layoutManager = GridLayoutManager(context,1)
 
-        chartAdapter.itemClick = object : ChartAdapter.ItemClick{
-            override fun onClick(view: View, position: Int) {
 
-                Toast.makeText(context, "명함 상세페이지 이동",Toast.LENGTH_SHORT).show()
-            }
-        }
     }
 
     //태그 5
@@ -323,16 +315,11 @@ class ChartFragment : Fragment() {
         chartData.add(ChartData(R.drawable.card021,"Top9","16"))
         chartData.add(ChartData(R.drawable.card021,"Top10","15"))
 
-        chartAdapter = ChartAdapter(chartData)
+        chartAdapter = ChartAdapter(chartData,::onCardClick,::onLikeClick)
         binding.rvChart.adapter = chartAdapter
         binding.rvChart.layoutManager = GridLayoutManager(context,1)
 
-        chartAdapter.itemClick = object : ChartAdapter.ItemClick{
-            override fun onClick(view: View, position: Int) {
 
-                Toast.makeText(context, "명함 상세페이지 이동",Toast.LENGTH_SHORT).show()
-            }
-        }
     }
 
     //태그 6
@@ -361,16 +348,11 @@ class ChartFragment : Fragment() {
         chartData.add(ChartData(R.drawable.card031,"Top9","16"))
         chartData.add(ChartData(R.drawable.card031,"Top10","15"))
 
-        chartAdapter = ChartAdapter(chartData)
+        chartAdapter = ChartAdapter(chartData,::onCardClick,::onLikeClick)
         binding.rvChart.adapter = chartAdapter
         binding.rvChart.layoutManager = GridLayoutManager(context,1)
 
-        chartAdapter.itemClick = object : ChartAdapter.ItemClick{
-            override fun onClick(view: View, position: Int) {
 
-                Toast.makeText(context, "명함 상세페이지 이동",Toast.LENGTH_SHORT).show()
-            }
-        }
     }
 
     //태그 7
@@ -400,16 +382,11 @@ class ChartFragment : Fragment() {
         chartData.add(ChartData(R.drawable.card011,"Top9","16"))
         chartData.add(ChartData(R.drawable.card011,"Top10","15"))
 
-        chartAdapter = ChartAdapter(chartData)
+        chartAdapter = ChartAdapter(chartData,::onCardClick,::onLikeClick)
         binding.rvChart.adapter = chartAdapter
         binding.rvChart.layoutManager = GridLayoutManager(context,1)
 
-        chartAdapter.itemClick = object : ChartAdapter.ItemClick{
-            override fun onClick(view: View, position: Int) {
 
-                Toast.makeText(context, "명함 상세페이지 이동",Toast.LENGTH_SHORT).show()
-            }
-        }
     }
 
     //태그 8
@@ -439,16 +416,11 @@ class ChartFragment : Fragment() {
         chartData.add(ChartData(R.drawable.card021,"Top9","16"))
         chartData.add(ChartData(R.drawable.card021,"Top10","15"))
 
-        chartAdapter = ChartAdapter(chartData)
+        chartAdapter = ChartAdapter(chartData,::onCardClick,::onLikeClick)
         binding.rvChart.adapter = chartAdapter
         binding.rvChart.layoutManager = GridLayoutManager(context,1)
 
-        chartAdapter.itemClick = object : ChartAdapter.ItemClick{
-            override fun onClick(view: View, position: Int) {
 
-                Toast.makeText(context, "명함 상세페이지 이동",Toast.LENGTH_SHORT).show()
-            }
-        }
     }
 
     //태그 9
@@ -478,16 +450,11 @@ class ChartFragment : Fragment() {
         chartData.add(ChartData(R.drawable.card031,"Top9","16"))
         chartData.add(ChartData(R.drawable.card031,"Top10","15"))
 
-        chartAdapter = ChartAdapter(chartData)
+        chartAdapter = ChartAdapter(chartData,::onCardClick,::onLikeClick)
         binding.rvChart.adapter = chartAdapter
         binding.rvChart.layoutManager = GridLayoutManager(context,1)
 
-        chartAdapter.itemClick = object : ChartAdapter.ItemClick{
-            override fun onClick(view: View, position: Int) {
 
-                Toast.makeText(context, "명함 상세페이지 이동",Toast.LENGTH_SHORT).show()
-            }
-        }
     }
 
     //태그 10
@@ -516,16 +483,11 @@ class ChartFragment : Fragment() {
         chartData.add(ChartData(R.drawable.default_card,"Top9","16"))
         chartData.add(ChartData(R.drawable.default_card,"Top10","15"))
 
-        chartAdapter = ChartAdapter(chartData)
+        chartAdapter = ChartAdapter(chartData,::onCardClick,::onLikeClick)
         binding.rvChart.adapter = chartAdapter
         binding.rvChart.layoutManager = GridLayoutManager(context,1)
 
-        chartAdapter.itemClick = object : ChartAdapter.ItemClick{
-            override fun onClick(view: View, position: Int) {
 
-                Toast.makeText(context, "명함 상세페이지 이동",Toast.LENGTH_SHORT).show()
-            }
-        }
     }
 
     fun alarm() {
