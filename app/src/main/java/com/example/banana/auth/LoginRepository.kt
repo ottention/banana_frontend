@@ -75,8 +75,8 @@ class LoginRepository {
     fun goHome(context: Context) {
         var intent = Intent(context, FragmentActivity::class.java)
         startActivity(context, intent, null)
-//        intent = Intent(context, HomeActivity::class.java)
-//        startActivity(intent)
+        intent = Intent(context, FragmentActivity::class.java)
+        startActivity(context, intent, null)
     }
 
 
@@ -100,7 +100,6 @@ class LoginRepository {
                     Log.d(TAG, "sendOnResponse.refreshToken: ${response.body()!!.refreshToken}")
                     Log.d(TAG, response.code().toString())
                     saveJWT(response.body()!!.accessToken,response.body()!!.refreshToken);
-
                 }else {
                     if(response.code().toString() == "401") {
                         reissue(authApplication.prefs.getString("refreshToken", ""))

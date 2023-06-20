@@ -1,22 +1,22 @@
 package com.example.banana.fragment
 
+import android.R
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
-import android.view.ContextMenu
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.widget.PopupMenu
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.Fragment
 import com.example.banana.CreateQRActivity
-import com.example.banana.R
+import com.example.banana.MakeCardActivity
+import com.example.banana.cardDetailFragment
 import com.example.banana.databinding.FragmentHomeBinding
+import kotlin.concurrent.fixedRateTimer
+
 
 class HomeFragment : Fragment() {
 
@@ -26,7 +26,6 @@ class HomeFragment : Fragment() {
 
     private var _binding : FragmentHomeBinding? = null
     private val binding get() = _binding!!
-
 
 
 
@@ -56,8 +55,8 @@ class HomeFragment : Fragment() {
         binding.btnCard01.setBackgroundColor(Color.parseColor("#000000"))
         binding.btnCard01.setTextColor(Color.parseColor("#ffffff"))
 
-        binding.imageView.setImageResource(R.drawable.card011)
-        binding.imageView2.setImageResource(R.drawable.card012)
+        binding.imageView.setImageResource(com.example.banana.R.drawable.card011)
+        binding.imageView2.setImageResource(com.example.banana.R.drawable.card012)
 
 
         //card 01 버튼
@@ -72,8 +71,8 @@ class HomeFragment : Fragment() {
             binding.btnCard03.setBackgroundColor(Color.parseColor("#ffffff"))
             binding.btnCard03.setTextColor(Color.parseColor("#f0f0f0"))
 
-            binding.imageView.setImageResource(R.drawable.card011)
-            binding.imageView2.setImageResource(R.drawable.card012)
+            binding.imageView.setImageResource(com.example.banana.R.drawable.card011)
+            binding.imageView2.setImageResource(com.example.banana.R.drawable.card012)
         }
 
         //card 02 버튼
@@ -88,8 +87,8 @@ class HomeFragment : Fragment() {
             binding.btnCard03.setBackgroundColor(Color.parseColor("#ffffff"))
             binding.btnCard03.setTextColor(Color.parseColor("#f0f0f0"))
 
-            binding.imageView.setImageResource(R.drawable.card021)
-            binding.imageView2.setImageResource(R.drawable.card022)
+            binding.imageView.setImageResource(com.example.banana.R.drawable.card021)
+            binding.imageView2.setImageResource(com.example.banana.R.drawable.card022)
         }
 
         //card 03 버튼
@@ -105,19 +104,37 @@ class HomeFragment : Fragment() {
             binding.btnCard01.setBackgroundColor(Color.parseColor("#ffffff"))
             binding.btnCard01.setTextColor(Color.parseColor("#f0f0f0"))
 
-            binding.imageView.setImageResource(R.drawable.card031)
-            binding.imageView2.setImageResource(R.drawable.card032)
-
+            binding.imageView.setImageResource(com.example.banana.R.drawable.card031)
+            binding.imageView2.setImageResource(com.example.banana.R.drawable.card032)
         }
 
 
+        binding.imageView.setOnClickListener {
+
+            val detailedCard = cardDetailFragment()
+            fragmentManager?.beginTransaction()?.apply {
+                replace(com.example.banana.R.id.frameArea, detailedCard)
+                addToBackStack(null)
+                commit()
+            }
+        }
+
+        binding.imageView2.setOnClickListener {
+
+//            val detailedCard = cardDetailFragment()
+//            fragmentManager?.beginTransaction()?.apply {
+//                replace(com.example.banana.R.id.frameArea, detailedCard)
+//                addToBackStack(null)
+//                commit()
+//            }
+
+            startActivity(Intent(context, MakeCardActivity::class.java))
+        }
         //qr코드 버튼
         binding.btnQr.setOnClickListener {
             val intent = Intent(context, CreateQRActivity::class.java)
             startActivity(intent)
         }
-
-
 
 
 
@@ -127,15 +144,15 @@ class HomeFragment : Fragment() {
             Log.d("social","click")
             var pop = PopupMenu(context, popupBase)
 
-            pop.menuInflater?.inflate(R.menu.social_popup,pop.menu)
+            pop.menuInflater?.inflate(com.example.banana.R.menu.social_popup,pop.menu)
 
             pop.show()
 
             pop.setOnMenuItemClickListener { item ->
                 when(item.itemId) {
-                    R.id.kakaotalk ->
+                    com.example.banana.R.id.kakaotalk ->
                         Toast.makeText(context,"kakaotalk",Toast.LENGTH_SHORT).show()
-                    R.id.instagram ->
+                    com.example.banana.R.id.instagram ->
                         Toast.makeText(context, "instagram",Toast.LENGTH_SHORT).show()
 
                 }

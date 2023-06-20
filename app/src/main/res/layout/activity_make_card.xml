@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#ffffff"
+    tools:context=".MakeCardActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="41dp">
+
+        <Button
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginLeft="20dp"
+            android:gravity="left"
+            android:background="@drawable/icon_arrow_exit"/>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:fontFamily="@font/montserrat_bold"
+            android:textSize="16dp"
+            android:text="명함 제작"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.9"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_height="46dp">
+
+        <Button
+            android:id="@+id/btn_template01"
+            android:text="템플릿01"
+            android:fontFamily="@font/pretendardregular"
+            android:textColor="#20000000"
+            android:background="@color/zxing_transparent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:layout_height="30dp" />
+
+        <Button
+            android:id="@+id/btn_template02"
+            android:text="템플릿02"
+            android:fontFamily="@font/pretendardregular"
+            android:textColor="#20000000"
+            android:background="@color/zxing_transparent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:layout_height="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/btn_card03"
+            app:layout_constraintStart_toStartOf="@+id/btn_card01"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_template03"
+            android:text="템플릿03"
+            android:fontFamily="@font/pretendardregular"
+            android:textColor="#20000000"
+            android:background="@color/zxing_transparent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:layout_height="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_template04"
+            android:text="템플릿04"
+            android:fontFamily="@font/pretendardregular"
+            android:textColor="#20000000"
+            android:background="@color/zxing_transparent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:layout_height="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <ImageButton
+            android:background="@drawable/icon_arrow_exit"
+            android:layout_width="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/card"
+        android:background="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="173dp"
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_gravity="center" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/test_side"
+            android:background="@drawable/icon_arrow_exit"
+            android:layout_width="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_height="wrap_content"/>
+
+        <ImageButton
+            android:background="@drawable/icon_arrow_exit"
+            android:layout_width="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_height="wrap_content"/>
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <ImageButton
+            android:background="@drawable/icon_arrow_exit"
+            android:layout_width="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F9F9F9"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:textColor="@color/black"
+                android:fontFamily="@font/pretendardregular"
+                android:layout_marginLeft="10dp"
+                android:text="Base Color"
+                android:textSize="12sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <View
+                android:id="@+id/card_color_white"
+                android:clickable="true"
+                android:background="@drawable/btn_backgroud_white"
+                android:layout_width="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="20dp"/>
+
+            <View
+                android:id="@+id/card_color_pink"
+                android:clickable="true"
+                android:background="#FFC5C5"
+                android:layout_width="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="20dp"/>
+            <View
+                android:id="@+id/card_color_yellow"
+                android:clickable="true"
+                android:background="#FFE4B1"
+                android:layout_width="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="20dp"/>
+            <View
+                android:id="@+id/card_color_green"
+                android:clickable="true"
+                android:background="#8EC385"
+                android:layout_width="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="20dp"/>
+            <View
+                android:id="@+id/card_color_skyblue"
+                android:clickable="true"
+                android:background="#A3C8FF"
+                android:layout_width="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="20dp"/>
+            <View
+                android:id="@+id/card_color_navy"
+                android:clickable="true"
+                android:background="#6063B6"
+                android:layout_width="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="20dp"/>
+
+            <View
+                android:id="@+id/card_color_purple"
+                android:clickable="true"
+                android:background="#B591F1"
+                android:layout_width="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_height="20dp"/>
+        </LinearLayout>
+
+        <GridLayout
+            android:columnCount="5"
+            android:id="@+id/item_grid_layout"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:background="#ffffff"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="20dp"
+                android:background="@drawable/icon_h1"/>
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_margin="20dp"
+                android:layout_columnWeight="1"
+                android:background="@drawable/icon_h2"/>
+
+            <ImageButton
+                android:id="@+id/btn_getImage"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_margin="20dp"
+                android:layout_columnWeight="1"
+                android:background="@drawable/icon_photo"/>
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_margin="20dp"
+                android:layout_columnWeight="1"
+                android:background="@drawable/icon_map"/>
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_margin="20dp"
+                android:layout_columnWeight="1"
+                android:background="@drawable/icon_link"/>
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_margin="20dp"
+
+                android:layout_columnWeight="1"
+                android:background="@drawable/icon_notion"/>
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_margin="20dp"
+                android:layout_columnWeight="1"
+                android:background="@drawable/icon_creditcard"/>
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="20dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:background="@drawable/icon_phonebook"/>
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="20dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:background="@drawable/icon_work"/>
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="20dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:background="@drawable/icon_bookmark"/>
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="20dp"
+                android:background="@drawable/icon_check"/>
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_margin="20dp"
+                android:layout_columnWeight="1"
+                android:background="@drawable/icon_mail"/>
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="20dp"
+                android:background="@drawable/icon_phone"/>
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="20dp"
+                android:background="@drawable/icon_time"/>
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="20dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:background="@drawable/icon_graduation"/>
+
+        </GridLayout>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="30dp"
+            android:background="#80000000"
+            android:fontFamily="@font/pretendardlight"
+            android:text="저장하기"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>

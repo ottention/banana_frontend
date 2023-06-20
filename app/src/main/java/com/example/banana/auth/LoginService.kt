@@ -22,6 +22,7 @@ interface LoginService {
         @Body request: LoginGoogle_at_RequestModel
     ):Call<LoginGoogle_at_ResponseModel>
 
+
     // kakao login
     @POST("token")
     @FormUrlEncoded
