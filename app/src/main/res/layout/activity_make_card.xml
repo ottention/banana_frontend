@@ -124,7 +124,7 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <FrameLayout
         android:id="@+id/card"
         android:background="@color/black"
         android:layout_width="match_parent"
@@ -267,14 +267,16 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
             <ImageButton
+                android:id="@+id/btn_h1"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_height="5dp"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_margin="20dp"
-                android:background="@drawable/icon_h1"/>
+                android:background="@drawable/icon_h1" />
 
             <ImageButton
+                android:id="@+id/btn_h2"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_rowWeight="1"
@@ -285,13 +287,14 @@
             <ImageButton
                 android:id="@+id/btn_getImage"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_height="9dp"
                 android:layout_rowWeight="1"
-                android:layout_margin="20dp"
                 android:layout_columnWeight="1"
-                android:background="@drawable/icon_photo"/>
+                android:layout_margin="20dp"
+                android:background="@drawable/icon_photo" />
 
             <ImageButton
+                android:id="@+id/btn_goMap"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_rowWeight="1"
@@ -300,6 +303,7 @@
                 android:background="@drawable/icon_map"/>
 
             <ImageButton
+                android:id="@+id/btn_goLink"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_rowWeight="1"
@@ -308,15 +312,16 @@
                 android:background="@drawable/icon_link"/>
 
             <ImageButton
+                android:id="@+id/icon_notion"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_rowWeight="1"
                 android:layout_margin="20dp"
-
                 android:layout_columnWeight="1"
                 android:background="@drawable/icon_notion"/>
 
             <ImageButton
+                android:id="@+id/icon_creditCard"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_rowWeight="1"
@@ -325,6 +330,7 @@
                 android:background="@drawable/icon_creditcard"/>
 
             <ImageButton
+                android:id="@+id/icon_phoneBook"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_margin="20dp"
@@ -333,6 +339,7 @@
                 android:background="@drawable/icon_phonebook"/>
 
             <ImageButton
+                android:id="@+id/icon_work"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_margin="20dp"
@@ -341,6 +348,7 @@
                 android:background="@drawable/icon_work"/>
 
             <ImageButton
+                android:id="@+id/icon_bookMark"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_margin="20dp"
@@ -349,6 +357,7 @@
                 android:background="@drawable/icon_bookmark"/>
 
             <ImageButton
+                android:id="@+id/icon_check"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_rowWeight="1"
@@ -357,6 +366,7 @@
                 android:background="@drawable/icon_check"/>
 
             <ImageButton
+                android:id="@+id/icon_mail"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_rowWeight="1"
@@ -364,6 +374,7 @@
                 android:layout_columnWeight="1"
                 android:background="@drawable/icon_mail"/>
             <ImageButton
+                android:id="@+id/icon_phone"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_rowWeight="1"
@@ -371,6 +382,7 @@
                 android:layout_margin="20dp"
                 android:background="@drawable/icon_phone"/>
             <ImageButton
+                android:id="@+id/icon_time"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_rowWeight="1"
@@ -378,6 +390,7 @@
                 android:layout_margin="20dp"
                 android:background="@drawable/icon_time"/>
             <ImageButton
+                android:id="@+id/icon_graduation"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_margin="20dp"

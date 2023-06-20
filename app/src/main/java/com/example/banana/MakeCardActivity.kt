@@ -1,5 +1,6 @@
 package com.example.banana
 
+import android.app.Dialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
@@ -8,15 +9,20 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.view.MotionEvent
 import android.view.View
+import android.view.View.OnClickListener
 import android.view.View.OnTouchListener
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
+import android.widget.FrameLayout
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import com.bumptech.glide.Glide
 
 
@@ -24,10 +30,61 @@ class MakeCardActivity : AppCompatActivity() {
 
     val PERMISSION_Album = 101 // 앨범 권한 처리
     val REQ_GALLERY = 1 // 앨범 권한 처리
+    lateinit var cardView : FrameLayout
+
+    inner class addIconListner : View.OnClickListener {
+        val listener : OnTouchListener = DragListner()
+        override fun onClick(v: View?) {
+
+            val image = ImageView(v!!.context)
+                    image.setImageDrawable(v.background)
+                    // 위치 설정
+                    image.x = 10f
+                    image.y = 10f
+                    var imageLayoutParams = LinearLayout.LayoutParams(100,100)
+                    image.layoutParams = imageLayoutParams
+                    image.setOnTouchListener(listener)
+                    cardView.addView(image)
+            }
+    }
+
+    inner class addTextBoxListner(type: String) : View.OnClickListener {
+        val type = type
+        val listener : OnTouchListener = DragListner()
+        override fun onClick(v: View?) {
+
+            val text = TextView(v!!.context)
+            // 위치
+            val x = 100.0f
+            val y = 100.0f
+            // 위치 설정
+            text.x = x
+            text.y = y
+            // 상세설정
+            text.setTextColor(Color.GRAY)
+            text.setText("입력하세요")
+            val font = ResourcesCompat.getFont(baseContext, R.font.pretendardregular)
+            text.setTypeface(font)
+            if(type == "h1") {
+                text.setTextSize(16.0f) //임의
+            }else {
+                text.setTextSize(12.0f) //임의
+            }
+
+            var imageLayoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT)
+            text.layoutParams = imageLayoutParams
+            text.setOnTouchListener(listener)
+            cardView.addView(text)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_make_card)
+        cardView = findViewById(R.id.card)
+        val addIconListner : OnClickListener = addIconListner()
+        val addTextBox1Lister : OnClickListener = addTextBoxListner("h1")
+        val addTextBox2Lister : OnClickListener = addTextBoxListner("h2")
 
         var color : Color? = null
 
@@ -63,6 +120,8 @@ class MakeCardActivity : AppCompatActivity() {
         val backNavyBtn = findViewById<View>(R.id.card_color_navy)
         val backPurpleBtn = findViewById<View>(R.id.card_color_purple)
 
+
+        // 배경색 바꾸기
         var colorBtnList = listOf<View>(backWhiteBtn, backPinkBtn, backGreenBtn, backNavyBtn, backPurpleBtn, backSkyBtn, backYellowBtn)
         for(i in colorBtnList) {
             i.setOnClickListener {
@@ -70,13 +129,40 @@ class MakeCardActivity : AppCompatActivity() {
             }
         }
 
+        // image 가져오기
         val getImageBtn = findViewById<ImageButton>(R.id.btn_getImage)
         getImageBtn.setOnClickListener {
             checkPermission()
 
         }
 
+        // textBox 추가하기
+        val h1addBtn = findViewById<View>(R.id.btn_h1)
+        val h2addBtn = findViewById<View>(R.id.btn_h2)
+        h1addBtn.setOnClickListener(addTextBox1Lister)
+        h2addBtn.setOnClickListener(addTextBox2Lister)
 
+        // 링크 추가하기
+        val linkIconBtn = findViewById<ImageButton>(R.id.btn_goLink)
+
+
+        // 아이콘 기능 추가하기
+        val notionIconBtn = findViewById<ImageButton>(R.id.icon_notion)
+        val bookMarkIconBtn = findViewById<ImageButton>(R.id.icon_bookMark)
+        val phoneBookIconBtn = findViewById<ImageButton>(R.id.icon_phoneBook)
+        val mailIconBtn = findViewById<ImageButton>(R.id.icon_mail)
+//        val mapIconBtn = findViewById<ImageButton>(R.id.btn_goMap)
+        val cardIconBtn = findViewById<ImageButton>(R.id.icon_creditCard)
+        val checkIconBtn = findViewById<ImageButton>(R.id.icon_check)
+        val timeIconBtn = findViewById<ImageButton>(R.id.icon_time)
+        val phoneIconBtn = findViewById<ImageButton>(R.id.icon_phone)
+        val graduationIconBtn = findViewById<ImageButton>(R.id.icon_graduation)
+        val workIconBtn = findViewById<ImageButton>(R.id.icon_work)
+        var iconBtnList = listOf<ImageButton>(notionIconBtn, bookMarkIconBtn, phoneBookIconBtn, mailIconBtn, mailIconBtn, cardIconBtn, checkIconBtn, timeIconBtn, phoneIconBtn, graduationIconBtn, workIconBtn)
+
+        for(i in iconBtnList) {
+            i.setOnClickListener(addIconListner)
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -102,7 +188,7 @@ class MakeCardActivity : AppCompatActivity() {
                     var imageLayoutParams = LinearLayout.LayoutParams(width,height)
                     image.layoutParams = imageLayoutParams
                     Glide.with(this).load(imageUri).into(image)
-                    findViewById<LinearLayout>(R.id.card).addView(image)
+                    findViewById<FrameLayout>(R.id.card).addView(image)
                     image.setOnTouchListener(listener)
                 }
             }
@@ -139,11 +225,7 @@ class MakeCardActivity : AppCompatActivity() {
         intent.data = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
         intent.type = "image/*"
         startActivityForResult(intent, REQ_GALLERY)
-
     }
-
-
-
 }
 
 class DragListner : OnTouchListener {
