@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/make_card_layout"
     android:background="#ffffff"
     tools:context=".MakeCardActivity"
     android:orientation="vertical">
@@ -49,29 +50,29 @@
         android:layout_width="match_parent"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:layout_height="46dp">
+        android:layout_height="35dp">
 
         <Button
             android:id="@+id/btn_template01"
-            android:text="템플릿01"
+            android:text="템플렛1"
             android:fontFamily="@font/pretendardregular"
             android:textColor="#20000000"
             android:background="@color/zxing_transparent"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_margin="5dp"
-            android:layout_height="30dp" />
+            android:layout_height="25dp" />
 
         <Button
             android:id="@+id/btn_template02"
-            android:text="템플릿02"
+            android:text="템플렛2"
             android:fontFamily="@font/pretendardregular"
             android:textColor="#20000000"
             android:background="@color/zxing_transparent"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_margin="5dp"
-            android:layout_height="30dp"
+            android:layout_height="25dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/btn_card03"
             app:layout_constraintStart_toStartOf="@+id/btn_card01"
@@ -79,28 +80,28 @@
 
         <Button
             android:id="@+id/btn_template03"
-            android:text="템플릿03"
+            android:text="템플렛3"
             android:fontFamily="@font/pretendardregular"
             android:textColor="#20000000"
             android:background="@color/zxing_transparent"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_margin="5dp"
-            android:layout_height="30dp"
+            android:layout_height="25dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/btn_template04"
-            android:text="템플릿04"
+            android:text="템플렛4"
             android:fontFamily="@font/pretendardregular"
             android:textColor="#20000000"
             android:background="@color/zxing_transparent"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_margin="5dp"
-            android:layout_height="30dp"
+            android:layout_height="25dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -117,53 +118,96 @@
             android:layout_weight="1"/>
 
         <ImageButton
-            android:background="@drawable/icon_arrow_exit"
+            android:id="@+id/rotation_btn"
+            android:background="@drawable/icon_rotation"
             android:layout_width="wrap_content"
             android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp"
             android:layout_height="wrap_content"/>
 
     </LinearLayout>
 
     <FrameLayout
         android:id="@+id/card"
-        android:background="@color/black"
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="173dp"
         android:orientation="vertical"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+        android:elevation="10dp"
         android:layout_gravity="center" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageButton
-            android:id="@+id/test_side"
-            android:background="@drawable/icon_arrow_exit"
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:padding="7dp"
             android:layout_width="wrap_content"
-            android:layout_marginRight="20dp"
-            android:layout_height="wrap_content"/>
+            android:layout_height="32dp"
+            android:gravity="center"
+            android:background="@drawable/checkbox_background">
 
-        <ImageButton
-            android:background="@drawable/icon_arrow_exit"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/pretendardregular"
+                android:text="메인명함"/>
+
+            <CheckBox
+                android:id="@+id/isMainChecked"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:padding="7dp"
             android:layout_width="wrap_content"
-            android:layout_marginRight="20dp"
-            android:layout_height="wrap_content"/>
+            android:layout_height="32dp"
+            android:gravity="center"
+            android:background="@drawable/checkbox_background">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/pretendardregular"
+                android:text="공개"/>
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+
         <View
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_weight="1"/>
 
-        <ImageButton
-            android:background="@drawable/icon_arrow_exit"
-            android:layout_width="wrap_content"
-            android:layout_marginRight="20dp"
-            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/goeditTag"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/checkbox_background"
+            android:layout_width="70dp"
+            android:layout_marginRight="10dp"
+            android:textSize="12dp"
+            android:text="태그 추가"
+            android:layout_height="30dp"/>
 
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#F9F9F9"
@@ -173,6 +217,7 @@
             android:id="@+id/linearLayout3"
             android:layout_width="match_parent"
             android:layout_height="24dp"
+            android:elevation="20dp"
             android:background="#ffffff"
             android:gravity="center"
             android:layout_marginTop="10dp"
@@ -255,12 +300,14 @@
             android:columnCount="5"
             android:id="@+id/item_grid_layout"
             android:layout_width="match_parent"
-            android:layout_height="160dp"
+            android:layout_height="170dp"
             android:background="#ffffff"
-            android:paddingLeft="10dp"
+            android:padding="10dp"
+            android:elevation="20dp"
             android:paddingRight="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
+            android:useDefaultMargins="true"
             app:layout_constraintBottom_toTopOf="@+id/button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -269,18 +316,24 @@
             <ImageButton
                 android:id="@+id/btn_h1"
                 android:layout_width="0dp"
-                android:layout_height="5dp"
+                android:layout_height="0dp"
                 android:layout_rowWeight="1"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_columnWeight="1"
-                android:layout_margin="20dp"
                 android:background="@drawable/icon_h1" />
 
             <ImageButton
                 android:id="@+id/btn_h2"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_rowWeight="1"
-                android:layout_margin="20dp"
                 android:layout_columnWeight="1"
                 android:background="@drawable/icon_h2"/>
 
@@ -288,17 +341,23 @@
                 android:id="@+id/btn_getImage"
                 android:layout_width="0dp"
                 android:layout_height="9dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
-                android:layout_margin="20dp"
                 android:background="@drawable/icon_photo" />
 
             <ImageButton
                 android:id="@+id/btn_goMap"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_rowWeight="1"
-                android:layout_margin="20dp"
                 android:layout_columnWeight="1"
                 android:background="@drawable/icon_map"/>
 
@@ -307,7 +366,10 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_rowWeight="1"
-                android:layout_margin="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_columnWeight="1"
                 android:background="@drawable/icon_link"/>
 
@@ -316,7 +378,9 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_rowWeight="1"
-                android:layout_margin="20dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
                 android:layout_columnWeight="1"
                 android:background="@drawable/icon_notion"/>
 
@@ -325,15 +389,21 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_rowWeight="1"
-                android:layout_margin="20dp"
                 android:layout_columnWeight="1"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/icon_creditcard"/>
 
             <ImageButton
                 android:id="@+id/icon_phoneBook"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_margin="20dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:background="@drawable/icon_phonebook"/>
@@ -342,8 +412,11 @@
                 android:id="@+id/icon_work"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_margin="20dp"
                 android:layout_rowWeight="1"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_columnWeight="1"
                 android:background="@drawable/icon_work"/>
 
@@ -351,7 +424,10 @@
                 android:id="@+id/icon_bookMark"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_margin="20dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:background="@drawable/icon_bookmark"/>
@@ -359,10 +435,13 @@
             <ImageButton
                 android:id="@+id/icon_check"
                 android:layout_width="0dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_height="0dp"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
-                android:layout_margin="20dp"
                 android:background="@drawable/icon_check"/>
 
             <ImageButton
@@ -370,30 +449,42 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_rowWeight="1"
-                android:layout_margin="20dp"
                 android:layout_columnWeight="1"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/icon_mail"/>
             <ImageButton
                 android:id="@+id/icon_phone"
                 android:layout_width="0dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_height="0dp"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
-                android:layout_margin="20dp"
                 android:background="@drawable/icon_phone"/>
             <ImageButton
                 android:id="@+id/icon_time"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
-                android:layout_margin="20dp"
                 android:background="@drawable/icon_time"/>
             <ImageButton
                 android:id="@+id/icon_graduation"
                 android:layout_width="0dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_height="0dp"
-                android:layout_margin="20dp"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:background="@drawable/icon_graduation"/>
@@ -406,8 +497,8 @@
             android:layout_height="30dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginBottom="30dp"
-            android:background="#80000000"
+            android:layout_marginBottom="10dp"
+            android:background="#333333"
             android:fontFamily="@font/pretendardlight"
             android:text="저장하기"
             android:textColor="@color/white"

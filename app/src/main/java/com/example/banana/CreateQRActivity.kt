@@ -10,11 +10,9 @@ import com.journeyapps.barcodescanner.BarcodeEncoder
 
 class CreateQRActivity : AppCompatActivity() {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_qractivity)
-
 
         val btn_x = findViewById<ImageView>(R.id.btn_x)
         //qr 생성
@@ -31,7 +29,6 @@ class CreateQRActivity : AppCompatActivity() {
             val intent = Intent(this, FragmentActivity::class.java)
             startActivity(intent)
         }
-
 
     }
 }
