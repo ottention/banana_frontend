@@ -11,16 +11,27 @@ import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import com.bumptech.glide.Glide
 import com.example.banana.CreateQRActivity
 import com.example.banana.R
 import com.example.banana.auth.LoginRepository
+import com.example.banana.data.ResponseGetQRCode
 import com.example.banana.databinding.FragmentHomeBinding
+import com.example.banana.retrofit.API
+import com.example.banana.retrofit.RetrofitInstance
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+import retrofit2.Call
+import retrofit2.Response
 
 class HomeFragment : Fragment() {
 
+    private lateinit var retAPI : API
     fun newInstance() : HomeFragment{
         return HomeFragment()
     }
@@ -33,6 +44,7 @@ class HomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        retAPI = RetrofitInstance.retrofitInstance().create(API::class.java)
 
 
     }
@@ -53,7 +65,8 @@ class HomeFragment : Fragment() {
 
         super.onViewCreated(view, savedInstanceState)
 
-        LoginRepository().getQRCode()
+
+
         //초기 card 01
         binding.btnCard01.setBackgroundColor(Color.parseColor("#000000"))
         binding.btnCard01.setTextColor(Color.parseColor("#ffffff"))
@@ -112,11 +125,20 @@ class HomeFragment : Fragment() {
 
         }
 
+        getQRCode()
 
         //qr코드 버튼
         binding.btnQr.setOnClickListener {
-            val intent = Intent(context, CreateQRActivity::class.java)
-            startActivity(intent)
+
+                val intent = Intent(context, CreateQRActivity::class.java)
+                intent.putExtra("QrUrl", imageString)
+                Log.d("urllll2", imageString.toString())
+
+                startActivity(intent,)
+
+
+
+
         }
 
 
@@ -154,6 +176,36 @@ class HomeFragment : Fragment() {
         binding.btnAlarm.setOnClickListener {
             Toast.makeText(context, "alarm",Toast.LENGTH_SHORT).show()
         }
+    }
+
+    var imageString = ""
+    val accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjg3OTM3MjQ3LCJleHAiOjE2OTA1MjkyNDd9.aiKbUg52Uj0rSvQTumCd_pfvc_SOlk6C4xKcaN1tZbE"
+    private  fun getQRCode() {
+        retAPI.getQRCode(accessToken).enqueue(object : retrofit2.Callback<ResponseGetQRCode>{
+            override fun onResponse(call: Call<ResponseGetQRCode>, response: Response<ResponseGetQRCode>) {
+                if (response.isSuccessful) {
+
+
+
+                     imageString = response.body()?.address.toString()
+//                    var toBitmap = BitmapFactory.decodeByteArray(image,0,image!!.size)
+//                    var bitmap = BitmapFactory.decodeStream(imageString)
+//                    val imageBytes = Base64.decode(imageString,0)
+//                    val image = BitmapFactory.decodeByteArray(imageBytes,0,imageBytes.size)
+
+                    Log.d("urllll", imageString.toString())
+
+                    Log.d("getQr Response : ", "success")
+
+                } else {
+                    Log.d("getQr Response : ", "Code: ${response.code()} , Message: ${response.message()} , Success: ${response.isSuccessful}")
+                }
+            }
+            override fun onFailure(call: Call<ResponseGetQRCode>, t: Throwable) {
+                Log.d("getQr Response : ", "Fail 2")
+            }
+
+        })
     }
 
 
