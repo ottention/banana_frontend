@@ -36,13 +36,13 @@ class CreateQRActivity : AppCompatActivity() {
         var imageUrl = intent.getStringExtra("QrUrl")
         Log.d("url", imageUrl.toString())
 
+
                             Glide.with(this@CreateQRActivity)
                         .load(imageUrl)
                         .into(imageViewQrCode)
 
 
-
-
+        Log.d("urlqr", imageUrl.toString())
         //뒤로가기 버튼
         btn_x.setOnClickListener{
             val intent = Intent(this, FragmentActivity::class.java)
