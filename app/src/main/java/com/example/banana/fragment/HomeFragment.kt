@@ -42,6 +42,8 @@ class HomeFragment : Fragment() {
 
 
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         retAPI = RetrofitInstance.retrofitInstance().create(API::class.java)
@@ -169,7 +171,12 @@ class HomeFragment : Fragment() {
 
         //검색 버튼
         binding.btnSearch.setOnClickListener {
-            Toast.makeText(context, "search",Toast.LENGTH_SHORT).show()
+           val search = SearchFragment()
+            fragmentManager?.beginTransaction()?.apply {
+                replace(R.id.frameArea,search)
+                addToBackStack(null)
+                commit()
+            }
         }
 
         //알람 버튼
@@ -181,7 +188,9 @@ class HomeFragment : Fragment() {
     var imageString = ""
     val accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjg3OTM3MjQ3LCJleHAiOjE2OTA1MjkyNDd9.aiKbUg52Uj0rSvQTumCd_pfvc_SOlk6C4xKcaN1tZbE"
     private  fun getQRCode() {
-        retAPI.getQRCode(accessToken).enqueue(object : retrofit2.Callback<ResponseGetQRCode>{
+        retAPI
+            .getQRCode(accessToken)
+            .enqueue(object : retrofit2.Callback<ResponseGetQRCode>{
             override fun onResponse(call: Call<ResponseGetQRCode>, response: Response<ResponseGetQRCode>) {
                 if (response.isSuccessful) {
 
