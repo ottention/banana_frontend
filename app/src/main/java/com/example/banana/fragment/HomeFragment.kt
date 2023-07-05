@@ -181,10 +181,14 @@ class HomeFragment : Fragment() {
 
         //알람 버튼
         binding.btnAlarm.setOnClickListener {
-            Toast.makeText(context, "alarm",Toast.LENGTH_SHORT).show()
+
         }
     }
 
+
+    //--------------------------------함수----------------------------
+
+    //qr코드 호출 함수
     var imageString = ""
     val accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjg3OTM3MjQ3LCJleHAiOjE2OTA1MjkyNDd9.aiKbUg52Uj0rSvQTumCd_pfvc_SOlk6C4xKcaN1tZbE"
     private  fun getQRCode() {
@@ -216,6 +220,18 @@ class HomeFragment : Fragment() {
 
         })
     }
+
+
+    //방명록 호출 함수
+    fun VisitorComments() {
+        val visitorComments = VisitorCommentsFragment()
+        fragmentManager?.beginTransaction()?.apply {
+            replace(R.id.frameArea,visitorComments)
+            addToBackStack(null)
+            commit()
+        }
+    }
+
 
 
 

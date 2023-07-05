@@ -66,6 +66,7 @@ class SearchFragment : Fragment() {
         }
 
 
+        //검색 버튼
         binding.btnSearchResult.setOnClickListener {
             val searchResultText = binding.editText.text.toString()
 
