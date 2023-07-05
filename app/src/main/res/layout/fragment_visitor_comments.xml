@@ -5,8 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.SearchResultFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    tools:context=".fragment.VisitorCommentsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_gravity="center"
@@ -54,38 +55,40 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="18dp"
-        android:layout_marginTop="25dp">
-
-        <TextView
+        android:layout_marginTop="11dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        
+        <Button
+            android:id="@+id/btn_myCardComments"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="검색 태그 : "
-            android:textColor="#000000"
-            android:paddingBottom="3dp"
+            android:layout_height="match_parent"
+            android:text="나의 명함 방명록"
             android:background="@drawable/border_underline"
-            android:fontFamily="@font/pretendardmedium"/>
+            android:layout_weight="1"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"/>
 
-        <TextView
-            android:id="@+id/text_search_result"
+        <Button
+            android:id="@+id/btn_CommentsIwrote"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="대외 활동"
-            android:textColor="#000000"
-            android:paddingBottom="3dp"
-            android:background="@drawable/border_underline"
-            android:fontFamily="@font/pretendardmedium"/>
+            android:layout_height="match_parent"
+            android:background="@color/zxing_transparent"
+            android:text="내가 작성한 방명록"
+            android:layout_weight="1"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"/>
 
+
+        
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_search_result"
+    <FrameLayout
+        android:id="@+id/visitorComments_FrameLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="30dp"/>
+        android:layout_height="match_parent"/>
+
+
+
 
 </LinearLayout>

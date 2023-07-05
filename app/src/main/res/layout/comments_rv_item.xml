@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textview_writer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="잇타홍길동"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textview_localDateTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="23.03.28"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/textview_content"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity=""
+        android:background="@drawable/border_round"
+        android:backgroundTint="#FFFFFF"
+        android:textSize="14sp"
+        android:paddingLeft="15dp"
+        android:hint="타인의 방명록에서는 자신이 작성한 댓글만 볼 수 있음"/>
+
+
+
+</LinearLayout>
