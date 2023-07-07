@@ -19,7 +19,7 @@
         android:layout_height="41dp">
 
         <ImageButton
-            android:id="@+id/btn_alarm"
+            android:id="@+id/btn_back"
             android:src="@drawable/btn_back"
             android:background="#ffffff"
             android:layout_width="24dp"

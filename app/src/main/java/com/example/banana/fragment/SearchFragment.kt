@@ -65,6 +65,8 @@ class SearchFragment : Fragment() {
             justifyContent = JustifyContent.FLEX_START
         }
 
+        //뒤로가기 버튼
+
 
         //검색 버튼
         binding.btnSearchResult.setOnClickListener {
@@ -74,12 +76,22 @@ class SearchFragment : Fragment() {
             val searchResult = SearchResultFragment()
             fragmentManager?.beginTransaction()?.apply {
                 replace(R.id.frameArea,searchResult)
-                addToBackStack(null)
+//                addToBackStack(null)
                 commit()
             }
 
 
 
+        }
+
+        //뒤로 가기
+        binding.btnBack.setOnClickListener {
+            val home = HomeFragment()
+            fragmentManager?.beginTransaction()?.apply {
+                replace(R.id.frameArea, home)
+//                addToBackStack(null)
+                commit()
+            }
         }
         return view
     }
