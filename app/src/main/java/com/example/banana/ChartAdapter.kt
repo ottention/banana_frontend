@@ -8,13 +8,22 @@ import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.banana.data.ChartData
+import com.example.banana.data.comment
 import com.example.banana.databinding.ChartRvItemBinding
 
 class ChartAdapter (
-    private val chartData: ArrayList<ChartData>,
+//    private val chartData: ArrayList<ChartData>,
+    //아래는 viewmodel 위한 임시 배열리스트
+    private val chartList: MutableList<ChartData> = mutableListOf(),
     val onCardClick : (()->Unit)? = null,
     val onLikeClick : (()->Unit)? = null
     ) : RecyclerView.Adapter<ChartAdapter.ViewHolder>(){
+
+    fun updateList(newList : ArrayList<ChartData>) {
+        chartList.clear()
+        chartList.addAll(newList)
+        notifyDataSetChanged()
+    }
 
    inner class ViewHolder(val binding: ChartRvItemBinding) : RecyclerView.ViewHolder(binding.root) {
        var rv_chart_card : ImageView = binding.chartCardImage
@@ -61,18 +70,18 @@ class ChartAdapter (
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.rv_chart_card.setImageResource(chartData[position].chartCard)
-        holder.rv_rank_text.text = chartData[position].rankText
-        holder.rv_favorite_count.text = chartData[position].favoriteCount
+        holder.rv_chart_card.setImageResource(chartList[position].chartCard)
+        holder.rv_rank_text.text = chartList[position].rankText
+        holder.rv_favorite_count.text = chartList[position].favoriteCount
 
 
-        holder.bind(chartData[position])
+        holder.bind(chartList[position])
 
 
     }
 
     override fun getItemCount(): Int {
-        return chartData.size
+        return chartList.size
     }
 
 

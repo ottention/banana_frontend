@@ -9,10 +9,13 @@ import android.view.ViewGroup
 import com.example.banana.R
 import com.example.banana.databinding.FragmentHomeBinding
 import com.example.banana.databinding.FragmentVisitorCommentsBinding
+import com.example.banana.retrofit.API
+import com.example.banana.retrofit.RetrofitInstance
 
 
 class VisitorCommentsFragment : Fragment() {
 
+    private lateinit var API : API
     private var _binding : FragmentVisitorCommentsBinding? = null
     private val binding get() = _binding!!
 
@@ -22,6 +25,8 @@ class VisitorCommentsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+//        API = RetrofitInstance.retrofitInstance().create(API::class.java)
 
     }
 

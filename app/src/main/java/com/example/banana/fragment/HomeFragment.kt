@@ -142,6 +142,9 @@ class HomeFragment : Fragment() {
 
 
         }
+        binding.imageView.setOnClickListener {
+            VisitorComments()
+        }
 
 
 
