@@ -13,7 +13,7 @@ import com.google.android.flexbox.FlexboxLayoutManager
 
 
 
-class KeywordViewAdapter(val context : Context, val stringList : List<String>) : RecyclerView.Adapter<KeywordViewAdapter.ViewHolder>() {
+class KeywordViewAdapter(val context : Context, val stringList : ArrayList<String>) : RecyclerView.Adapter<KeywordViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,

@@ -37,23 +37,15 @@ class addTagbottomDialog (context: Context) : BottomSheetDialogFragment()
         tagList = mutableListOf()
         tagList.add("학생")
         tagList.add("디자이너")
-        tagList.add("학생")
-        tagList.add("디자이너")
-        tagList.add("학생")
-        tagList.add("디자이너")
-        tagList.add("학생")
-        tagList.add("디자이너")
-        tagList.add("학생")
-        tagList.add("디자이너")
 
         val view = inflater.inflate(R.layout.fragment_tag_bottomsheet, container, false)
 
         val tagAd = TagViewAdapter(activity!!.baseContext, tagList)
-        flexBoxAdapter =  tagAd
+        flexBoxAdapter =tagAd
         FlexboxLayoutManager(this.context).apply {
             flexWrap = FlexWrap.WRAP
-            flexDirection = FlexDirection.COLUMN
-            justifyContent = JustifyContent.CENTER
+            flexDirection = FlexDirection.ROW
+            justifyContent = JustifyContent.FLEX_START
         }.let {
             view.findViewById<RecyclerView>(R.id.tag_recycler_view).adapter = flexBoxAdapter
             view.findViewById<RecyclerView>(R.id.tag_recycler_view).layoutManager = it

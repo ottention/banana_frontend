@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.LinearLayout
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.banana.auth.LoginRepository
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -22,8 +23,6 @@ class JoinActivity : AppCompatActivity() {
     lateinit var mGoogleSignInClient: GoogleSignInClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
-
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_join)
@@ -44,17 +43,6 @@ class JoinActivity : AppCompatActivity() {
         findViewById<LinearLayout>(R.id.kakao_join_btn).setOnClickListener {
             LoginRepository().kakaoLogin(this)
         }
-    }
-
-    fun kakaoSignin() {
-        // 회원가입?!
-    }
-
-    fun kakaoLogout() {
-
-    }
-    fun googleSignin() {
-        // 회원가입?!
     }
 
     fun googleLogout() {
@@ -92,7 +80,8 @@ class JoinActivity : AppCompatActivity() {
                         "\n이메일: ${account?.email.toString()}" +
                         "\n이름: ${account?.displayName.toString()}"
             )
-            LoginRepository().goHome(this)
+            var intent = Intent(this, FragmentActivity::class.java)
+            ContextCompat.startActivity(this, intent, null)
             if(account!=null) {
                 LoginRepository().sendGoogleToken(account.idToken.toString())
             }

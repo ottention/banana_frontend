@@ -128,15 +128,35 @@
     </LinearLayout>
 
     <FrameLayout
-        android:id="@+id/card"
-        android:background="@color/white"
         android:layout_width="match_parent"
-        android:layout_height="173dp"
-        android:orientation="vertical"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:elevation="10dp"
-        android:layout_gravity="center" />
+        android:layout_height="180dp">
+
+        <FrameLayout
+            android:id="@+id/front_card"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="173dp"
+            android:orientation="vertical"
+            android:layout_marginLeft="20dp"
+            android:visibility="visible"
+            android:layout_marginRight="20dp"
+            android:elevation="10dp"
+            android:layout_gravity="center" />
+
+        <FrameLayout
+            android:id="@+id/back_card"
+            android:visibility="gone"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="173dp"
+            android:orientation="vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:elevation="10dp"
+            android:layout_gravity="center" />
+
+    </FrameLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -184,6 +204,7 @@
                 android:text="공개"/>
 
             <CheckBox
+                android:id="@+id/isPublic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
@@ -308,7 +329,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:useDefaultMargins="true"
-            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintBottom_toTopOf="@+id/save_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
@@ -492,7 +513,7 @@
         </GridLayout>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/save_button"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginLeft="20dp"

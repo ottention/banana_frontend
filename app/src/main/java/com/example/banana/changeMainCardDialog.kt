@@ -14,7 +14,8 @@ class changeMainCardDialog (context: Context) {
     lateinit var btnCancel: Button
 
     interface LessonDeleteDialogClickedListener {
-        fun onDeleteClicked()
+        fun onchangeMainClicked()
+        fun onNotChangeMainClicked()
     }
 
     private val dlg = Dialog(context)
@@ -29,12 +30,13 @@ class changeMainCardDialog (context: Context) {
 
         btnDelete = dlg.findViewById(R.id.btn_yes_change)
         btnDelete.setOnClickListener {
-            listener.onDeleteClicked()
+            listener.onchangeMainClicked()
             dlg.dismiss()
         }
 
         btnCancel = dlg.findViewById(R.id.btn_no_change)
         btnCancel.setOnClickListener {
+            listener.onNotChangeMainClicked()
             dlg.dismiss()
         }
         dlg.show()
