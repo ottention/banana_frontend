@@ -182,6 +182,12 @@ class HomeFragment : Fragment() {
         //알람 버튼
         binding.btnAlarm.setOnClickListener {
 
+            val alarm = AlarmFragment()
+            fragmentManager?.beginTransaction()?.apply {
+                replace(R.id.frameArea,alarm)
+                addToBackStack(null)
+                commit()
+            }
         }
     }
 
