@@ -89,6 +89,7 @@
                 android:layout_weight="1"/>
 
             <Button
+                android:id="@+id/card_delete_button"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:background="@drawable/icon_delete"/>

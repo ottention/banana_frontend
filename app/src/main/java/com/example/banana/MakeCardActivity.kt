@@ -321,19 +321,7 @@ class MakeCardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_make_card)
-//
-//        coordinate = Coordinate(null, null)
-//        frontCardData = SaveFrontBusinessCardRequest(isPublic, isPresent, contents = arrayListOf(), frontImageCoordinates = arrayListOf())
-//        backCardData = SaveBackBusinessCardRequest(contents = arrayListOf(), backImageCoordinates = arrayListOf())
-//        front_coordinate = SaveFrontBusinessCardRequest.FrontImageCoordinates(null, null)
-//        back_coordinate = SaveBackBusinessCardRequest.BackImageCoordinates(null, null)
-//        frontContents = SaveFrontBusinessCardRequest.Contents(null, null, null)
-//        backContents = SaveBackBusinessCardRequest.Contents(null, null, null)
-//        front_content_coordinate = Coordinate(null, null)
-//        back_content_coordinate = Coordinate(null, null)
-//        front_images = ArrayList()
-//        back_images = ArrayList()
-//        tagList = ArrayList()
+
 
         val parent_layout = findViewById<LinearLayout>(R.id.make_card_layout)
 
@@ -353,7 +341,6 @@ class MakeCardActivity : AppCompatActivity() {
         val templateBtn03 = findViewById<Button>(R.id.btn_template03)
         val templateBtn04 = findViewById<Button>(R.id.btn_template04)
 
-        // 임시로 1template이 선택되었다고 생각~
         var clickedBtnId = R.id.btn_template01
         templateBtn01.setBackgroundResource(R.drawable.btn_template)
         templateBtn01.setTextColor(Color.WHITE)
@@ -386,15 +373,12 @@ class MakeCardActivity : AppCompatActivity() {
         var colorBtnList = listOf<View>(backWhiteBtn, backPinkBtn, backGreenBtn, backNavyBtn, backPurpleBtn, backSkyBtn, backYellowBtn)
         for(i : Int in 0..colorBtnList.size-1) {
             colorBtnList[i].setOnClickListener {
-                // 여기도 수정 ~~~~~~
                 if(cardView.visibility == View.VISIBLE) {
                     cardView.background = (colorBtnList[i].background)
                     front_color = colorList[i]
-//                    frontCardData.frontTemplateColor = i.background.colorFilter.toString()
                 } else {
                     cardView_back.background = (colorBtnList[i].background)
                     back_color = colorList[i]
-//                    backCardData.backTemplateColor = i.background.colorFilter.toString()
 
                 }
             }
@@ -661,26 +645,6 @@ class MakeCardActivity : AppCompatActivity() {
     // googleToken sending
     fun saveCard(card : saveCardRequestModel
     ) {
-
-
-        val mediaType = "application/json; charset=utf-8".toMediaType()
-
-//        var frontBody = Gson().toJson(card.frontRequest).toString().toRequestBody(mediaType)
-//        var backBody = Gson().toJson(card.backRequest).toString().toRequestBody(mediaType)
-//
-//        val body = RequestBody.create(MultipartBody.FORM,"")
-//        val frontEmptyImageList = arrayListOf<MultipartBody.Part>()
-//        val backEmptyImageList = arrayListOf<MultipartBody.Part>()
-//
-//        Log.d("TAG - front : ", card.frontRequest.toString())
-//        Log.d("TAG - front : ", tagList.toString())
-//
-//        if(!front_images.isEmpty()) {
-//            Log.d("TAG - frontImages : ", front_images.toString())
-//        }else {
-//            Log.d("TAG - Empty : ", frontEmptyImageList.toString())
-//        }
-//
 
         makeCardAPI.saveMyCard(
             "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjg3OTM3MjQ3LCJleHAiOjE2OTA1MjkyNDd9.aiKbUg52Uj0rSvQTumCd_pfvc_SOlk6C4xKcaN1tZbE",
