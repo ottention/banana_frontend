@@ -6,8 +6,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.banana.data.CommentsData
+import com.example.banana.data.comment
 
-class CommentsAdapter(private var commentData : ArrayList<CommentsData>) : RecyclerView.Adapter<CommentsAdapter.ViewHolder>() {
+class CommentsAdapter(private var commentList : MutableList<comment> = mutableListOf()) : RecyclerView.Adapter<CommentsAdapter.ViewHolder>() {
 
     class ViewHolder(view : View) : RecyclerView.ViewHolder(view) {
 
@@ -24,20 +25,26 @@ class CommentsAdapter(private var commentData : ArrayList<CommentsData>) : Recyc
         }
     }
 
+    fun updateList(newList : ArrayList<comment>) {
+        commentList.clear()
+        commentList.addAll(newList)
+        notifyDataSetChanged()
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.comments_rv_item,parent,false)
         return ViewHolder(view)
     }
 
     override fun getItemCount(): Int {
-        return commentData.size
+        return commentList.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        holder.rv_item_writer.text = commentData[position].writer
-        holder.rv_item_content.text = commentData[position].content
-        holder.rv_item_localDateTime.text = commentData[position].localDateTime
+        holder.rv_item_writer.text = commentList[position].writer
+        holder.rv_item_content.text = commentList[position].content
+        holder.rv_item_localDateTime.text = commentList[position].localDateTime
 
     }
 

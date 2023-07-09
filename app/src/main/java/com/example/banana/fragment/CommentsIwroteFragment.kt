@@ -54,7 +54,7 @@ class CommentsIwroteFragment : Fragment() {
         commentData.add(CommentsData("writer","타인의 방명록에서는 자신이 작성한 댓글만 볼 수 있음",false,"23.08.06"))
         commentData.add(CommentsData("writer","타인의 방명록에서는 자신이 작성한 댓글만 볼 수 있음",false,"23.08.05"))
 
-        commentsAdapter = CommentsAdapter(commentData)
+        commentsAdapter = CommentsAdapter()
         binding.rvComments.adapter = commentsAdapter
         binding.rvComments.layoutManager = LinearLayoutManager(context)
     }
