@@ -1,15 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.ChartFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.ChartFragment"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:layout_gravity="center"
+        android:layout_marginTop="7dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginRight="22dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="50sp"
-        android:text="chart_frag" />
+        android:layout_height="41dp">
 
-</FrameLayout>
+        <ImageButton
+            android:id="@+id/btn_alarm"
+            android:src="@drawable/notifications"
+            android:background="#ffffff"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Banana"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageButton
+            android:id="@+id/btn_search"
+            android:src="@drawable/search"
+            android:background="#ffffff"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Live_tag_top_10"
+        android:textSize="14sp"
+        android:fontFamily="@font/pretendardmedium"/>
+
+    <HorizontalScrollView
+        android:id="@+id/Tag_top10"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="18dp"
+        android:layout_width="match_parent"
+        android:scrollbars="none"
+        android:layout_height="40dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+
+        <Button
+            android:id="@+id/btn_tag_1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/border_btn"
+            android:textColor="#ffffff"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:text="대외활동"/>
+        <Button
+            android:id="@+id/btn_tag_2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="#E6E6E6"
+            android:textColor="#ffffff"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:text="대학생"/>
+        <Button
+            android:id="@+id/btn_tag_3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="#E6E6E6"
+            android:textColor="#ffffff"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:text="취준생"/>
+        <Button
+            android:id="@+id/btn_tag_4"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="#E6E6E6"
+            android:textColor="#ffffff"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:text="맞팔"/>
+        <Button
+            android:id="@+id/btn_tag_5"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="#E6E6E6"
+            android:textColor="#ffffff"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:text="잇타"/>
+        <Button
+            android:id="@+id/btn_tag_6"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="#E6E6E6"
+            android:textColor="#ffffff"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:text="인스타그램"/>
+        <Button
+            android:id="@+id/btn_tag_7"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="#E6E6E6"
+            android:textColor="#ffffff"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:text="개발자"/>
+        <Button
+            android:id="@+id/btn_tag_8"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="#E6E6E6"
+            android:textColor="#ffffff"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:text="프론트엔드"/>
+        <Button
+            android:id="@+id/btn_tag_9"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="#E6E6E6"
+            android:textColor="#ffffff"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:text="백엔드"/>
+        <Button
+            android:id="@+id/btn_tag_10"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="#E6E6E6"
+            android:textColor="#ffffff"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:text="인스타맞팔"/>
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_chart"
+        android:layout_gravity="center"
+        android:layout_marginTop="32dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"/>
+</LinearLayout>
+</layout>

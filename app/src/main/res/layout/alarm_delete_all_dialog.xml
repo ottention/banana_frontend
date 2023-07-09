@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="알람을 전체 삭제하시겠습니까?"
+        android:textSize="14sp"
+        android:gravity="center"/>
+
+    <Button
+        android:id="@+id/btn_deleteAllYes"
+        android:layout_width="274dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:text="예"
+        android:layout_marginTop="16dp"
+        android:textColor="#FFFFFF"
+        android:background="#000000"/>
+
+    <Button
+        android:id="@+id/btn_deleteAllNo"
+        android:layout_width="274dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:text="아니요"
+        android:layout_marginTop="6dp"
+        android:textColor="#FFFFFF"
+        android:background="#C3C3C3"/>
+
+
+
+
+
+</LinearLayout>

@@ -1,5 +1,6 @@
 package com.example.banana.auth
 
+import com.example.banana.data.ResponseGetQRCode
 import com.example.banana.model.LoginGoogleResponseModel
 import com.example.banana.model.LoginGoogle_at_RequestModel
 import com.example.banana.model.LoginGoogle_at_ResponseModel
@@ -10,12 +11,13 @@ import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Body
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface LoginService {
+
+    //qr 코드 가져오기
+    @GET("businessCard/1/qrcode/v3")
+    fun getQRCode() : Call<ResponseGetQRCode>
 
     @POST("oauth2/v4/token")
     fun getAccessToken(
