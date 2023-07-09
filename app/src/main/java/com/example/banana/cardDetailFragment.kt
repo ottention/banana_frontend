@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.banana.auth.authApplication
 import com.example.banana.data.Contents
 import com.example.banana.data.Image
 import com.example.banana.data.Link
@@ -78,13 +79,17 @@ class cardDetailFragment : Fragment() {
         }
 
         var cardData : getCardResponseModel
-
         getCardDetailAPI.getCard(
             "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjg3OTM3MjQ3LCJleHAiOjE2OTA1MjkyNDd9.aiKbUg52Uj0rSvQTumCd_pfvc_SOlk6C4xKcaN1tZbE",
-            2
+            Integer.parseInt(authApplication.prefs.getString("cardId", "-1")).toLong()
         ).enqueue(object : retrofit2.Callback<getCardResponseModel> {
             override fun onFailure(call: Call<getCardResponseModel>, t: Throwable) {
                 Log.e("TAG", "sendOnFailure: ${t.fillInStackTrace()}")
+                val transaction: FragmentTransaction =
+                    activity!!.supportFragmentManager.beginTransaction()
+                val homeFragment = HomeFragment()
+                transaction.replace(R.id.frameArea, homeFragment)
+                transaction.commit()
             }
 
             override fun onResponse(
@@ -97,6 +102,11 @@ class cardDetailFragment : Fragment() {
                     makeUI(cardData)
                 } else {
                     Log.d("TAG - failed", response.code().toString())
+                    val transaction: FragmentTransaction =
+                        activity!!.supportFragmentManager.beginTransaction()
+                    val homeFragment = HomeFragment()
+                    transaction.replace(R.id.frameArea, homeFragment)
+                    transaction.commit()
                 }
             }
 
@@ -170,11 +180,9 @@ class cardDetailFragment : Fragment() {
 
             // 상세설정
             text.setTextColor(Color.BLACK)
-//
-//            text.x = i.coordindate!!.xAxis!!
-//            text.y = i.coordindate!!.yAxis!!
-            text.x = 10f
-            text.y = 10f
+
+            text.x = i.coordinate!!.xAxis!!
+            text.y = i.coordinate!!.yAxis!!
             text.text = i.linkText
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse((i.link)))
             text.setOnClickListener {

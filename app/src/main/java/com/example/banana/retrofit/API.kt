@@ -18,7 +18,7 @@ import retrofit2.http.Path
 
 interface API {
 
-        @POST("businessCard/save/v2")
+        @POST("businessCard/save")
     fun saveMyCard(
         @Header("Authorization") Authorization: String,
         @Body saveCardRequestModel : saveCardRequestModel

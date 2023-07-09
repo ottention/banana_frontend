@@ -10,6 +10,7 @@ import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.Matrix
 import android.graphics.PointF
+import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -34,6 +35,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.toBitmap
 import com.bumptech.glide.Glide
+import com.example.banana.auth.authApplication
 import com.example.banana.data.Contents
 import com.example.banana.data.Coordinate
 import com.example.banana.data.Image
@@ -479,6 +481,11 @@ class MakeCardActivity : AppCompatActivity() {
             backLinks = arrayListOf()
             var tagList = arrayListOf<String>("ㄱㄱㄱ", "ㄴㄴㄴ")
 
+            var colorD : ColorDrawable = cardView.background as ColorDrawable
+            frontTemplateColor = "#ffffff"
+            colorD = cardView_back.background as ColorDrawable
+            backTemplateColor = "#ffffff"
+
             // text값 저장
             for((text, type) in frontHList){
                 var contentCoordinate = Coordinate(text.x, text.y)
@@ -508,7 +515,7 @@ class MakeCardActivity : AppCompatActivity() {
             }
 
             var cardDatav2 = saveCardRequestModel(
-                isPublic, isPresent, frontContents, frontLinks, frontImages, frontTemplateColor, backContents, backLinks, backImages, backTemplateColor, tagList)
+                isPublic, isPresent, frontContents, frontLinks, frontImages, "#ffffff", backContents, backLinks, backImages, "#ffffff", tagList)
             saveCard(cardDatav2)
         }
     }
@@ -653,16 +660,21 @@ class MakeCardActivity : AppCompatActivity() {
             override fun onFailure(call: Call<saveCardDataResponseModel>, t: Throwable) {
                 Log.e("TAG", "sendOnFailure: ${t.fillInStackTrace()}")
             }
-
             override fun onResponse(
                 call: Call<saveCardDataResponseModel>,
                 response: Response<saveCardDataResponseModel>
             ) {
                 if (response.isSuccessful) {
+                    Log.d("TAG - color", card.frontTemplateColor)
                     Log.d("TAG - isSuccessful ", response.body()!!.businessCardId.toString())
-
+                    Toast.makeText(this@MakeCardActivity, "카드 생성 완료!", Toast.LENGTH_SHORT).show()
+                    authApplication.prefs.setString("cardId", response.body()!!.businessCardId.toString())
+                    var intent = Intent(this@MakeCardActivity, FragmentActivity::class.java)
+                    startActivity(intent)
                 } else {
-                    if(response.code().toString() == "401") {
+                    if(response.code().toString() == "409") {
+                        Toast.makeText(this@MakeCardActivity, "만들 수 있는 카드 개수를 초과했습니다. 홈으로", Toast.LENGTH_SHORT).show()
+
                     }
                     Log.d("TAG - failed", response.code().toString())
                 }

@@ -60,7 +60,7 @@ data class Link (
     var link : String,
     var linkText : String,
     var isFront : Boolean,
-    var coordindate : Coordinate
+    var coordinate : Coordinate
 )
 
 data class Image (
