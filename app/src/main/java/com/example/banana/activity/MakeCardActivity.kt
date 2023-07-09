@@ -1,4 +1,4 @@
-package com.example.banana
+package com.example.banana.activity
 
 import android.animation.AnimatorInflater
 import android.animation.AnimatorSet
@@ -35,28 +35,22 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.toBitmap
 import com.bumptech.glide.Glide
+import com.example.banana.R
+import com.example.banana.addTagbottomDialog
 import com.example.banana.auth.authApplication
+import com.example.banana.changeMainCardDialog
 import com.example.banana.data.Contents
 import com.example.banana.data.Coordinate
 import com.example.banana.data.Image
 import com.example.banana.data.Link
-import com.example.banana.data.SaveBackBusinessCardRequest
-import com.example.banana.data.SaveFrontBusinessCardRequest
-import com.example.banana.data.backImages
-import com.example.banana.data.frontImages
-import com.example.banana.data.saveCardDataRequestModel
 import com.example.banana.data.saveCardDataResponseModel
 import com.example.banana.data.saveCardRequestModel
 import com.example.banana.retrofit.API
 import com.example.banana.retrofit.RetrofitInstance
-import com.google.gson.Gson
-import com.kakao.sdk.common.KakaoSdk.type
-import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.MultipartBody.Part.Companion.createFormData
 import okhttp3.RequestBody
-import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Call
 import retrofit2.Response
 import java.io.ByteArrayOutputStream
@@ -160,7 +154,7 @@ class MakeCardActivity : AppCompatActivity() {
 
                 MotionEvent.ACTION_POINTER_DOWN -> {
                     if(event.pointerCount == 2) {
-                        touchMode = MakeCardActivity.TOUCH_MODE.MULTI
+                        touchMode = TOUCH_MODE.MULTI
                         var fx = (event.getX(0) - event.getX(1)).toDouble()
                         var fy = event.getY(0) - event.getY(1)
                         val oldDistance = Math.sqrt(fx*fx + fy*fy).toFloat()
@@ -183,7 +177,7 @@ class MakeCardActivity : AppCompatActivity() {
                 }
 
                 MotionEvent.ACTION_MOVE -> {
-                    if(touchMode == MakeCardActivity.TOUCH_MODE.MULTI) {
+                    if(touchMode == TOUCH_MODE.MULTI) {
 
                         var fx = (event.getX(0) - event.getX(1)).toDouble()
                         var fy = event.getY(0) - event.getY(1)

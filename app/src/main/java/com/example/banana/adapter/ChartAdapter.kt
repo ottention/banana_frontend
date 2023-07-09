@@ -1,14 +1,13 @@
-package com.example.banana
+package com.example.banana.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.banana.R
 import com.example.banana.data.ChartData
-import com.example.banana.data.comment
 import com.example.banana.databinding.ChartRvItemBinding
 
 class ChartAdapter (
@@ -62,9 +61,10 @@ class ChartAdapter (
 
    }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChartAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
-        val view = DataBindingUtil.inflate<ChartRvItemBinding>(LayoutInflater.from(parent.context),R.layout.chart_rv_item,parent,false)
+        val view = DataBindingUtil.inflate<ChartRvItemBinding>(LayoutInflater.from(parent.context),
+            R.layout.chart_rv_item,parent,false)
         return ViewHolder(view)
     }
 

@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/make_card_layout"
     android:background="#ffffff"
-    tools:context=".MakeCardActivity"
+    tools:context=".activity.MakeCardActivity"
     android:orientation="vertical">
 
     <LinearLayout

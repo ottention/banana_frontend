@@ -1,4 +1,4 @@
-package com.example.banana
+package com.example.banana.activity
 
 import android.content.Context
 import android.content.Intent
@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import com.example.banana.auth.LoginRepository
+import com.example.banana.R
 import com.example.banana.auth.authApplication
 
 

@@ -1,12 +1,12 @@
-package com.example.banana
+package com.example.banana.adapter
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.banana.R
 
 
 class TagViewAdapter(val context : Context, val stringList : List<String>) : RecyclerView.Adapter<TagViewAdapter.ViewHolder>() {
@@ -15,7 +15,7 @@ class TagViewAdapter(val context : Context, val stringList : List<String>) : Rec
         parent: ViewGroup,
         viewType: Int
     ): ViewHolder {
-        val view = LayoutInflater.from(context).inflate(com.example.banana.R.layout.tag_item, parent, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.tag_item, parent, false)
 
         return ViewHolder(view)
     }
@@ -36,7 +36,7 @@ class TagViewAdapter(val context : Context, val stringList : List<String>) : Rec
     inner class ViewHolder(view : View) : RecyclerView.ViewHolder(view){
 
         fun bind(item : String) {
-            itemView.findViewById<TextView>(com.example.banana.R.id.tag_box).text = item
+            itemView.findViewById<TextView>(R.id.tag_box).text = item
 
         }
 

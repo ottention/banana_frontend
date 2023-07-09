@@ -1,4 +1,4 @@
-package com.example.banana
+package com.example.banana.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.banana.R
 import com.example.banana.data.WalletData
 
 class WalletAdapter (private val walletData : ArrayList<WalletData>): RecyclerView.Adapter<WalletAdapter.ViewHolder>(){

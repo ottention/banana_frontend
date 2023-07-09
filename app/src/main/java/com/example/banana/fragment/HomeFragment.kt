@@ -1,37 +1,21 @@
 package com.example.banana.fragment
 
-import android.R
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import android.widget.Toast
-import androidx.fragment.app.Fragment
-import com.example.banana.CreateQRActivity
-import com.example.banana.MakeCardActivity
-import com.example.banana.cardDetailFragment
-import com.example.banana.databinding.FragmentHomeBinding
-import kotlin.concurrent.fixedRateTimer
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.PopupMenu
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
-import com.bumptech.glide.Glide
-import com.example.banana.CreateQRActivity
+import com.example.banana.activity.CreateQRActivity
 import com.example.banana.R
-import com.example.banana.auth.LoginRepository
 import com.example.banana.data.ResponseGetQRCode
 import com.example.banana.databinding.FragmentHomeBinding
 import com.example.banana.retrofit.API
 import com.example.banana.retrofit.RetrofitInstance
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Response
 
@@ -44,6 +28,11 @@ class HomeFragment : Fragment() {
 
     private var _binding : FragmentHomeBinding? = null
     private val binding get() = _binding!!
+
+
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,8 +63,8 @@ class HomeFragment : Fragment() {
         binding.btnCard01.setBackgroundColor(Color.parseColor("#000000"))
         binding.btnCard01.setTextColor(Color.parseColor("#ffffff"))
 
-        binding.imageView.setImageResource(com.example.banana.R.drawable.card011)
-        binding.imageView2.setImageResource(com.example.banana.R.drawable.card012)
+        binding.imageView.setImageResource(R.drawable.card011)
+        binding.imageView2.setImageResource(R.drawable.card012)
 
 
         //card 01 버튼
@@ -90,8 +79,8 @@ class HomeFragment : Fragment() {
             binding.btnCard03.setBackgroundColor(Color.parseColor("#ffffff"))
             binding.btnCard03.setTextColor(Color.parseColor("#f0f0f0"))
 
-            binding.imageView.setImageResource(com.example.banana.R.drawable.card011)
-            binding.imageView2.setImageResource(com.example.banana.R.drawable.card012)
+            binding.imageView.setImageResource(R.drawable.card011)
+            binding.imageView2.setImageResource(R.drawable.card012)
         }
 
         //card 02 버튼
@@ -106,8 +95,8 @@ class HomeFragment : Fragment() {
             binding.btnCard03.setBackgroundColor(Color.parseColor("#ffffff"))
             binding.btnCard03.setTextColor(Color.parseColor("#f0f0f0"))
 
-            binding.imageView.setImageResource(com.example.banana.R.drawable.card021)
-            binding.imageView2.setImageResource(com.example.banana.R.drawable.card022)
+            binding.imageView.setImageResource(R.drawable.card021)
+            binding.imageView2.setImageResource(R.drawable.card022)
         }
 
         //card 03 버튼
@@ -123,34 +112,21 @@ class HomeFragment : Fragment() {
             binding.btnCard01.setBackgroundColor(Color.parseColor("#ffffff"))
             binding.btnCard01.setTextColor(Color.parseColor("#f0f0f0"))
 
-            binding.imageView.setImageResource(com.example.banana.R.drawable.card031)
-            binding.imageView2.setImageResource(com.example.banana.R.drawable.card032)
+            binding.imageView.setImageResource(R.drawable.card031)
+            binding.imageView2.setImageResource(R.drawable.card032)
+
         }
-
-
-        binding.imageView.setOnClickListener {
-
-            val detailedCard = cardDetailFragment()
-            fragmentManager?.beginTransaction()?.apply {
-                replace(com.example.banana.R.id.frameArea, detailedCard)
-                addToBackStack(null)
-                commit()
-            }
-        }
-
 
         getQRCode()
 
-            startActivity(Intent(context, MakeCardActivity::class.java))
-        }
         //qr코드 버튼
         binding.btnQr.setOnClickListener {
 
-                val intent = Intent(context, CreateQRActivity::class.java)
-                intent.putExtra("QrUrl", imageString)
-                Log.d("urllll2", imageString.toString())
+            val intent = Intent(context, CreateQRActivity::class.java)
+            intent.putExtra("QrUrl", imageString)
+            Log.d("urllll2", imageString.toString())
 
-                startActivity(intent,)
+            startActivity(intent,)
 
 
 
@@ -162,21 +138,23 @@ class HomeFragment : Fragment() {
 
 
 
+
+
         //소셜 공유 버튼
         binding.btnSocialShare.setOnClickListener {
             val popupBase = binding.btnSocialShare
             Log.d("social","click")
             var pop = PopupMenu(context, popupBase)
 
-            pop.menuInflater?.inflate(com.example.banana.R.menu.social_popup,pop.menu)
+            pop.menuInflater?.inflate(R.menu.social_popup,pop.menu)
 
             pop.show()
 
             pop.setOnMenuItemClickListener { item ->
                 when(item.itemId) {
-                    com.example.banana.R.id.kakaotalk ->
+                    R.id.kakaotalk ->
                         Toast.makeText(context,"kakaotalk",Toast.LENGTH_SHORT).show()
-                    com.example.banana.R.id.instagram ->
+                    R.id.instagram ->
                         Toast.makeText(context, "instagram",Toast.LENGTH_SHORT).show()
 
                 }
@@ -186,7 +164,7 @@ class HomeFragment : Fragment() {
 
         //검색 버튼
         binding.btnSearch.setOnClickListener {
-           val search = SearchFragment()
+            val search = SearchFragment()
             fragmentManager?.beginTransaction()?.apply {
                 replace(R.id.frameArea,search)
                 addToBackStack(null)
@@ -216,30 +194,30 @@ class HomeFragment : Fragment() {
         retAPI
             .getQRCode(accessToken)
             .enqueue(object : retrofit2.Callback<ResponseGetQRCode>{
-            override fun onResponse(call: Call<ResponseGetQRCode>, response: Response<ResponseGetQRCode>) {
-                if (response.isSuccessful) {
+                override fun onResponse(call: Call<ResponseGetQRCode>, response: Response<ResponseGetQRCode>) {
+                    if (response.isSuccessful) {
 
 
 
-                     imageString = response.body()?.address.toString()
+                        imageString = response.body()?.address.toString()
 //                    var toBitmap = BitmapFactory.decodeByteArray(image,0,image!!.size)
 //                    var bitmap = BitmapFactory.decodeStream(imageString)
 //                    val imageBytes = Base64.decode(imageString,0)
 //                    val image = BitmapFactory.decodeByteArray(imageBytes,0,imageBytes.size)
 
-                    Log.d("urllll", imageString.toString())
+                        Log.d("urllll", imageString.toString())
 
-                    Log.d("getQr Response : ", "success")
+                        Log.d("getQr Response : ", "success")
 
-                } else {
-                    Log.d("getQr Response : ", "Code: ${response.code()} , Message: ${response.message()} , Success: ${response.isSuccessful}")
+                    } else {
+                        Log.d("getQr Response : ", "Code: ${response.code()} , Message: ${response.message()} , Success: ${response.isSuccessful}")
+                    }
                 }
-            }
-            override fun onFailure(call: Call<ResponseGetQRCode>, t: Throwable) {
-                Log.d("getQr Response : ", "Fail 2")
-            }
+                override fun onFailure(call: Call<ResponseGetQRCode>, t: Throwable) {
+                    Log.d("getQr Response : ", "Fail 2")
+                }
 
-        })
+            })
     }
 
 

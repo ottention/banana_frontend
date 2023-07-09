@@ -10,9 +10,8 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.banana.AlarmAdapter
+import com.example.banana.adapter.AlarmAdapter
 import com.example.banana.R
-import com.example.banana.WalletAdapter
 import com.example.banana.data.AlarmData
 import com.example.banana.databinding.FragmentAlarmBinding
 

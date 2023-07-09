@@ -2,31 +2,23 @@ package com.example.banana.fragment
 
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.banana.ChartAdapter
+import com.example.banana.adapter.ChartAdapter
 import com.example.banana.R
-import com.example.banana.WalletAdapter
 import com.example.banana.data.ChartData
-import com.example.banana.data.WalletData
 import com.example.banana.databinding.FragmentChartBinding
-import com.example.banana.databinding.FragmentWalletBinding
 import com.example.banana.viewModel.ChartViewModel
 
 class ChartFragment : Fragment() {
 
     private lateinit var chartAdapter: ChartAdapter
-//    private var _binding : FragmentChartBinding? = null
-//    private val binding get() = _binding!!
     private lateinit var binding : FragmentChartBinding
 
     private lateinit var viewModel: ChartViewModel
@@ -61,10 +53,6 @@ class ChartFragment : Fragment() {
         viewModel.chartList.observe(viewLifecycleOwner) {
             chartAdapter.updateList(it)
         }
-
-        //차트 초기 설정
-//        initChart()
-
 
 
         //태그 1

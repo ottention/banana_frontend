@@ -7,9 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
-import androidx.recyclerview.widget.GridLayoutManager
 import com.example.banana.R
-import com.example.banana.RecentSearchAdapter
+import com.example.banana.adapter.RecentSearchAdapter
 import com.example.banana.data.RecentSearchData
 import com.example.banana.databinding.FragmentSearchBinding
 import com.google.android.flexbox.FlexDirection

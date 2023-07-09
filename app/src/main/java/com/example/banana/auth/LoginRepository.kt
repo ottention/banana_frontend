@@ -1,20 +1,8 @@
 package com.example.banana.auth
 
 import android.content.Context
-import android.content.Intent
-import android.graphics.Paint.Join
-import android.graphics.BitmapFactory
-import android.util.Base64
 import android.util.Log
-import android.view.View
-import android.widget.ImageView
-import androidx.core.content.ContextCompat.startActivity
-import com.example.banana.FragmentActivity
 
-import android.widget.Toast
-import com.example.banana.JoinActivity
-import com.example.banana.R
-import com.example.banana.data.ResponseGetQRCode
 import com.example.banana.model.LoginGoogleResponseModel
 import com.example.banana.model.LoginKaKaoResponseModel
 import com.example.banana.model.reIssueResponseModel
@@ -22,11 +10,8 @@ import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.ClientError
 import com.kakao.sdk.common.model.ClientErrorCause
 import com.kakao.sdk.user.UserApiClient
-import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Response
-import java.security.AccessController.getContext
-
 
 
 class LoginRepository {

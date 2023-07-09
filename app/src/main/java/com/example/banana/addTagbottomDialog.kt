@@ -1,7 +1,6 @@
 package com.example.banana
 
 import android.content.Context
-import android.os.Build.VERSION_CODES.P
 import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -12,11 +11,11 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.RecyclerView
+import com.example.banana.adapter.TagViewAdapter
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
-import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 

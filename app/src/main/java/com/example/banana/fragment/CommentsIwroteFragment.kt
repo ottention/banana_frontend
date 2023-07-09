@@ -6,11 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.banana.CommentsAdapter
-import com.example.banana.R
+import com.example.banana.adapter.CommentsAdapter
 import com.example.banana.data.CommentsData
 import com.example.banana.databinding.FragmentCommentsIwroteBinding
-import com.example.banana.databinding.FragmentVisitorCommentsBinding
 
 
 class CommentsIwroteFragment : Fragment() {

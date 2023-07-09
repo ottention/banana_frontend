@@ -1,4 +1,4 @@
-package com.example.banana
+package com.example.banana.fragment
 
 import android.app.ActionBar.LayoutParams
 import android.content.Context
@@ -19,11 +19,15 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.banana.R
+import com.example.banana.activity.FragmentActivity
+import com.example.banana.adapter.KeywordViewAdapter
 import com.example.banana.auth.authApplication
 import com.example.banana.data.Contents
 import com.example.banana.data.Image
 import com.example.banana.data.Link
 import com.example.banana.data.getCardResponseModel
+import com.example.banana.deleteCardDialog
 import com.example.banana.fragment.HomeFragment
 import com.example.banana.retrofit.API
 import com.example.banana.retrofit.RetrofitInstance

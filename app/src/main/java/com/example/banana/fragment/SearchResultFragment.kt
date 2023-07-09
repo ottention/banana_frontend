@@ -1,19 +1,15 @@
 package com.example.banana.fragment
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
-import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.banana.ChartAdapter
+import com.example.banana.adapter.ChartAdapter
 import com.example.banana.R
 import com.example.banana.data.ChartData
-import com.example.banana.databinding.FragmentSearchBinding
 import com.example.banana.databinding.FragmentSearchResultBinding
 
 

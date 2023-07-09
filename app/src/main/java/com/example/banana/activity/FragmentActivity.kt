@@ -1,16 +1,13 @@
-package com.example.banana
+package com.example.banana.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import com.example.banana.R
 import com.example.banana.fragment.ChartFragment
 import com.example.banana.fragment.HomeFragment
 import com.example.banana.fragment.WalletFragment
-import com.google.android.material.bottomnavigation.BottomNavigationItemView
-import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.navigation.NavigationBarView
 
 class FragmentActivity : AppCompatActivity() {
 
@@ -51,7 +48,7 @@ class FragmentActivity : AppCompatActivity() {
                     true
                 }
                 R.id.tab4 -> {
-                    val intent = Intent(this, MakeActivity::class.java)
+                    val intent = Intent(this, MakeCardActivity::class.java)
                     startActivity(intent)
 
                     true

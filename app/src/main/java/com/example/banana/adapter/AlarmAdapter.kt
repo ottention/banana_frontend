@@ -1,10 +1,11 @@
-package com.example.banana
+package com.example.banana.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.banana.R
 import com.example.banana.data.AlarmData
 
 class AlarmAdapter(private var alarmData : ArrayList<AlarmData>) : RecyclerView.Adapter<AlarmAdapter.ViewHolder>() {

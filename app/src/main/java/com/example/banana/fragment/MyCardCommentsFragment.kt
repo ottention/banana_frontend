@@ -1,6 +1,5 @@
 package com.example.banana.fragment
 
-import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,14 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.banana.CommentsAdapter
-import com.example.banana.R
-import com.example.banana.data.CommentsData
-import com.example.banana.data.comment
-import com.example.banana.databinding.FragmentCommentsIwroteBinding
+import com.example.banana.adapter.CommentsAdapter
 import com.example.banana.databinding.FragmentMyCardCommentsBinding
 import com.example.banana.retrofit.API
-import com.example.banana.retrofit.RetrofitInstance
 import com.example.banana.viewModel.MyCardCommentsViewModel
 
 
