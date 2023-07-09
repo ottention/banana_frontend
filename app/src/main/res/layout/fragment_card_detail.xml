@@ -21,6 +21,7 @@
         <Button
             android:layout_width="24dp"
             android:layout_height="24dp"
+            android:layout_marginLeft="20dp"
             android:gravity="left"
             android:background="@drawable/icon_arrow_exit"/>
 
@@ -88,6 +89,7 @@
                 android:layout_weight="1"/>
 
             <Button
+                android:id="@+id/card_delete_button"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:background="@drawable/icon_delete"/>
@@ -100,18 +102,45 @@
         </LinearLayout>
 
         <FrameLayout
-            android:orientation="vertical"
-            android:id="@+id/detailed_card"
-            android:layout_width="300dp"
-            android:layout_height="160dp"
+            android:layout_width="340dp"
             android:layout_gravity="center"
-            app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+            android:layout_height="170dp">
 
+            <FrameLayout
+                android:orientation="vertical"
+                android:id="@+id/detailed_card"
+                android:layout_width="300dp"
+                android:layout_height="160dp"
+                android:layout_gravity="center"
+                android:elevation="15dp"
+                android:visibility="visible"
+                android:background="@color/white"
+                app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:orientation="vertical"
+                android:id="@+id/detailed_card_back"
+                android:layout_width="300dp"
+                android:layout_height="160dp"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:background="@color/white"
+                android:elevation="15dp"
+                app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            </FrameLayout>
 
         </FrameLayout>
+
+
 
     </LinearLayout>
 

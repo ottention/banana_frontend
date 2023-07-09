@@ -18,6 +18,7 @@ import retrofit2.Response
 class CreateQRActivity : AppCompatActivity() {
 
 
+
     private lateinit var retAPI :API
 
     lateinit var imageViewQrCode : ImageView
@@ -25,6 +26,7 @@ class CreateQRActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_qractivity)
+
 
         //API 호출
 //        retAPI = RetrofitInstance.retrofitInstance().create(API::class.java)
@@ -48,6 +50,7 @@ class CreateQRActivity : AppCompatActivity() {
             val intent = Intent(this, FragmentActivity::class.java)
             startActivity(intent)
         }
+
 //        getQRCode()
 
     }

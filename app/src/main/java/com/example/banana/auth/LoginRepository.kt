@@ -2,6 +2,7 @@ package com.example.banana.auth
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Paint.Join
 import android.graphics.BitmapFactory
 import android.util.Base64
 import android.util.Log
@@ -11,6 +12,7 @@ import androidx.core.content.ContextCompat.startActivity
 import com.example.banana.FragmentActivity
 
 import android.widget.Toast
+import com.example.banana.JoinActivity
 import com.example.banana.R
 import com.example.banana.data.ResponseGetQRCode
 import com.example.banana.model.LoginGoogleResponseModel
@@ -31,7 +33,7 @@ class LoginRepository {
 
     val TAG = "LoginRepository"
     private val getAccessTokenBaseUrl = "https://www.googleapis.com"
-    private val sendTokenBaseUrl = "http://3.37.86.26:8080/" // 받아오기
+    private val sendTokenBaseUrl = "http://52.78.202.79:8080/"// 받아오기
 
 
     internal val callback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
@@ -67,6 +69,7 @@ class LoginRepository {
                     }
 
                     // 카카오톡에 연결된 카카오계정이 없는 경우, 카카오계정으로 로그인 시도
+                    Log.e(TAG, "call back으로 이동")
                     UserApiClient.instance.loginWithKakaoAccount(context, callback = callback)
                 } else if (token != null) {
                     Log.d(TAG, "카카오톡으로 로그인 성공 ${token.accessToken}")
@@ -77,15 +80,6 @@ class LoginRepository {
             UserApiClient.instance.loginWithKakaoAccount(context, callback = callback)
         }
     }
-
-    fun goHome(context: Context) {
-        var intent = Intent(context, FragmentActivity::class.java)
-        startActivity(context, intent, null)
-//        intent = Intent(context, HomeActivity::class.java)
-//        startActivity(intent)
-    }
-
-
 
     // kakaoToken sending
     fun sendKakaoToken(kakaoToken: String) {
@@ -106,16 +100,9 @@ class LoginRepository {
                     Log.d(TAG, "sendOnResponse.refreshToken: ${response.body()!!.refreshToken}")
                     Log.d(TAG, response.code().toString())
                     saveJWT(response.body()!!.accessToken,response.body()!!.refreshToken);
-
                 }else {
                     if(response.code().toString() == "401") {
                         reissue(authApplication.prefs.getString("refreshToken", ""))
-                    }
-                    try {
-                        val jObjError = JSONObject(response.errorBody()!!.string())
-                        Log.d(TAG, "kakao : "+ jObjError.getJSONObject("error").getString("message"))
-                    } catch (e: Exception) {
-                        Log.d(TAG, e.message.toString())
                     }
                     Log.d(TAG, "failed : " + response.body().toString())
                 }}
@@ -143,10 +130,9 @@ class LoginRepository {
                     Log.d(TAG, "sendOnResponse.refreshToken: ${response.body()!!.refreshToken}")
                     saveJWT(response.body()!!.accessToken,response.body()!!.refreshToken);
                     Log.d(TAG, "${authApplication.prefs.getString("accessToken", "")}")
-
                 } else {
                     if(response.code().toString() == "401") {
-                        reissue(authApplication.prefs.getString("userId", ""))
+                        reissue(authApplication.prefs.getString("refreshToken", ""))
                     }
                     Log.d(TAG, response.code().toString())
                 }
@@ -173,6 +159,7 @@ class LoginRepository {
                     updateJWT(response.body()!!.accessToken);
                 } else {
                     Log.d(TAG, response.code().toString())
+                    removeJWT()
                 }
             }
 
@@ -220,36 +207,6 @@ class LoginRepository {
         authApplication.prefs.setString("accessToken", "")
         authApplication.prefs.setString("refreshToken", "")
     }
-
-
-        // 구글 로그인에서 accessToken값 가져오기 ---------------
-//    fun getAccessToken(authCode: String) {
-//        LoginService.loginRetrofit(getAccessTokenBaseUrl).getAccessToken(
-//            request = LoginGoogle_at_RequestModel(
-//                // 수정해야함 -> string으로 빼기
-//                grant_type = "authorization_code",
-//                client_id = "418803016352-m76e2uci5o15ode6am21dpqf602uogkq.apps.googleusercontent.com",
-//                client_secret = "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",
-//                code = authCode.orEmpty()
-//            )
-//        ).enqueue(object : retrofit2.Callback<LoginGoogle_at_ResponseModel> {
-//            override fun onResponse(
-//                call: Call<LoginGoogle_at_ResponseModel>,
-//                response: Response<LoginGoogle_at_ResponseModel>
-//            ) {
-//                if (response.isSuccessful) {
-//                    val accessToken = response.body()?.access_token.orEmpty()
-//                    Log.d(TAG, "accessToken: $accessToken")
-//                } else {
-//                    Log.d(TAG, "failed")
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<LoginGoogle_at_ResponseModel>, t: Throwable) {
-//                Log.e(TAG, "getOnFailure: ", t.fillInStackTrace())
-//            }
-//        })
-//    }
 
 }
 
