@@ -50,6 +50,8 @@ class ChartFragment : Fragment() {
         val view = binding.root
 
 
+        binding.btnTag1.setBackgroundColor(Color.parseColor("#000000"))
+
         viewModel = ViewModelProvider(this).get(ChartViewModel::class.java)
 
         chartAdapter = ChartAdapter(chartData,::onCardClick,::onLikeClick)
@@ -62,58 +64,257 @@ class ChartFragment : Fragment() {
 
         //차트 초기 설정
 //        initChart()
+
+
+
+        //태그 1
+        binding.btnTag1.setOnClickListener {
+            binding.btnTag1.setBackgroundColor(Color.parseColor("#000000"))
+        binding.btnTag2.setBackgroundColor(Color.parseColor("#E6E6E6"))
+        binding.btnTag3.setBackgroundColor(Color.parseColor("#E6E6E6"))
+        binding.btnTag4.setBackgroundColor(Color.parseColor("#E6E6E6"))
+        binding.btnTag5.setBackgroundColor(Color.parseColor("#E6E6E6"))
+        binding.btnTag6.setBackgroundColor(Color.parseColor("#E6E6E6"))
+        binding.btnTag7.setBackgroundColor(Color.parseColor("#E6E6E6"))
+        binding.btnTag8.setBackgroundColor(Color.parseColor("#E6E6E6"))
+        binding.btnTag9.setBackgroundColor(Color.parseColor("#E6E6E6"))
+        binding.btnTag10.setBackgroundColor(Color.parseColor("#E6E6E6"))
+
+//        viewModel = ViewModelProvider(this).get(ChartViewModel::class.java)
 //
-//
-//
-//        //태그 1
-//        binding.btnTag1.setOnClickListener {
-//            tag1()
-//        }
-//
-//        //태그 2
-//        binding.btnTag2.setOnClickListener {
-//            tag2()
-//        }
-//
-//        //태그 3
-//        binding.btnTag3.setOnClickListener {
-//            tag3()
-//        }
-//
-//        //태그 4
-//        binding.btnTag4.setOnClickListener {
-//            tag4()
-//        }
-//
-//        //태그 5
-//        binding.btnTag5.setOnClickListener {
-//            tag5()
-//        }
-//
-//        //태그 6
-//        binding.btnTag6.setOnClickListener {
-//            tag6()
-//        }
-//
-//        //태그 7
-//        binding.btnTag7.setOnClickListener {
-//            tag7()
-//        }
-//
-//        //태그 8
-//        binding.btnTag8.setOnClickListener {
-//            tag8()
-//        }
-//
-//        //태그 9
-//        binding.btnTag9.setOnClickListener {
-//            tag9()
-//        }
-//
-//        //태그 10
-//        binding.btnTag10.setOnClickListener {
-//            tag10()
-//        }
+//        chartAdapter = ChartAdapter(chartData,::onCardClick,::onLikeClick)
+//        binding.rvChart.adapter = chartAdapter
+//        binding.rvChart.layoutManager = LinearLayoutManager(context)
+
+        viewModel.chartList.observe(viewLifecycleOwner) {
+            chartAdapter.updateList(it)
+        }
+        }
+
+        //태그 2
+        binding.btnTag2.setOnClickListener {
+
+            binding.btnTag2.setBackgroundColor(Color.parseColor("#000000"))
+        binding.btnTag1.setBackgroundColor(Color.parseColor("#E6E6E6"))
+        binding.btnTag3.setBackgroundColor(Color.parseColor("#E6E6E6"))
+        binding.btnTag4.setBackgroundColor(Color.parseColor("#E6E6E6"))
+        binding.btnTag5.setBackgroundColor(Color.parseColor("#E6E6E6"))
+        binding.btnTag6.setBackgroundColor(Color.parseColor("#E6E6E6"))
+        binding.btnTag7.setBackgroundColor(Color.parseColor("#E6E6E6"))
+        binding.btnTag8.setBackgroundColor(Color.parseColor("#E6E6E6"))
+        binding.btnTag9.setBackgroundColor(Color.parseColor("#E6E6E6"))
+        binding.btnTag10.setBackgroundColor(Color.parseColor("#E6E6E6"))
+
+        viewModel = ViewModelProvider(this).get(ChartViewModel::class.java)
+
+        chartAdapter = ChartAdapter(chartData,::onCardClick,::onLikeClick)
+        binding.rvChart.adapter = chartAdapter
+        binding.rvChart.layoutManager = LinearLayoutManager(context)
+
+        viewModel.chartList.observe(viewLifecycleOwner) {
+            chartAdapter.updateList(it)
+        }
+        }
+
+        //태그 3
+        binding.btnTag3.setOnClickListener {
+            binding.btnTag3.setBackgroundColor(Color.parseColor("#000000"))
+            binding.btnTag1.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag2.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag4.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag5.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag6.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag7.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag8.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag9.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag10.setBackgroundColor(Color.parseColor("#E6E6E6"))
+
+
+            viewModel = ViewModelProvider(this).get(ChartViewModel::class.java)
+
+        chartAdapter = ChartAdapter(chartData,::onCardClick,::onLikeClick)
+        binding.rvChart.adapter = chartAdapter
+        binding.rvChart.layoutManager = LinearLayoutManager(context)
+
+        viewModel.chartList.observe(viewLifecycleOwner) {
+            chartAdapter.updateList(it)
+        }
+        }
+
+        //태그 4
+        binding.btnTag4.setOnClickListener {
+            binding.btnTag4.setBackgroundColor(Color.parseColor("#000000"))
+            binding.btnTag1.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag3.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag2.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag5.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag6.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag7.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag8.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag9.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag10.setBackgroundColor(Color.parseColor("#E6E6E6"))
+
+
+            viewModel = ViewModelProvider(this).get(ChartViewModel::class.java)
+
+        chartAdapter = ChartAdapter(chartData,::onCardClick,::onLikeClick)
+        binding.rvChart.adapter = chartAdapter
+        binding.rvChart.layoutManager = LinearLayoutManager(context)
+
+        viewModel.chartList.observe(viewLifecycleOwner) {
+            chartAdapter.updateList(it)
+        }
+        }
+
+        //태그 5
+        binding.btnTag5.setOnClickListener {
+            binding.btnTag5.setBackgroundColor(Color.parseColor("#000000"))
+            binding.btnTag1.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag3.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag4.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag2.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag6.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag7.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag8.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag9.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag10.setBackgroundColor(Color.parseColor("#E6E6E6"))
+
+
+            viewModel = ViewModelProvider(this).get(ChartViewModel::class.java)
+
+        chartAdapter = ChartAdapter(chartData,::onCardClick,::onLikeClick)
+        binding.rvChart.adapter = chartAdapter
+        binding.rvChart.layoutManager = LinearLayoutManager(context)
+
+        viewModel.chartList.observe(viewLifecycleOwner) {
+            chartAdapter.updateList(it)
+        }
+        }
+
+        //태그 6
+        binding.btnTag6.setOnClickListener {
+            binding.btnTag6.setBackgroundColor(Color.parseColor("#000000"))
+            binding.btnTag1.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag3.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag4.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag5.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag2.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag7.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag8.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag9.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag10.setBackgroundColor(Color.parseColor("#E6E6E6"))
+
+
+            viewModel = ViewModelProvider(this).get(ChartViewModel::class.java)
+
+        chartAdapter = ChartAdapter(chartData,::onCardClick,::onLikeClick)
+        binding.rvChart.adapter = chartAdapter
+        binding.rvChart.layoutManager = LinearLayoutManager(context)
+
+        viewModel.chartList.observe(viewLifecycleOwner) {
+            chartAdapter.updateList(it)
+        }
+        }
+
+        //태그 7
+        binding.btnTag7.setOnClickListener {
+            binding.btnTag7.setBackgroundColor(Color.parseColor("#000000"))
+            binding.btnTag1.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag3.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag4.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag5.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag6.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag2.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag8.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag9.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag10.setBackgroundColor(Color.parseColor("#E6E6E6"))
+
+
+            viewModel = ViewModelProvider(this).get(ChartViewModel::class.java)
+
+        chartAdapter = ChartAdapter(chartData,::onCardClick,::onLikeClick)
+        binding.rvChart.adapter = chartAdapter
+        binding.rvChart.layoutManager = LinearLayoutManager(context)
+
+        viewModel.chartList.observe(viewLifecycleOwner) {
+            chartAdapter.updateList(it)
+        }
+        }
+
+        //태그 8
+        binding.btnTag8.setOnClickListener {
+            binding.btnTag8.setBackgroundColor(Color.parseColor("#000000"))
+            binding.btnTag1.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag3.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag4.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag5.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag6.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag7.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag2.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag9.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag10.setBackgroundColor(Color.parseColor("#E6E6E6"))
+
+
+            viewModel = ViewModelProvider(this).get(ChartViewModel::class.java)
+
+        chartAdapter = ChartAdapter(chartData,::onCardClick,::onLikeClick)
+        binding.rvChart.adapter = chartAdapter
+        binding.rvChart.layoutManager = LinearLayoutManager(context)
+
+        viewModel.chartList.observe(viewLifecycleOwner) {
+            chartAdapter.updateList(it)
+        }
+        }
+
+        //태그 9
+        binding.btnTag9.setOnClickListener {
+            binding.btnTag9.setBackgroundColor(Color.parseColor("#000000"))
+            binding.btnTag1.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag3.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag4.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag5.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag6.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag7.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag8.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag2.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag10.setBackgroundColor(Color.parseColor("#E6E6E6"))
+
+
+            viewModel = ViewModelProvider(this).get(ChartViewModel::class.java)
+
+        chartAdapter = ChartAdapter(chartData,::onCardClick,::onLikeClick)
+        binding.rvChart.adapter = chartAdapter
+        binding.rvChart.layoutManager = LinearLayoutManager(context)
+
+        viewModel.chartList.observe(viewLifecycleOwner) {
+            chartAdapter.updateList(it)
+        }
+        }
+
+        //태그 10
+        binding.btnTag10.setOnClickListener {
+            binding.btnTag10.setBackgroundColor(Color.parseColor("#000000"))
+            binding.btnTag1.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag3.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag4.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag5.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag6.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag7.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag8.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag9.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            binding.btnTag2.setBackgroundColor(Color.parseColor("#E6E6E6"))
+
+
+            viewModel = ViewModelProvider(this).get(ChartViewModel::class.java)
+
+        chartAdapter = ChartAdapter(chartData,::onCardClick,::onLikeClick)
+        binding.rvChart.adapter = chartAdapter
+        binding.rvChart.layoutManager = LinearLayoutManager(context)
+
+        viewModel.chartList.observe(viewLifecycleOwner) {
+            chartAdapter.updateList(it)
+        }
+        }
 
         //알람 버튼 클릭
         binding.btnAlarm.setOnClickListener {
