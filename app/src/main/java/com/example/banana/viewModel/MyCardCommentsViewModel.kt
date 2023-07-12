@@ -5,15 +5,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.banana.data.CommentsData
-import com.example.banana.data.ResponsegetMyCardComments
 import com.example.banana.data.comment
 import com.example.banana.retrofit.API
 import com.example.banana.retrofit.RetrofitInstance
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Response
-import javax.security.auth.callback.Callback
+
 
 class MyCardCommentsViewModel : ViewModel() {
     private lateinit var APIS : API

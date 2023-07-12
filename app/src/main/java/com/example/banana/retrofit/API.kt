@@ -39,4 +39,11 @@ interface API {
 
     ) : Call<ArrayList<comment>>
 
+    //내가 작성한 방명록 조회
+    @GET("banana/myWrittenGuestBooks")
+    fun getCommentsIwrote(
+        @Header("Authorization") Authorization : String,
+        @Query("page") page : Int
+    ) : Call<ArrayList<comment>>
+
 }
