@@ -24,39 +24,125 @@ class MyCardCommentsViewModel : ViewModel() {
 
     init {
 
-            showCommentsList()
+            showCommentsList1()
 
     }
 
-    private fun  showCommentsList() {
+
+     fun  showCommentsList1() {
 
         APIS = RetrofitInstance.retrofitInstance().create(API::class.java)
-        var token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMyIsImlhdCI6MTY4ODUzOTAzNywiZXhwIjoxNjg4NTYwNjM3fQ.kbIjEqKu3uvk9NSjvCoNrR8z-quXg0qADkpJU9mgnqk"
-
+        val token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjg5MDUzNTgwLCJleHAiOjE2OTE2NDU1ODB9.I3ART9XCYkp1l7YnC6cGv6uMvCwBqsqcUW2r1GXMKx4"
         viewModelScope.launch {
             try{
 
-                APIS.getMyCardComments(token).enqueue(object : retrofit2.Callback<ResponsegetMyCardComments> {
-                    override fun onResponse(call: Call<ResponsegetMyCardComments>, response: Response<ResponsegetMyCardComments>) {
+                APIS.getMyCardComments(token,1).enqueue(object : retrofit2.Callback<ArrayList<comment>> {
+                    override fun onResponse(call: Call<ArrayList<comment>>, response: Response<ArrayList<comment>>) {
                         if (response.isSuccessful) {
 
 
                             Log.d("getComments Response : ", "success")
 
 
-                            _commentsList.value = response.body()?.commentsList
+                            _commentsList.value = response.body()
 
-                            Log.d("commentList : " , response.body()?.commentsList.toString())
+                            Log.d("commentList : " , response.body().toString())
 
 
 
 
                         } else {
+                            Log.d("commentList : " , response.body().toString())
+                            Log.d("commentList : " , response.message())
                             Log.d("getComments Response : ", "Fail 1")
                         }
                 }
-                    override fun onFailure(call: Call<ResponsegetMyCardComments>, t: Throwable) {
-                        Log.d("getComments Response : ", "Fail 2")
+                    override fun onFailure(call: Call<ArrayList<comment>>, t: Throwable) {
+                        Log.d("getComments Response : ", t.message.toString())
+                    }
+
+                })
+
+
+            } catch (e:Exception) {
+                Log.d("getComments response : ", "Fail 3")
+            }
+        }
+
+    }
+
+    fun  showCommentsList2() {
+
+        APIS = RetrofitInstance.retrofitInstance().create(API::class.java)
+        val token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjg5MDUzNTgwLCJleHAiOjE2OTE2NDU1ODB9.I3ART9XCYkp1l7YnC6cGv6uMvCwBqsqcUW2r1GXMKx4"
+        viewModelScope.launch {
+            try{
+
+                APIS.getMyCardComments(token,2).enqueue(object : retrofit2.Callback<ArrayList<comment>> {
+                    override fun onResponse(call: Call<ArrayList<comment>>, response: Response<ArrayList<comment>>) {
+                        if (response.isSuccessful) {
+
+
+                            Log.d("getComments Response : ", "success")
+
+
+                            _commentsList.value = response.body()
+
+                            Log.d("commentList : " , response.body().toString())
+
+
+
+
+                        } else {
+                            Log.d("commentList : " , response.body().toString())
+                            Log.d("commentList : " , response.message())
+                            Log.d("getComments Response : ", "Fail 1")
+                        }
+                    }
+                    override fun onFailure(call: Call<ArrayList<comment>>, t: Throwable) {
+                        Log.d("getComments Response : ", t.message.toString())
+                    }
+
+                })
+
+
+            } catch (e:Exception) {
+                Log.d("getComments response : ", "Fail 3")
+            }
+        }
+
+    }
+
+    fun  showCommentsList3() {
+
+        APIS = RetrofitInstance.retrofitInstance().create(API::class.java)
+        val token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjg5MDUzNTgwLCJleHAiOjE2OTE2NDU1ODB9.I3ART9XCYkp1l7YnC6cGv6uMvCwBqsqcUW2r1GXMKx4"
+        viewModelScope.launch {
+            try{
+
+                APIS.getMyCardComments(token,3).enqueue(object : retrofit2.Callback<ArrayList<comment>> {
+                    override fun onResponse(call: Call<ArrayList<comment>>, response: Response<ArrayList<comment>>) {
+                        if (response.isSuccessful) {
+
+
+                            Log.d("getComments Response : ", "success")
+
+
+                            _commentsList.value = response.body()
+
+                            Log.d("commentList : " , response.body().toString())
+
+
+
+
+                        } else {
+                            Log.d("commentList : " , response.body().toString())
+                            Log.d("commentList : " , response.message())
+                            Log.d("getComments Response : ", "Fail 1")
+                        }
+                    }
+                    override fun onFailure(call: Call<ArrayList<comment>>, t: Throwable) {
+                        Log.d("getComments Response : ", t.message.toString())
                     }
 
                 })
