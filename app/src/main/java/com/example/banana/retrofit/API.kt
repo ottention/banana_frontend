@@ -46,4 +46,10 @@ interface API {
         @Query("page") page : Int
     ) : Call<ArrayList<comment>>
 
+    //홈 화면 cardId 조회
+    @GET("businessCard/home")
+    fun getBusinessCardId(
+        @Header("Authorization") Authorization : String,
+    ) : Call<ArrayList<businessCardIdData>>
+
 }

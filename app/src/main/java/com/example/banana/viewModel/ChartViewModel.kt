@@ -19,6 +19,7 @@ class ChartViewModel : ViewModel() {
         showChartList()
     }
 
+
     @SuppressLint("SuspiciousIndentation")
     private fun showChartList() {
 

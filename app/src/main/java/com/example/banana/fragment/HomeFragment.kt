@@ -10,24 +10,29 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import com.example.banana.activity.CreateQRActivity
 import com.example.banana.R
 import com.example.banana.data.ResponseGetQRCode
+import com.example.banana.data.businessCardIdData
 import com.example.banana.databinding.FragmentHomeBinding
 import com.example.banana.retrofit.API
 import com.example.banana.retrofit.RetrofitInstance
+import com.example.banana.viewModel.HomeViewModel
 import retrofit2.Call
 import retrofit2.Response
 
 class HomeFragment : Fragment() {
 
     private lateinit var retAPI : API
+    private var _binding : FragmentHomeBinding? = null
+    private val binding get() = _binding!!
+    private lateinit var viewModel : HomeViewModel
+    private var cardIdlist = ArrayList<businessCardIdData>()
     fun newInstance() : HomeFragment{
         return HomeFragment()
     }
 
-    private var _binding : FragmentHomeBinding? = null
-    private val binding get() = _binding!!
 
 
 
@@ -49,6 +54,60 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val view = binding.root
 
+        viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+
+
+
+
+
+        //초기 card 01
+        binding.btnCard01.setBackgroundColor(Color.parseColor("#000000"))
+        binding.btnCard01.setTextColor(Color.parseColor("#ffffff"))
+
+//        viewModel.showCard1()
+
+        //card01 클릭
+        binding.btnCard01.setOnClickListener {
+            binding.btnCard01.setBackgroundColor(Color.parseColor("#000000"))
+            binding.btnCard01.setTextColor(Color.parseColor("#ffffff"))
+
+            binding.btnCard02.setBackgroundColor(Color.parseColor("#ffffff"))
+            binding.btnCard02.setTextColor(Color.parseColor("#f0f0f0"))
+
+            binding.btnCard03.setBackgroundColor(Color.parseColor("#ffffff"))
+            binding.btnCard03.setTextColor(Color.parseColor("#f0f0f0"))
+            viewModel.showCard1()
+        }
+
+        //card02 클릭
+        binding.btnCard02.setOnClickListener {
+            binding.btnCard02.setBackgroundColor(Color.parseColor("#000000"))
+            binding.btnCard02.setTextColor(Color.parseColor("#ffffff"))
+
+            binding.btnCard01.setBackgroundColor(Color.parseColor("#ffffff"))
+            binding.btnCard01.setTextColor(Color.parseColor("#f0f0f0"))
+
+            binding.btnCard03.setBackgroundColor(Color.parseColor("#ffffff"))
+            binding.btnCard03.setTextColor(Color.parseColor("#f0f0f0"))
+            viewModel.showCard2()
+        }
+
+        //card03 클릭
+        binding.btnCard03.setOnClickListener {
+
+            binding.btnCard03.setBackgroundColor(Color.parseColor("#000000"))
+            binding.btnCard03.setTextColor(Color.parseColor("#ffffff"))
+
+            binding.btnCard02.setBackgroundColor(Color.parseColor("#ffffff"))
+            binding.btnCard02.setTextColor(Color.parseColor("#f0f0f0"))
+
+            binding.btnCard01.setBackgroundColor(Color.parseColor("#ffffff"))
+            binding.btnCard01.setTextColor(Color.parseColor("#f0f0f0"))
+//
+            viewModel.showCard3()
+        }
+
+
         return view
 
     }
@@ -68,54 +127,54 @@ class HomeFragment : Fragment() {
 
 
         //card 01 버튼
-        binding.btnCard01.setOnClickListener {
-            //버튼 색 변경
-            binding.btnCard01.setBackgroundColor(Color.parseColor("#000000"))
-            binding.btnCard01.setTextColor(Color.parseColor("#ffffff"))
-
-            binding.btnCard02.setBackgroundColor(Color.parseColor("#ffffff"))
-            binding.btnCard02.setTextColor(Color.parseColor("#f0f0f0"))
-
-            binding.btnCard03.setBackgroundColor(Color.parseColor("#ffffff"))
-            binding.btnCard03.setTextColor(Color.parseColor("#f0f0f0"))
-
-            binding.imageView.setImageResource(R.drawable.card011)
-            binding.imageView2.setImageResource(R.drawable.card012)
-        }
+//        binding.btnCard01.setOnClickListener {
+//            //버튼 색 변경
+//            binding.btnCard01.setBackgroundColor(Color.parseColor("#000000"))
+//            binding.btnCard01.setTextColor(Color.parseColor("#ffffff"))
+//
+//            binding.btnCard02.setBackgroundColor(Color.parseColor("#ffffff"))
+//            binding.btnCard02.setTextColor(Color.parseColor("#f0f0f0"))
+//
+//            binding.btnCard03.setBackgroundColor(Color.parseColor("#ffffff"))
+//            binding.btnCard03.setTextColor(Color.parseColor("#f0f0f0"))
+//
+//            binding.imageView.setImageResource(R.drawable.card011)
+//            binding.imageView2.setImageResource(R.drawable.card012)
+//        }
 
         //card 02 버튼
-        binding.btnCard02.setOnClickListener {
-            //버튼 색 변경
-            binding.btnCard02.setBackgroundColor(Color.parseColor("#000000"))
-            binding.btnCard02.setTextColor(Color.parseColor("#ffffff"))
-
-            binding.btnCard01.setBackgroundColor(Color.parseColor("#ffffff"))
-            binding.btnCard01.setTextColor(Color.parseColor("#f0f0f0"))
-
-            binding.btnCard03.setBackgroundColor(Color.parseColor("#ffffff"))
-            binding.btnCard03.setTextColor(Color.parseColor("#f0f0f0"))
-
-            binding.imageView.setImageResource(R.drawable.card021)
-            binding.imageView2.setImageResource(R.drawable.card022)
-        }
+//        binding.btnCard02.setOnClickListener {
+//            //버튼 색 변경
+//            binding.btnCard02.setBackgroundColor(Color.parseColor("#000000"))
+//            binding.btnCard02.setTextColor(Color.parseColor("#ffffff"))
+//
+//            binding.btnCard01.setBackgroundColor(Color.parseColor("#ffffff"))
+//            binding.btnCard01.setTextColor(Color.parseColor("#f0f0f0"))
+//
+//            binding.btnCard03.setBackgroundColor(Color.parseColor("#ffffff"))
+//            binding.btnCard03.setTextColor(Color.parseColor("#f0f0f0"))
+//
+//            binding.imageView.setImageResource(R.drawable.card021)
+//            binding.imageView2.setImageResource(R.drawable.card022)
+//        }
 
         //card 03 버튼
-        binding.btnCard03.setOnClickListener {
-            Log.d("card3","card3")
-            //버튼 색 변경
-            binding.btnCard03.setBackgroundColor(Color.parseColor("#000000"))
-            binding.btnCard03.setTextColor(Color.parseColor("#ffffff"))
-
-            binding.btnCard02.setBackgroundColor(Color.parseColor("#ffffff"))
-            binding.btnCard02.setTextColor(Color.parseColor("#f0f0f0"))
-
-            binding.btnCard01.setBackgroundColor(Color.parseColor("#ffffff"))
-            binding.btnCard01.setTextColor(Color.parseColor("#f0f0f0"))
-
-            binding.imageView.setImageResource(R.drawable.card031)
-            binding.imageView2.setImageResource(R.drawable.card032)
-
-        }
+//        binding.btnCard03.setOnClickListener {
+//            Log.d("card3","card3")
+//            //버튼 색 변경
+//            binding.btnCard03.setBackgroundColor(Color.parseColor("#000000"))
+//            binding.btnCard03.setTextColor(Color.parseColor("#ffffff"))
+//
+//            binding.btnCard02.setBackgroundColor(Color.parseColor("#ffffff"))
+//            binding.btnCard02.setTextColor(Color.parseColor("#f0f0f0"))
+//
+//            binding.btnCard01.setBackgroundColor(Color.parseColor("#ffffff"))
+//            binding.btnCard01.setTextColor(Color.parseColor("#f0f0f0"))
+//
+//            binding.imageView.setImageResource(R.drawable.card031)
+//            binding.imageView2.setImageResource(R.drawable.card032)
+//
+//        }
 
         getQRCode()
 
