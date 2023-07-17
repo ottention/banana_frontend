@@ -43,6 +43,10 @@ class JoinActivity : AppCompatActivity() {
         // kakao joining
         findViewById<LinearLayout>(R.id.kakao_join_btn).setOnClickListener {
             LoginRepository().kakaoLogin(this)
+            if((LoginRepository().kakaoLogin(this)) != -1) {
+                var intent = Intent(this, FragmentActivity::class.java)
+                ContextCompat.startActivity(this, intent, null)
+            }
         }
     }
 
@@ -81,10 +85,14 @@ class JoinActivity : AppCompatActivity() {
                         "\n이메일: ${account?.email.toString()}" +
                         "\n이름: ${account?.displayName.toString()}"
             )
-            var intent = Intent(this, FragmentActivity::class.java)
-            ContextCompat.startActivity(this, intent, null)
+
             if(account!=null) {
-                LoginRepository().sendGoogleToken(account.idToken.toString())
+                var code = LoginRepository().sendGoogleToken(account.idToken.toString())
+                if( code != -1) {
+                    Log.d("Login", code.toString() )
+                    var intent = Intent(this, FragmentActivity::class.java)
+                    ContextCompat.startActivity(this, intent, null)
+                }
             }
             googleLogout()
         } catch (e: ApiException) {

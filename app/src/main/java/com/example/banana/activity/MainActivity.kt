@@ -21,7 +21,6 @@ class MainActivity : AppCompatActivity() {
         // 처음 어플 켜서 아직 정보가 있다면? -> 바로 시작
         // 없다면? 시작하기 혹은 회원가입
         if ((authApplication.prefs.getString("accessToken", "") != "")) {
-
             Log.d(TAG,"jwt : " + authApplication.prefs.getString("accessToken", ""))
             val intent = Intent(this, FragmentActivity::class.java )
             startActivity(intent)
@@ -40,7 +39,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun goJoin(context: Context) {
-        val intent = Intent(this, JoinActivity::class.java)
+        val intent = Intent(context, JoinActivity::class.java)
         startActivity(intent)
     }
 
