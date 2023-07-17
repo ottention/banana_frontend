@@ -1,15 +1,30 @@
 package com.example.banana.viewModel
 
+import android.app.ActionBar
+import android.content.Intent
+import android.graphics.Color
+import android.net.Uri
 import android.util.Log
+import android.view.ViewGroup
+import android.widget.FrameLayout
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.banana.data.ChartData
-import com.example.banana.data.businessCardIdData
-import com.example.banana.data.getCardResponseModel
+import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.banana.R
+import com.example.banana.adapter.KeywordViewAdapter
+import com.example.banana.data.*
 import com.example.banana.retrofit.API
 import com.example.banana.retrofit.RetrofitInstance
+import com.google.android.flexbox.FlexDirection
+import com.google.android.flexbox.FlexWrap
+import com.google.android.flexbox.FlexboxLayoutManager
+import com.google.android.flexbox.JustifyContent
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Response
@@ -23,6 +38,8 @@ class HomeViewModel : ViewModel() {
 
     private var _getCard = MutableLiveData<getCardResponseModel>()
     var getCard : LiveData<getCardResponseModel> = _getCard
+
+
 
 
     init {
@@ -98,7 +115,7 @@ class HomeViewModel : ViewModel() {
     }
 
 
-    //card 조회
+    //cardId 조회
     fun getCard(a:Long) {
         APIS = RetrofitInstance.retrofitInstance().create(API::class.java)
 
@@ -116,6 +133,7 @@ class HomeViewModel : ViewModel() {
 
 
                             _getCard.value = response.body()
+
 
                             Log.d("getCard : " , response.body().toString())
 
@@ -136,4 +154,11 @@ class HomeViewModel : ViewModel() {
             }
         }
     }
+
+
+
+
+
+
+
 }
