@@ -39,4 +39,12 @@ interface API {
 
     ) : Call<ArrayList<comment>>
 
+    // 타인명함에 방명록 쓰기
+    @POST("banana/businessCard/{businessCardId}/writeGuestBook")
+    fun addComment(
+        @Header("Authorization") Authorization : String,
+        @Path("businessCardId") businessCardId : Long,
+        @Body content : ccomment
+        ) : Call<Long>
+
 }
