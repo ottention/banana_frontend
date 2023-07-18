@@ -91,7 +91,8 @@ class CardDetailFragment : Fragment() {
         var c = bundle.getLong("cardId")
         detailCardDataViewModel.getCardData(c)
         Log.d("TAG", "done")
-        cardData = getCardResponseModel(true, true, null, null, null, null ,null, null, null, null, null)
+        cardData = getCardResponseModel(0,true, true, null, null, null, null ,null, null, null, null, null)
+
         detailCardDataViewModel.cardData.observe(viewLifecycleOwner){
             cardData = it
             makeUI(cardData!!)

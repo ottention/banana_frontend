@@ -3,7 +3,6 @@ package com.example.banana.fragment
 import android.app.ActionBar
 import android.content.Intent
 import android.graphics.Color
-import android.graphics.Paint.Join
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -14,37 +13,17 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.Toast
-import androidx.fragment.app.FragmentTransaction
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.banana.activity.CreateQRActivity
 import com.example.banana.R
-import com.example.banana.activity.JoinActivity
-import com.example.banana.activity.MainActivity
-import com.example.banana.auth.authApplication
 import com.example.banana.data.ResponseGetQRCode
-import com.example.banana.data.businessCardId
 import com.example.banana.databinding.FragmentHomeBinding
 import com.example.banana.retrofit.API
 import com.example.banana.retrofit.RetrofitInstance
-import com.example.banana.viewModel.DetailCardDataViewModel
-import com.example.banana.viewModel.MyCardIdViewModel
 import android.widget.*
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.banana.activity.CreateQRActivity
-import com.example.banana.R
-import com.example.banana.adapter.KeywordViewAdapter
 import com.example.banana.data.*
-import com.example.banana.databinding.FragmentHomeBinding
-import com.example.banana.retrofit.API
-import com.example.banana.retrofit.RetrofitInstance
 import com.example.banana.viewModel.HomeViewModel
-import com.google.android.flexbox.FlexDirection
-import com.google.android.flexbox.FlexWrap
-import com.google.android.flexbox.FlexboxLayoutManager
-import com.google.android.flexbox.JustifyContent
 import retrofit2.Call
 import retrofit2.Response
 
@@ -57,7 +36,9 @@ class HomeFragment : Fragment() {
     private lateinit var viewModel : HomeViewModel
     private lateinit var cardIdlist : getCardResponseModel
 
-
+    fun newInstance() : HomeFragment{
+        return HomeFragment()
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         retAPI = RetrofitInstance.retrofitInstance().create(API::class.java)

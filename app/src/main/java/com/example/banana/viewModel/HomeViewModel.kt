@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.banana.R
 import com.example.banana.adapter.KeywordViewAdapter
+import com.example.banana.auth.authApplication
 import com.example.banana.data.*
 import com.example.banana.retrofit.API
 import com.example.banana.retrofit.RetrofitInstance
@@ -79,25 +80,17 @@ class HomeViewModel : ViewModel() {
     //카드 id 가져오기
     fun getBusinessCardId() {
         APIS = RetrofitInstance.retrofitInstance().create(API::class.java)
-        val token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjg5MDUzNTgwLCJleHAiOjE2OTE2NDU1ODB9.I3ART9XCYkp1l7YnC6cGv6uMvCwBqsqcUW2r1GXMKx4"
+        val token = authApplication.prefs.getString("accessToken", "")
+//        val token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjg5MDUzNTgwLCJleHAiOjE2OTE2NDU1ODB9.I3ART9XCYkp1l7YnC6cGv6uMvCwBqsqcUW2r1GXMKx4"
         viewModelScope.launch {
             try{
-
                 APIS.getBusinessCardId(token).enqueue(object : retrofit2.Callback<ArrayList<businessCardIdData>> {
                     override fun onResponse(call: Call<ArrayList<businessCardIdData>>, response: Response<ArrayList<businessCardIdData>>) {
                         if (response.isSuccessful) {
-
-
                             Log.d("businessCardIdData Response : ", "success")
-
-
                             _businessCardId.value = response.body()
                             showCard1()
-
-
                             Log.d("businessCardIdData : " , response.body().toString())
-
-
                         } else {
                             Log.d("businessCardIdData : " , response.body().toString())
                             Log.d("businessCardIdData : " , response.message())

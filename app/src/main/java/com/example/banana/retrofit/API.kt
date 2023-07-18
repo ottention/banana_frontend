@@ -32,14 +32,12 @@ interface API {
         @Body request: LoginGoogle_at_RequestModel
     ):Call<LoginGoogle_at_ResponseModel>
 
-
     // kakao login
     @POST("token")
     @FormUrlEncoded
     fun sendkakaoToken(
         @Field("accessToken") accessToken: String
     ):Call<LoginKaKaoResponseModel>
-
 
     // google login
     @POST("idToken")
