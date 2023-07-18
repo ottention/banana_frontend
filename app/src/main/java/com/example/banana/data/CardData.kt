@@ -32,6 +32,8 @@ data class saveCardRequestModel(
 
 )
 data class getCardResponseModel(
+    @SerializedName("businessCardId")
+    var businessCardId : Long,
     @SerializedName("isPublic")
     var isPublic : Boolean ?,
     @SerializedName("isPresent")
