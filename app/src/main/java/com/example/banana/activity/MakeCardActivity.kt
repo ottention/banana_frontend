@@ -308,6 +308,7 @@ class MakeCardActivity : AppCompatActivity() {
         override fun onClick(v: View?) {
 
                     val image = ImageView(v!!.context)
+                    val imageD = v.background
                     image.setImageDrawable(v.background)
                     if(image!=null) {
                         image.drawable.setTint(Color.BLACK)

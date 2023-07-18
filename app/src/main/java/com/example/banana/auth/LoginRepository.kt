@@ -165,33 +165,6 @@ class LoginRepository {
         return flag
     }
 
-
-//    public fun getQRCode() {
-//        LoginService.loginRetrofit(sendTokenBaseUrl).getQRCode().enqueue(object : retrofit2.Callback<ResponseGetQRCode>{
-//            override fun onResponse(call: Call<ResponseGetQRCode>, response: Response<ResponseGetQRCode>) {
-//                if (response.isSuccessful) {
-//                    var imageString = response.body()?.qrImage
-////                    var toBitmap = BitmapFactory.decodeByteArray(image,0,image!!.size)
-////                    var bitmap = BitmapFactory.decodeStream(imageString)
-//                    val imageBytes = Base64.decode(imageString,0)
-//                    val image = BitmapFactory.decodeByteArray(imageBytes,0,imageBytes.size)
-////                    val imageViewQrCode: ImageView = findViewById<View>(R.id.imageViewQrCode) as ImageView
-////                    imageViewQrCode.setImageBitmap(image)
-//                    Log.d("getQr Response : ", "goood 1")
-//
-//                } else {
-//                    Log.d("getQr Response : ", "Fail 1")
-//                }
-//            }
-//            override fun onFailure(call: Call<ResponseGetQRCode>, t: Throwable) {
-//                Log.d("getQr Response : ", "Fail 2")
-//            }
-//
-//        })
-//    }
-
-
-
         fun saveJWT(accessToken: String, refreshToken: String) {
             Log.d("Login : ", "saveJWT")
             authApplication.prefs.setString("accessToken", accessToken)

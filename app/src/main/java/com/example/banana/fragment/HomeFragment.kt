@@ -19,6 +19,7 @@ import com.example.banana.activity.CreateQRActivity
 import com.example.banana.R
 import com.example.banana.activity.JoinActivity
 import com.example.banana.activity.MainActivity
+import com.example.banana.auth.authApplication
 import com.example.banana.data.ResponseGetQRCode
 import com.example.banana.data.businessCardId
 import com.example.banana.databinding.FragmentHomeBinding
@@ -57,6 +58,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        Log.d("homeFragment", authApplication.prefs.getString("accessToken", "").toString())
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val view = binding.root
         CardIdsviewModel = ViewModelProvider(this).get(MyCardIdViewModel::class.java)

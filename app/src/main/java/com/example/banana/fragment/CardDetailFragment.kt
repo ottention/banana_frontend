@@ -158,7 +158,8 @@ class CardDetailFragment : Fragment() {
             image.layoutParams = imageLayoutParams
             image.x = i.coordinate!!.xAxis!!
             image.y = i.coordinate!!.yAxis!!
-            Glide.with(c!!).load(i.imageUrl).into(image)
+            image.setImageURI(Uri.parse(i.imageUrl))
+//            Glide.with(c!!).load(i.imageUrl).into(image)
             if (image.getParent() != null)
                     (image.getParent() as ViewGroup).removeView(
                         image

@@ -30,7 +30,7 @@ class AddCardViewModel  : ViewModel() {
         viewModelScope.launch {
             try{
                 APIS.updateMyCard(
-                    "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjg5MDUzNTgwLCJleHAiOjE2OTE2NDU1ODB9.I3ART9XCYkp1l7YnC6cGv6uMvCwBqsqcUW2r1GXMKx4",
+                    token,
                     cardId,card
                 ).enqueue(object : retrofit2.Callback<ObjectUtils.Null> {
                     override fun onFailure(call: Call<ObjectUtils.Null>, t: Throwable) {
@@ -59,13 +59,12 @@ class AddCardViewModel  : ViewModel() {
 
     fun saveCardData(card: cardRequestData) {
         APIS = RetrofitInstance.retrofitInstance().create(API::class.java)
-//        val token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjg5MDUzNTgwLCJleHAiOjE2OTE2NDU1ODB9.I3ART9XCYkp1l7YnC6cGv6uMvCwBqsqcUW2r1GXMKx4"
         val token = authApplication.prefs.getString("accessToken", "")
 
         viewModelScope.launch {
             try{
                 APIS.saveMyCard(
-                    "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjg5MDUzNTgwLCJleHAiOjE2OTE2NDU1ODB9.I3ART9XCYkp1l7YnC6cGv6uMvCwBqsqcUW2r1GXMKx4",
+                    token,
                     card
                 ).enqueue(object : retrofit2.Callback<AddCardDataResponseModel> {
                     override fun onFailure(call: Call<AddCardDataResponseModel>, t: Throwable) {
