@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
 <LinearLayout
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -7,8 +8,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    tools:context=".fragment.CardDetailFragment">
+    tools:context=".fragment.ChartCardDetailFragment">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -35,7 +35,7 @@
         <TextView
             android:fontFamily="@font/montserrat_bold"
             android:textSize="16dp"
-            android:text="Card 01"
+            android:text="김하나님의 명함"
             android:gravity="center"
             android:textColor="@color/black"
             android:layout_width="wrap_content"
@@ -93,21 +93,26 @@
                 android:layout_weight="1"/>
 
             <Button
-                android:id="@+id/card_delete_button"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:background="@drawable/icon_delete"/>
-            <Button
-                android:id="@+id/btn_card_edit"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:background="@drawable/icon_edit"/>
+                android:id="@+id/btn_heart"
+                android:layout_width="16.67dp"
+                android:layout_height="15.29dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/favorite_selected"/>
+
+            <TextView
+                android:fontFamily="@font/pretendardregular"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="24"/>
 
 
         </LinearLayout>
 
         <FrameLayout
-            android:layout_width="340dp"
+            android:layout_width="350dp"
             android:layout_gravity="center"
             android:layout_height="170dp">
 
@@ -175,141 +180,51 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Keywords"
-                android:textColor="#66000000"
+                android:text="방명록 작성"
+                android:fontFamily="@font/pretendardmedium"
+                android:textColor="@color/black"
                 android:textSize="14dp" />
 
             <View
-                android:layout_width="65dp"
+                android:layout_width="74dp"
                 android:layout_height="1dp"
                 android:layout_marginTop="3dp"
-                android:background="#66000000" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingTop="10dp"
-                android:overScrollMode="never"
-                app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
-                app:flexWrap="wrap">
-
-            </androidx.recyclerview.widget.RecyclerView>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="145dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+                android:background="@color/black" />
 
             <LinearLayout
-                android:layout_marginBottom="15dp"
-                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:padding="5dp"
+                android:background="@color/white"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:layout_marginRight="10dp"
+                android:layout_height="50dp">
 
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="최근 방명록"
-                        android:textColor="#66000000"
-                        android:textSize="14dp" />
-
-                    <View
-                        android:layout_width="70dp"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="3dp"
-                        android:background="#66000000" />
-
-                </LinearLayout>
+                <EditText
+                    android:id="@+id/comment_area"
+                    android:layout_width="277dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:background="@null"
+                    android:fontFamily="@font/pretendardregular"
+                    android:hint="방명록은 최대 24자까지 작성 가능합니다."
+                    android:maxLength="24"
+                    android:textSize="14sp" />
 
                 <View
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_weight="1"/>
 
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="바로가기"
-                        android:textColor="#66000000"
-                        android:textSize="14dp" />
-
-                    <Button
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:background="@drawable/icon_arrow_forward"/>
-                </LinearLayout>
-
+                <Button
+                    android:id="@+id/btn_add_comment"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="48dp"
+                    android:layout_height="28dp"
+                    android:background="@drawable/btn_add"/>
             </LinearLayout>
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:fontFamily="@font/pretendardregular"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="2022.15.03"
-                    android:textSize="12dp"
-                    android:textColor="#66000000" />
-                
-                <TextView
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/pretendardregular"
-                    android:gravity="center"
-                    android:layout_width="350dp"
-                    android:layout_height="20dp"
-                    android:layout_marginTop="3dp"
-                    android:background="@color/white"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:fontFamily="@font/pretendardregular"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="2022.15.03"
-                    android:textSize="12dp"
-                    android:textColor="#66000000" />
-
-                <TextView
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/pretendardregular"
-                    android:gravity="center"
-                    android:layout_width="350dp"
-                    android:layout_height="20dp"
-                    android:layout_marginTop="3dp"
-                    android:background="@color/white"/>
-
-            </LinearLayout>
 
 
         </LinearLayout>
@@ -317,4 +232,16 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</LinearLayout></layout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+
+</LinearLayout>
+</layout>
+
+

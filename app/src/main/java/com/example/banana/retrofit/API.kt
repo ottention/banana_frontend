@@ -55,12 +55,6 @@ interface API {
         @Field("refreshToken") refreshToken: String
     ):Call<reIssueResponseModel>
 
-    // 내가 가진 카드들 id값 받아오기
-    @GET("businessCard/home")
-    fun getMyCards(
-        @Header("Authorization") Authorization: String,
-    ): Call<ArrayList<businessCardId>>
-
     // card 생성
     @POST("businessCard/save")
     fun saveMyCard(
@@ -91,6 +85,14 @@ interface API {
 
     ) : Call<ArrayList<comment>>
 
+    // 타인명함에 방명록 쓰기
+    @POST("banana/businessCard/{businessCardId}/writeGuestBook")
+    fun addComment(
+        @Header("Authorization") Authorization : String,
+        @Path("businessCardId") businessCardId : Long,
+        @Body content : ccomment
+        ) : Call<Long>
+
 
     // 자신의 카드 삭제
     @DELETE("businessCard/{businessCardId}/delete")
@@ -120,5 +122,6 @@ interface API {
     fun getBusinessCardId(
         @Header("Authorization") Authorization : String,
     ) : Call<ArrayList<businessCardIdData>>
+
 
 }

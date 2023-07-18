@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.banana.R
+import com.example.banana.fragment.ChartCardDetailFragment
 import com.example.banana.data.getCardResponseModel
 import com.example.banana.fragment.ChartFragment
 import com.example.banana.fragment.HomeFragment
@@ -23,6 +24,7 @@ class FragmentActivity : AppCompatActivity() {
         val Homefragment = HomeFragment().newInstance()
         val ChartFragment = ChartFragment().newInstance()
         val WalletFragment = WalletFragment().newInstance()
+        val ChartCardDetailFragment = ChartCardDetailFragment().newInstance()
         val CommentFragment = VisitorCommentsFragment().newInstance()
         transaction.replace(R.id.frameArea, Homefragment)
         transaction.addToBackStack(null)
@@ -46,7 +48,7 @@ class FragmentActivity : AppCompatActivity() {
                 }
                 R.id.tab3 -> {
                     val transaction = manager.beginTransaction()
-                    transaction.replace(R.id.frameArea, WalletFragment)
+                    transaction.replace(R.id.frameArea, ChartCardDetailFragment)
                     transaction.commit()
                     true
                 }
