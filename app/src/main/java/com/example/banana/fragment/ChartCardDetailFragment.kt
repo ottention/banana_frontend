@@ -1,5 +1,4 @@
 package com.example.banana.fragment
-
 import android.content.Context
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.os.Bundle
@@ -65,3 +64,4 @@ class ChartCardDetailFragment : Fragment() {
 
 
 }
+

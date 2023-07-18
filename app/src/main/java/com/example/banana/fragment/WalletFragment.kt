@@ -43,6 +43,11 @@ class WalletFragment : Fragment() {
         defaultWallet()
         binding.recentMarkedCard1.setOnClickListener {
             Toast.makeText(context, "즐겨찾기 ->명함 상세페이지 이동",Toast.LENGTH_SHORT).show()
+            val otherCardDetailFragment = OtherCardDetailFragment()
+            fragmentManager?.beginTransaction()?.apply {
+                replace(R.id.frameArea,otherCardDetailFragment)
+                commit()
+            }
         }
         binding.recentMarkedCard2.setOnClickListener {
             Toast.makeText(context, "즐겨찾기 ->명함 상세페이지 이동",Toast.LENGTH_SHORT).show()

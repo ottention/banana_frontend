@@ -1,6 +1,7 @@
 package com.example.banana
 
 import android.content.Context
+import android.net.Uri
 import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -39,8 +40,9 @@ class addTagbottomDialog (context: Context) : BottomSheetDialogFragment()
 
         val view = inflater.inflate(R.layout.fragment_tag_bottomsheet, container, false)
 
-        val tagAd = TagViewAdapter(activity!!.baseContext, tagList)
+        val tagAd = TagViewAdapter(activity!!.baseContext, tagList, onClickDelete = {removeTag(it)})
         flexBoxAdapter =tagAd
+
         FlexboxLayoutManager(this.context).apply {
             flexWrap = FlexWrap.WRAP
             flexDirection = FlexDirection.ROW
@@ -72,5 +74,6 @@ class addTagbottomDialog (context: Context) : BottomSheetDialogFragment()
         tagList.removeAt(pos)
         flexBoxAdapter.notifyDataSetChanged()
     }
+
 
 }

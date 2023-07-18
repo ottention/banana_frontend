@@ -9,10 +9,10 @@ object RetrofitInstance {
 
     private const val baseUrl = "http://52.78.202.79:8080/"
 
-
     fun retrofitInstance(): Retrofit {
         return Retrofit.Builder()
             .baseUrl(baseUrl)
+            .addConverterFactory(NullOnEmptyConverterFactory())
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
             .build()
     }
