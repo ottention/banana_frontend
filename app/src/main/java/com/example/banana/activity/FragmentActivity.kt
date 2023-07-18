@@ -6,6 +6,7 @@ import android.os.Bundle
 import com.example.banana.R
 import com.example.banana.fragment.ChartFragment
 import com.example.banana.fragment.HomeFragment
+import com.example.banana.fragment.VisitorCommentsFragment
 import com.example.banana.fragment.WalletFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -21,6 +22,7 @@ class FragmentActivity : AppCompatActivity() {
         val Homefragment = HomeFragment().newInstance()
         val ChartFragment = ChartFragment().newInstance()
         val WalletFragment = WalletFragment().newInstance()
+        val CommentFragment = VisitorCommentsFragment().newInstance()
         transaction.replace(R.id.frameArea, Homefragment)
         transaction.addToBackStack(null)
         transaction.commit()
@@ -48,8 +50,9 @@ class FragmentActivity : AppCompatActivity() {
                     true
                 }
                 R.id.tab4 -> {
-                    val intent = Intent(this, MakeCardActivity::class.java)
-                    startActivity(intent)
+                    val transaction = manager.beginTransaction()
+                    transaction.replace(R.id.frameArea, CommentFragment)
+                    transaction.commit()
 
                     true
                 }

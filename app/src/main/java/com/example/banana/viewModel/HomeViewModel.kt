@@ -94,6 +94,7 @@ class HomeViewModel : ViewModel() {
                             _businessCardId.value = response.body()
                             showCard1()
 
+
                             Log.d("businessCardIdData : " , response.body().toString())
 
 

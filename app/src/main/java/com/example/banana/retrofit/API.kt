@@ -32,9 +32,10 @@ interface API {
     ) : Call<ResponseGetQRCode>
 
     //자신의 명함 방명록 조회
-    @GET("banana/businessCard/1/guestBook")
+    @GET("banana/businessCard/{cardId}/guestBook")
     fun getMyCardComments(
         @Header("Authorization") Authorization : String,
+        @Path("cardId") cardId: Long,
         @Query("page") page : Int,
 
     ) : Call<ArrayList<comment>>
