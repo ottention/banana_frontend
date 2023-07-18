@@ -83,9 +83,10 @@ interface API {
     ) : Call<ResponseGetQRCode>
 
     //자신의 명함 방명록 조회
-    @GET("banana/businessCard/1/guestBook")
+    @GET("banana/businessCard/{cardId}/guestBook")
     fun getMyCardComments(
         @Header("Authorization") Authorization : String,
+        @Path("cardId") cardId: Long,
         @Query("page") page : Int,
 
     ) : Call<ArrayList<comment>>
@@ -106,5 +107,18 @@ interface API {
         @Body cardRequestData : cardRequestData
 
     ): Call<Null>
+
+    //내가 작성한 방명록 조회
+    @GET("banana/myWrittenGuestBooks")
+    fun getCommentsIwrote(
+        @Header("Authorization") Authorization : String,
+        @Query("page") page : Int
+    ) : Call<ArrayList<comment>>
+
+    //홈 화면 cardId 조회
+    @GET("businessCard/home")
+    fun getBusinessCardId(
+        @Header("Authorization") Authorization : String,
+    ) : Call<ArrayList<businessCardIdData>>
 
 }

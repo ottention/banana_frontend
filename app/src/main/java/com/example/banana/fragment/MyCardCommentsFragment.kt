@@ -23,7 +23,6 @@ class MyCardCommentsFragment : Fragment() {
     private var _binding : FragmentMyCardCommentsBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: MyCardCommentsViewModel
-//    private var commentData = ArrayList<CommentsData>()
 
 
     fun newInstance() : MyCardCommentsFragment {
