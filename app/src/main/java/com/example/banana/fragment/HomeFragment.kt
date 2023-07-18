@@ -50,6 +50,7 @@ class HomeFragment : Fragment() {
         retAPI = RetrofitInstance.retrofitInstance().create(API::class.java)
 
 
+
     }
 
     override fun onCreateView(
@@ -70,10 +71,15 @@ class HomeFragment : Fragment() {
 
 
         //초기 card 01
-        binding.btnCard01.setBackgroundColor(Color.parseColor("#000000"))
-        binding.btnCard01.setTextColor(Color.parseColor("#ffffff"))
+//        binding.btnCard01.setBackgroundColor(Color.parseColor("#ffffff"))
+//        binding.btnCard01.setTextColor(Color.parseColor("#f0f0f0"))
 
 //        viewModel.showCard1()
+//        cardIdlist = viewModel.getCard.value!!
+//
+//        makeUI(cardIdlist,front_card,back_card)
+
+
 
         //card01 클릭
         binding.btnCard01.setOnClickListener {

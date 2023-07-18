@@ -31,7 +31,7 @@ class CommentsIwroteViewModel: ViewModel() {
         viewModelScope.launch {
             try{
 
-                APIS.getCommentsIwrote(token,4).enqueue(object : retrofit2.Callback<ArrayList<comment>> {
+                APIS.getCommentsIwrote(token,1).enqueue(object : retrofit2.Callback<ArrayList<comment>> {
                     override fun onResponse(call: Call<ArrayList<comment>>, response: Response<ArrayList<comment>>) {
                         if (response.isSuccessful) {
 
