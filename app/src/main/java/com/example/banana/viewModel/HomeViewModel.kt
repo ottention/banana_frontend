@@ -41,8 +41,6 @@ class HomeViewModel : ViewModel() {
     var getCard : LiveData<getCardResponseModel> = _getCard
 
 
-
-
     init {
         getBusinessCardId()
     }
@@ -52,10 +50,7 @@ class HomeViewModel : ViewModel() {
     fun showCard1(){
 
         var card01 = _businessCardId.value?.get(0)!!.businessCardId
-
-
         getCard(card01)
-
         Log.d("showCard1",card01.toString())
 
     }
@@ -81,7 +76,6 @@ class HomeViewModel : ViewModel() {
     fun getBusinessCardId() {
         APIS = RetrofitInstance.retrofitInstance().create(API::class.java)
         val token = authApplication.prefs.getString("accessToken", "")
-//        val token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjg5MDUzNTgwLCJleHAiOjE2OTE2NDU1ODB9.I3ART9XCYkp1l7YnC6cGv6uMvCwBqsqcUW2r1GXMKx4"
         viewModelScope.launch {
             try{
                 APIS.getBusinessCardId(token).enqueue(object : retrofit2.Callback<ArrayList<businessCardIdData>> {
@@ -89,7 +83,6 @@ class HomeViewModel : ViewModel() {
                         if (response.isSuccessful) {
                             Log.d("businessCardIdData Response : ", "success")
                             _businessCardId.value = response.body()
-                            showCard1()
                             Log.d("businessCardIdData : " , response.body().toString())
                         } else {
                             Log.d("businessCardIdData : " , response.body().toString())
@@ -148,11 +141,5 @@ class HomeViewModel : ViewModel() {
             }
         }
     }
-
-
-
-
-
-
 
 }

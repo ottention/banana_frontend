@@ -87,12 +87,13 @@ class JoinActivity : AppCompatActivity() {
             )
 
             if(account!=null) {
-                var code = LoginRepository().sendGoogleToken(account.idToken.toString())
-                if( code != -1) {
-                    Log.d("Login", code.toString() )
-                    var intent = Intent(this, FragmentActivity::class.java)
-                    ContextCompat.startActivity(this, intent, null)
-                }
+//                var code =
+                    LoginRepository().sendGoogleToken(account.idToken.toString())
+//                if( code != -1) {
+//                    Log.d("Login", code.toString() )
+//                    var intent = Intent(this, FragmentActivity::class.java)
+//                    ContextCompat.startActivity(this, intent, null)
+//                }
             }
             googleLogout()
         } catch (e: ApiException) {

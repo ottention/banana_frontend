@@ -22,6 +22,7 @@ import com.example.banana.retrofit.API
 import com.example.banana.retrofit.RetrofitInstance
 import android.widget.*
 import com.bumptech.glide.Glide
+import com.example.banana.activity.MakeCardActivity
 import com.example.banana.data.*
 import com.example.banana.viewModel.HomeViewModel
 import retrofit2.Call
@@ -35,6 +36,7 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var viewModel : HomeViewModel
     private lateinit var cardIdlist : getCardResponseModel
+    private lateinit var idList : Array<businessCardIdData>
 
     fun newInstance() : HomeFragment{
         return HomeFragment()
@@ -53,7 +55,7 @@ class HomeFragment : Fragment() {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val view = binding.root
-
+        idList = arrayOf(businessCardIdData(businessCardId = 0L), businessCardIdData(businessCardId = 0L), businessCardIdData(businessCardId = 0L))
         viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
         val front_card = view!!.findViewById<FrameLayout>(R.id.home_card_1)
@@ -63,12 +65,12 @@ class HomeFragment : Fragment() {
         binding.btnCard01.setBackgroundColor(Color.parseColor("#000000"))
         binding.btnCard01.setTextColor(Color.parseColor("#ffffff"))
 
-//        viewModel.showCard1()
 
+        for(i : Int in 0 .. viewModel.businessCardId.value!!.size) {
+            idList[i] = viewModel.businessCardId.value!![i]
+        }
 
         binding.btnCard01.setOnClickListener {
-
-
 
             binding.btnCard01.setBackgroundColor(Color.parseColor("#000000"))
             binding.btnCard01.setTextColor(Color.parseColor("#ffffff"))
@@ -101,7 +103,6 @@ class HomeFragment : Fragment() {
 
             makeUI(cardIdlist,front_card,back_card)
 
-
         }
 
         //card03 클릭
@@ -117,9 +118,7 @@ class HomeFragment : Fragment() {
             binding.btnCard01.setTextColor(Color.parseColor("#f0f0f0"))
 //
             viewModel.showCard3()
-
             cardIdlist = viewModel.getCard.value!!
-
             makeUI(cardIdlist,front_card,back_card)
 
         }
@@ -271,21 +270,20 @@ class HomeFragment : Fragment() {
 
 
 
-
-
-
-
         getQRCode()
 
         //qr코드 버튼
         binding.btnQr.setOnClickListener {
 
-            val intent = Intent(context, CreateQRActivity::class.java)
-            intent.putExtra("QrUrl", imageString)
+//            val intent = Intent(context, CreateQRActivity::class.java)
+//            intent.putExtra("QrUrl", imageString)
+//            Log.d("urllll2", imageString.toString())
+
+            val intent = Intent(context, MakeCardActivity::class.java)
+            intent.putExtra("cardId", -1)
             Log.d("urllll2", imageString.toString())
 
             startActivity(intent,)
-
 
 
         }
