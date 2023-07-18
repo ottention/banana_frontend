@@ -20,5 +20,4 @@ class authApplication : Application() {
         // kakao auth 초기화
         KakaoSdk.init(this,getString(R.string.kakao_app_key))
     }
-
 }

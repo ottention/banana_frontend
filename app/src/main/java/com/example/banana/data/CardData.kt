@@ -1,12 +1,11 @@
 package com.example.banana.data
 
-import android.net.Uri
 import com.google.gson.annotations.SerializedName
 import okhttp3.MultipartBody
+import java.io.Serializable
 
 
-
-data class saveCardRequestModel(
+data class cardRequestData(
     @SerializedName("isPublic")
     var isPublic : Boolean,
     @SerializedName("isPresent")
@@ -29,8 +28,8 @@ data class saveCardRequestModel(
     var backTemplateColor : String,
     @SerializedName("tags")
     var tags : ArrayList<String>
+): Serializable
 
-)
 data class getCardResponseModel(
     @SerializedName("businessCardId")
     var businessCardId : Long,
@@ -56,20 +55,20 @@ data class getCardResponseModel(
     var backTemplateColor : String?,
     @SerializedName("tags")
     var tags : ArrayList<String>?
-)
+): Serializable
 
 data class Link (
     var link : String,
     var linkText : String,
     var isFront : Boolean,
     var coordinate : Coordinate
-)
+): Serializable
 
 data class Image (
     var isFront : Boolean,
     var imageUrl : String,
     var coordinate : Coordinate
-)
+): Serializable
 
 data class SaveFrontBusinessCardRequest(
 //    var frontTemplateColor : String,
@@ -81,7 +80,7 @@ data class SaveFrontBusinessCardRequest(
     var contents : ArrayList<Contents>?,
     @SerializedName("frontImageCoordinates")
     var frontImageCoordinates: ArrayList<FrontImageCoordinates>?
-)
+): Serializable
 {
     data class Contents (
         @SerializedName("content")
@@ -90,13 +89,13 @@ data class SaveFrontBusinessCardRequest(
         var contentSize : String?,
         @SerializedName("coordinate")
         var coordinate : Coordinate?,
-    )
+    ): Serializable
     data class FrontImageCoordinates (
         @SerializedName("xAxis")
         var xAxis : Float?,
         @SerializedName("yAxis")
         var yAxis : Float?
-    )
+    ): Serializable
 
 }
 
@@ -109,7 +108,7 @@ data class Contents (
     var coordinate : Coordinate?,
     @SerializedName("isFront")
     var isFront : Boolean
-)
+): Serializable
 
 
 data class SaveBackBusinessCardRequest(
@@ -125,42 +124,22 @@ data class SaveBackBusinessCardRequest(
         var contentSize : String?,
         @SerializedName("coordinate")
         var coordinate : Coordinate?,
-    )
+    ): Serializable
     data class BackImageCoordinates (
         @SerializedName("xAxis")
         var xAxis : Float?,
         @SerializedName("yAxis")
         var yAxis : Float?
-    )
+    ): Serializable
 }
 
 
 data class Coordinate (
     var xAxis : Float?,
     var yAxis : Float?
-)
+): Serializable
 
-data class saveCardDataRequestModel (
-    @SerializedName("frontRequest")
-    var frontRequest : SaveFrontBusinessCardRequest,
-    @SerializedName("backRequest")
-    var backRequest : SaveBackBusinessCardRequest,
-    @SerializedName("frontImages")
-    var frontImages : ArrayList<MultipartBody.Part>,
-    @SerializedName("backImages")
-    var backImages : ArrayList<MultipartBody.Part>,
-    @SerializedName("tagRequest")
-    var tagRequest : ArrayList<String>
-)
 
-data class frontImages(
-    var mutableList: ArrayList<MultipartBody.Part>?
-)
-
-data class backImages(
-    var mutableList: ArrayList<MultipartBody.Part>?
-)
-
-data class saveCardDataResponseModel (
+data class AddCardDataResponseModel (
     var businessCardId : Long
-)
+): Serializable

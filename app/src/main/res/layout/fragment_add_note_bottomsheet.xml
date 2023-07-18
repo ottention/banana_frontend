@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="622dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/bg_dialog_addtag_btmsheet">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/bg_addtag_box">
+
+        <EditText
+            android:id="@+id/text_note"
+            android:hint="작성노트는 최대 30자까지 작성가능합니다."
+            android:maxLength="5"
+            android:fontFamily="@font/pretendardregular"
+            android:layout_width="wrap_content"
+            android:background="@null"
+            android:textSize="16dp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/btn_add_note"
+            android:layout_gravity="center"
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_template"
+            android:textColor="@color/white"
+            android:text="등록"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

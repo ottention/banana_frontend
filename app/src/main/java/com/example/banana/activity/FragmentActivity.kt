@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.banana.R
+import com.example.banana.data.getCardResponseModel
 import com.example.banana.fragment.ChartFragment
 import com.example.banana.fragment.HomeFragment
 import com.example.banana.fragment.VisitorCommentsFragment
@@ -27,8 +28,8 @@ class FragmentActivity : AppCompatActivity() {
         transaction.addToBackStack(null)
         transaction.commit()
 
-
         val bottom_nav_menu = findViewById<BottomNavigationView>(R.id.bottom_nav_menu)
+
         bottom_nav_menu.setOnItemSelectedListener { item ->
             when(item.itemId)  {
                 R.id.tab1 -> {
@@ -53,7 +54,6 @@ class FragmentActivity : AppCompatActivity() {
                     val transaction = manager.beginTransaction()
                     transaction.replace(R.id.frameArea, CommentFragment)
                     transaction.commit()
-
                     true
                 }
                 else -> false
