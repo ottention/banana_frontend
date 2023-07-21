@@ -66,9 +66,9 @@ class HomeFragment : Fragment() {
         binding.btnCard01.setTextColor(Color.parseColor("#ffffff"))
 
 
-        for(i : Int in 0 .. viewModel.businessCardId.value!!.size) {
-            idList[i] = viewModel.businessCardId.value!![i]
-        }
+//        for(i : Int in 0 .. viewModel.businessCardId.value!!.size) {
+//            idList[i] = viewModel.businessCardId.value!![i]
+//        }
 
         binding.btnCard01.setOnClickListener {
 
