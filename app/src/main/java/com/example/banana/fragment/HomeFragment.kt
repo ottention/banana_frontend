@@ -35,8 +35,8 @@ class HomeFragment : Fragment() {
     private var _binding : FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel : HomeViewModel
-    private lateinit var cardIdlist : getCardResponseModel
-    private lateinit var idList : Array<businessCardIdData>
+    private var cardIdlist : getCardResponseModel? = null
+    private lateinit var idList : ArrayList<businessCardIdData>
 
     fun newInstance() : HomeFragment{
         return HomeFragment()
@@ -49,84 +49,136 @@ class HomeFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,//        idList = arrayOf(businessCardIdData(businessCardId = 0L), businessCardIdData(businessCardId = 0L), businessCardIdData(businessCardId = 0L))
+
         savedInstanceState: Bundle?
     ): View? {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val view = binding.root
-        idList = arrayOf(businessCardIdData(businessCardId = 0L), businessCardIdData(businessCardId = 0L), businessCardIdData(businessCardId = 0L))
         viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
-        val front_card = view!!.findViewById<FrameLayout>(R.id.home_card_1)
-        val back_card = view!!.findViewById<FrameLayout>(R.id.home_card_2)
+//        idList = arrayListOf(businessCardIdData(0L),businessCardIdData(0L),businessCardIdData(0L))
+//
+//        Log.d("idList", idList.toString())
+//
+//
+//
+//        val front_card = view!!.findViewById<FrameLayout>(R.id.home_card_1)
+//        val back_card = view!!.findViewById<FrameLayout>(R.id.home_card_2)
+//
+//        //초기 card 01
+//        binding.btnCard01.setBackgroundColor(Color.parseColor("#000000"))
+//        binding.btnCard01.setTextColor(Color.parseColor("#ffffff"))
+//
+//        binding.btnCard01.setOnClickListener {
+//            for(i : Int in 0 .. viewModel.businessCardId.value!!.size-1) {
+//                idList[i] = viewModel.businessCardId.value!![i]
+//            }
+//
+//            if(idList[0].businessCardId != 0L){
+//
+//
+//
+//                Log.d("idList", idList.toString())
+//                binding.btnCard01.setBackgroundColor(Color.parseColor("#000000"))
+//                binding.btnCard01.setTextColor(Color.parseColor("#ffffff"))
+//
+//                binding.btnCard02.setBackgroundColor(Color.parseColor("#ffffff"))
+//                binding.btnCard02.setTextColor(Color.parseColor("#f0f0f0"))
+//
+//                binding.btnCard03.setBackgroundColor(Color.parseColor("#ffffff"))
+//                binding.btnCard03.setTextColor(Color.parseColor("#f0f0f0"))
+//
+//                viewModel.showCard()
+//
+//                viewModel.getCard.observe(viewLifecycleOwner){
+//                    makeUI(it,front_card,back_card)
+//                }
+//
+//            } else {
+//                binding.homeCard1.setOnClickListener {
+//                    val intent = Intent(context,MakeCardActivity::class.java)
+//                    startActivity(intent)
+//                }
+//
+//            }
+//
+//
+//
+//        }
 
-        //초기 card 01
-        binding.btnCard01.setBackgroundColor(Color.parseColor("#000000"))
-        binding.btnCard01.setTextColor(Color.parseColor("#ffffff"))
+//        val front_card = view!!.findViewById<FrameLayout>(R.id.home_card_1)
+//        val back_card = view!!.findViewById<FrameLayout>(R.id.home_card_2)
+//
+//        //초기 card 01
+//        binding.btnCard01.setBackgroundColor(Color.parseColor("#000000"))
+//        binding.btnCard01.setTextColor(Color.parseColor("#ffffff"))
 
 
 //        for(i : Int in 0 .. viewModel.businessCardId.value!!.size) {
 //            idList[i] = viewModel.businessCardId.value!![i]
 //        }
 
-        binding.btnCard01.setOnClickListener {
-
-            binding.btnCard01.setBackgroundColor(Color.parseColor("#000000"))
-            binding.btnCard01.setTextColor(Color.parseColor("#ffffff"))
-
-            binding.btnCard02.setBackgroundColor(Color.parseColor("#ffffff"))
-            binding.btnCard02.setTextColor(Color.parseColor("#f0f0f0"))
-
-            binding.btnCard03.setBackgroundColor(Color.parseColor("#ffffff"))
-            binding.btnCard03.setTextColor(Color.parseColor("#f0f0f0"))
-            viewModel.showCard1()
-            cardIdlist = viewModel.getCard.value!!
-
-            makeUI(cardIdlist,front_card,back_card)
-
-        }
-
-        //card02 클릭
-        binding.btnCard02.setOnClickListener {
-            binding.btnCard02.setBackgroundColor(Color.parseColor("#000000"))
-            binding.btnCard02.setTextColor(Color.parseColor("#ffffff"))
-
-            binding.btnCard01.setBackgroundColor(Color.parseColor("#ffffff"))
-            binding.btnCard01.setTextColor(Color.parseColor("#f0f0f0"))
-
-            binding.btnCard03.setBackgroundColor(Color.parseColor("#ffffff"))
-            binding.btnCard03.setTextColor(Color.parseColor("#f0f0f0"))
-            viewModel.showCard2()
-
-            cardIdlist = viewModel.getCard.value!!
-
-            makeUI(cardIdlist,front_card,back_card)
-
-        }
-
-        //card03 클릭
-        binding.btnCard03.setOnClickListener {
-
-            binding.btnCard03.setBackgroundColor(Color.parseColor("#000000"))
-            binding.btnCard03.setTextColor(Color.parseColor("#ffffff"))
-
-            binding.btnCard02.setBackgroundColor(Color.parseColor("#ffffff"))
-            binding.btnCard02.setTextColor(Color.parseColor("#f0f0f0"))
-
-            binding.btnCard01.setBackgroundColor(Color.parseColor("#ffffff"))
-            binding.btnCard01.setTextColor(Color.parseColor("#f0f0f0"))
+//        binding.btnCard01.setOnClickListener {
 //
-            viewModel.showCard3()
-            cardIdlist = viewModel.getCard.value!!
-            makeUI(cardIdlist,front_card,back_card)
-
-        }
+//
+//            binding.btnCard01.setBackgroundColor(Color.parseColor("#000000"))
+//            binding.btnCard01.setTextColor(Color.parseColor("#ffffff"))
+//
+//            binding.btnCard02.setBackgroundColor(Color.parseColor("#ffffff"))
+//            binding.btnCard02.setTextColor(Color.parseColor("#f0f0f0"))
+//
+//            binding.btnCard03.setBackgroundColor(Color.parseColor("#ffffff"))
+//            binding.btnCard03.setTextColor(Color.parseColor("#f0f0f0"))
+//            viewModel.showCard1()
+//            cardIdlist = viewModel.getCard.value!!
+//
+//            makeUI(cardIdlist,front_card,back_card)
+//
+//        }
+//
+//        //card02 클릭
+//        binding.btnCard02.setOnClickListener {
+//            binding.btnCard02.setBackgroundColor(Color.parseColor("#000000"))
+//            binding.btnCard02.setTextColor(Color.parseColor("#ffffff"))
+//
+//            binding.btnCard01.setBackgroundColor(Color.parseColor("#ffffff"))
+//            binding.btnCard01.setTextColor(Color.parseColor("#f0f0f0"))
+//
+//            binding.btnCard03.setBackgroundColor(Color.parseColor("#ffffff"))
+//            binding.btnCard03.setTextColor(Color.parseColor("#f0f0f0"))
+//            viewModel.showCard2()
+//
+//            cardIdlist = viewModel.getCard.value!!
+//
+//            makeUI(cardIdlist,front_card,back_card)
+//
+//        }
+//
+//        //card03 클릭
+//        binding.btnCard03.setOnClickListener {
+//
+//            binding.btnCard03.setBackgroundColor(Color.parseColor("#000000"))
+//            binding.btnCard03.setTextColor(Color.parseColor("#ffffff"))
+//
+//            binding.btnCard02.setBackgroundColor(Color.parseColor("#ffffff"))
+//            binding.btnCard02.setTextColor(Color.parseColor("#f0f0f0"))
+//
+//            binding.btnCard01.setBackgroundColor(Color.parseColor("#ffffff"))
+//            binding.btnCard01.setTextColor(Color.parseColor("#f0f0f0"))
+////
+//            viewModel.showCard3()
+//            cardIdlist = viewModel.getCard.value!!
+//            makeUI(cardIdlist,front_card,back_card)
+//
+//        }
 
 
         return view
 
     }
+
 
     fun makeUI(cardData : getCardResponseModel, front_card: FrameLayout, back_card: FrameLayout) {
 
@@ -258,12 +310,157 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         super.onViewCreated(view, savedInstanceState)
+        idList = arrayListOf(businessCardIdData(0L),businessCardIdData(0L),businessCardIdData(0L))
+
+        Log.d("idList", idList.toString())
 
 
+
+        val front_card = view!!.findViewById<FrameLayout>(R.id.home_card_1)
+        val back_card = view!!.findViewById<FrameLayout>(R.id.home_card_2)
 
         //초기 card 01
-        binding.btnCard01.setBackgroundColor(Color.parseColor("#000000"))
-        binding.btnCard01.setTextColor(Color.parseColor("#ffffff"))
+//        binding.btnCard01.setBackgroundColor(Color.parseColor("#000000"))
+//        binding.btnCard01.setTextColor(Color.parseColor("#ffffff"))
+
+
+
+        //card01 클릭
+        binding.btnCard01.setOnClickListener {
+            for(i : Int in 0 .. viewModel.businessCardId.value!!.size-1) {
+                idList[i] = viewModel.businessCardId.value!![i]
+            }
+
+            if(idList[0].businessCardId != 0L){
+
+
+
+                Log.d("idList 1", idList.toString())
+                binding.btnCard01.setBackgroundColor(Color.parseColor("#000000"))
+                binding.btnCard01.setTextColor(Color.parseColor("#ffffff"))
+
+                binding.btnCard02.setBackgroundColor(Color.parseColor("#ffffff"))
+                binding.btnCard02.setTextColor(Color.parseColor("#f0f0f0"))
+
+                binding.btnCard03.setBackgroundColor(Color.parseColor("#ffffff"))
+                binding.btnCard03.setTextColor(Color.parseColor("#f0f0f0"))
+
+                viewModel.showCard(idList[0].businessCardId)
+
+                viewModel.getCard.observe(viewLifecycleOwner){
+                    makeUI(it,front_card,back_card)
+                }
+
+            } else {
+                binding.homeCard1.setOnClickListener {
+                    val intent = Intent(context,MakeCardActivity::class.java)
+                    startActivity(intent)
+                }
+
+                binding.homeCard2.setOnClickListener {
+                    val intent = Intent(context,MakeCardActivity::class.java)
+                    startActivity(intent)
+                }
+
+            }
+
+
+
+        }
+
+
+
+        //card02 클릭
+        binding.btnCard02.setOnClickListener {
+
+            for(i : Int in 0 .. viewModel.businessCardId.value!!.size-1) {
+                idList[i] = viewModel.businessCardId.value!![i]
+            }
+
+            if(idList[1].businessCardId != 0L){
+
+
+
+                Log.d("idList 2", idList.toString())
+                binding.btnCard02.setBackgroundColor(Color.parseColor("#000000"))
+                binding.btnCard02.setTextColor(Color.parseColor("#ffffff"))
+
+                binding.btnCard01.setBackgroundColor(Color.parseColor("#ffffff"))
+                binding.btnCard01.setTextColor(Color.parseColor("#f0f0f0"))
+
+                binding.btnCard03.setBackgroundColor(Color.parseColor("#ffffff"))
+                binding.btnCard03.setTextColor(Color.parseColor("#f0f0f0"))
+
+                viewModel.showCard(idList[1].businessCardId)
+
+                viewModel.getCard.observe(viewLifecycleOwner){
+                    makeUI(it,front_card,back_card)
+                }
+
+            } else {
+                binding.homeCard1.setOnClickListener {
+                    val intent = Intent(context,MakeCardActivity::class.java)
+                    startActivity(intent)
+                }
+
+                binding.homeCard2.setOnClickListener {
+                    val intent = Intent(context,MakeCardActivity::class.java)
+                    startActivity(intent)
+                }
+
+            }
+
+
+
+        }
+
+        //card03 클릭
+        binding.btnCard03.setOnClickListener {
+            for(i : Int in 0 .. viewModel.businessCardId.value!!.size-1) {
+                idList[i] = viewModel.businessCardId.value!![i]
+            }
+
+            if(idList[2].businessCardId != 0L){
+
+
+
+                Log.d("idList 3", idList.toString())
+                binding.btnCard03.setBackgroundColor(Color.parseColor("#000000"))
+                binding.btnCard03.setTextColor(Color.parseColor("#ffffff"))
+
+                binding.btnCard02.setBackgroundColor(Color.parseColor("#ffffff"))
+                binding.btnCard02.setTextColor(Color.parseColor("#f0f0f0"))
+
+                binding.btnCard01.setBackgroundColor(Color.parseColor("#ffffff"))
+                binding.btnCard01.setTextColor(Color.parseColor("#f0f0f0"))
+
+                viewModel.showCard(idList[2].businessCardId)
+
+                viewModel.getCard.observe(viewLifecycleOwner){
+                    makeUI(it,front_card,back_card)
+                }
+
+            } else {
+                binding.homeCard1.setOnClickListener {
+                    val intent = Intent(context,MakeCardActivity::class.java)
+                    startActivity(intent)
+                }
+
+                binding.homeCard2.setOnClickListener {
+                    val intent = Intent(context,MakeCardActivity::class.java)
+                    startActivity(intent)
+                }
+
+            }
+
+
+
+
+        }
+
+        //초기 card 01
+//        binding.btnCard01.setBackgroundColor(Color.parseColor("#000000"))
+//        binding.btnCard01.setTextColor(Color.parseColor("#ffffff"))
 
 //        binding.imageView.setImageResource(R.drawable.card011)
 //        binding.imageView2.setImageResource(R.drawable.card012)

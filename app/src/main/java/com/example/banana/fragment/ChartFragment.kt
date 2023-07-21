@@ -45,29 +45,6 @@ class ChartFragment : Fragment() {
         binding.btnTag1.setBackgroundColor(Color.parseColor("#000000"))
 
 
-//        viewModel.topTenTagsList.observe(viewLifecycleOwner) {
-//        binding.btnTag1.text = viewModel.topTenTagsList.value!!.get(0).tag
-//        binding.btnTag2.text = viewModel.topTenTagsList.value!!.get(1).tag
-//        binding.btnTag3.text = viewModel.topTenTagsList.value!!.get(2).tag
-//        binding.btnTag4.text = viewModel.topTenTagsList.value!!.get(3).tag
-//        binding.btnTag5.text = viewModel.topTenTagsList.value!!.get(4).tag
-//        binding.btnTag6.text = viewModel.topTenTagsList.value!!.get(5).tag
-//        binding.btnTag7.text = viewModel.topTenTagsList.value!!.get(6).tag
-//        binding.btnTag8.text = viewModel.topTenTagsList.value!!.get(7).tag
-//        binding.btnTag9.text = viewModel.topTenTagsList.value!!.get(8).tag
-//        binding.btnTag10.text = viewModel.topTenTagsList.value!!.get(9).tag
-//        }
-//        binding.btnTag1.text = viewModel.topTenTags.value!!.get(0).tag
-//        binding.btnTag2.text = viewModel.topTenTags.value!!.get(1).tag
-//        binding.btnTag3.text = viewModel.topTenTags.value!!.get(2).tag
-//        binding.btnTag4.text = viewModel.topTenTags.value!!.get(3).tag
-//        binding.btnTag5.text = viewModel.topTenTags.value!!.get(4).tag
-//        binding.btnTag6.text = viewModel.topTenTags.value!!.get(5).tag
-//        binding.btnTag7.text = viewModel.topTenTags.value!!.get(6).tag
-//        binding.btnTag8.text = viewModel.topTenTags.value!!.get(7).tag
-//        binding.btnTag9.text = viewModel.topTenTags.value!!.get(8).tag
-//        binding.btnTag10.text = viewModel.topTenTags.value!!.get(9).tag
-
         viewModel = ViewModelProvider(this).get(ChartViewModel::class.java)
 
         chartAdapter = ChartAdapter(chartData,::onCardClick,::onLikeClick)
@@ -346,6 +323,9 @@ class ChartFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+        //처음 TOP10 TAG 설정
+
         viewModel.topTenTagsList.observe(viewLifecycleOwner) {
             binding.btnTag1.text = viewModel.topTenTagsList.value!!.get(0).tag
             binding.btnTag2.text = viewModel.topTenTagsList.value!!.get(1).tag
@@ -358,6 +338,8 @@ class ChartFragment : Fragment() {
             binding.btnTag9.text = viewModel.topTenTagsList.value!!.get(8).tag
             binding.btnTag10.text = viewModel.topTenTagsList.value!!.get(9).tag
         }
+
+
     }
 
     //--------------------------------------함수-------------------------------------------
