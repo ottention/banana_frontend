@@ -44,22 +44,36 @@ import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
+import okhttp3.internal.immutableListOf
 import org.apache.commons.lang3.ObjectUtils.Null
 import retrofit2.Call
 import retrofit2.Response
 
-var CardAPI : API = RetrofitInstance.retrofitInstance().create(API::class.java)
+var CardAPI: API = RetrofitInstance.retrofitInstance().create(API::class.java)
 
 lateinit var fragmentActivty: FragmentActivity
+
 class CardDetailFragment : Fragment() {
 
     lateinit var bundle: Bundle
     private lateinit var detailCardDataViewModel: DetailCardDataViewModel
-    private lateinit var binding : FragmentCardDetailBinding
-    private var cardData : getCardResponseModel? = null
+    private lateinit var binding: FragmentCardDetailBinding
+    private var cardData: getCardResponseModel? = null
+    var btnIconSoucre = immutableListOf(
+        R.drawable.icon_notion_black,
+        R.drawable.icon_creditcard_black,
+        R.drawable.icon_phone_book_black,
+        R.drawable.icon_work_black,
+        R.drawable.icon_bookmark_black,
+        R.drawable.icon_check_black,
+        R.drawable.icon_mail_black,
+        R.drawable.icon_phone_blakc,
+        R.drawable.icon_time_black,
+        R.drawable.icon_graduation_black
+    )
 
 
-    fun newInstance() : CardDetailFragment{
+    fun newInstance(): CardDetailFragment {
         return CardDetailFragment()
     }
 
@@ -78,11 +92,11 @@ class CardDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_card_detail,container,false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_card_detail, container, false)
         val view = binding.root
 
 
-        if(bundle == null) {
+        if (bundle == null) {
             // 뒤로가게 하기
             getActivity()!!.getSupportFragmentManager().beginTransaction().remove(this).commit();
             getActivity()!!.getSupportFragmentManager().popBackStack();
@@ -91,9 +105,22 @@ class CardDetailFragment : Fragment() {
         var c = bundle.getLong("cardId")
         detailCardDataViewModel.getCardData(c)
         Log.d("TAG", "done")
-        cardData = getCardResponseModel(0,true, true, null, null, null, null ,null, null, null, null, null)
+        cardData = getCardResponseModel(
+            0,
+            true,
+            true,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+        )
 
-        detailCardDataViewModel.cardData.observe(viewLifecycleOwner){
+        detailCardDataViewModel.cardData.observe(viewLifecycleOwner) {
             cardData = it
             makeUI(cardData!!)
         }
@@ -107,7 +134,7 @@ class CardDetailFragment : Fragment() {
 
         binding.cardDeleteButton.setOnClickListener {
             val dlg = deleteCardDialog(fragmentActivty)
-            dlg.listener = object: deleteCardDialog.LessonDeleteDialogClickedListener {
+            dlg.listener = object : deleteCardDialog.LessonDeleteDialogClickedListener {
                 override fun delete() {
                     CardAPI.removeMyCard(
                         "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjg5MDUzNTgwLCJleHAiOjE2OTE2NDU1ODB9.I3ART9XCYkp1l7YnC6cGv6uMvCwBqsqcUW2r1GXMKx4",
@@ -116,6 +143,7 @@ class CardDetailFragment : Fragment() {
                         override fun onFailure(call: Call<Null>, t: Throwable) {
                             Log.e("TAG", "sendOnFailure: ${t.fillInStackTrace()}")
                         }
+
                         override fun onResponse(
                             call: Call<Null>,
                             response: Response<Null>
@@ -150,34 +178,51 @@ class CardDetailFragment : Fragment() {
         }
     }
 
-    fun drawImage(c : Context, front_card : FrameLayout, back_card : FrameLayout, images : List<Image>) {
+    fun drawImage(
+        c: Context,
+        front_card: FrameLayout,
+        back_card: FrameLayout,
+        images: List<Image>
+    ) {
 
-        for(i in images) {
+        for (i in images) {
             val image = ImageView(c)
             //크기 설정
             var imageLayoutParams = LinearLayout.LayoutParams(100, 100)
             image.layoutParams = imageLayoutParams
             image.x = i.coordinate!!.xAxis!!
             image.y = i.coordinate!!.yAxis!!
-            image.setImageURI(Uri.parse(i.imageUrl))
-//            Glide.with(c!!).load(i.imageUrl).into(image)
+
+            if (i.imageUrl.length <= 2) {
+                Glide.with(c!!).load(btnIconSoucre[i.imageUrl.toInt()]).into(image)
+            } else {
+                Glide.with(c!!).load(i.imageUrl).into(image)
+            }
             if (image.getParent() != null)
-                    (image.getParent() as ViewGroup).removeView(
-                        image
-            )
-            if(i.isFront) {
+                (image.getParent() as ViewGroup).removeView(
+                    image
+                )
+            if (i.isFront) {
                 front_card.addView(image)
-            }else {
+            } else {
                 back_card.addView(image)
             }
+
         }
+
     }
 
-    fun drawText(c : Context, front_card : FrameLayout, back_card : FrameLayout,contents : List<Contents>) {
+    fun drawText(
+        c: Context,
+        front_card: FrameLayout,
+        back_card: FrameLayout,
+        contents: List<Contents>
+    ) {
 
-        for(i in contents) {
+        for (i in contents) {
             val text = TextView(c)
-            var textLayoutParams = LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)
+            var textLayoutParams =
+                LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)
             text.layoutParams = textLayoutParams
 
             // 상세설정
@@ -186,26 +231,31 @@ class CardDetailFragment : Fragment() {
             text.y = i.coordinate!!.yAxis!!
             text.text = i.content
 
-            if(i.contentSize == "h1") {
+            if (i.contentSize == "h1") {
                 text.setTextSize(12.0f)
-            }else {
+            } else {
                 text.setTextSize(16.0f)
             }
             if (text.getParent() != null)
                 (text.getParent() as ViewGroup).removeView(
                     text
                 )
-            if(i.isFront) {
+            if (i.isFront) {
                 front_card.addView(text)
-            }else {
+            } else {
                 back_card.addView(text)
             }
         }
     }
 
-    fun drawLink(c : Context, front_card : FrameLayout, back_card : FrameLayout,contents : List<Link>) {
+    fun drawLink(
+        c: Context,
+        front_card: FrameLayout,
+        back_card: FrameLayout,
+        contents: List<Link>
+    ) {
 
-        for(i in contents) {
+        for (i in contents) {
             val text = TextView(c)
             // 링크설정
             text.linksClickable = true
@@ -226,28 +276,28 @@ class CardDetailFragment : Fragment() {
                     text
                 )
 
-            if(i.isFront) {
+            if (i.isFront) {
                 front_card.addView(text)
-            }else {
+            } else {
                 back_card.addView(text)
             }
         }
     }
 
-    fun makeUI(cardData : getCardResponseModel) {
+    fun makeUI(cardData: getCardResponseModel) {
 
         Log.d("TAG - makeUI", cardData.toString())
         val front_card = view!!.findViewById<FrameLayout>(R.id.detailed_card)
         val back_card = view!!.findViewById<FrameLayout>(R.id.detailed_card_back)
 
-        if(cardData.frontTemplateColor != null) {
+        if (cardData.frontTemplateColor != null) {
             // template 색깔 저장
             front_card.setBackgroundColor(Color.parseColor(cardData.frontTemplateColor))
             back_card.setBackgroundColor(Color.parseColor(cardData.backTemplateColor))
 
             // tag 나열
             var wordList = cardData.tags
-            val flexBoxAdapter =  KeywordViewAdapter(activity!!.baseContext, wordList!!)
+            val flexBoxAdapter = KeywordViewAdapter(activity!!.baseContext, wordList!!)
 
             FlexboxLayoutManager(this.context).apply {
                 flexWrap = FlexWrap.WRAP
@@ -257,19 +307,19 @@ class CardDetailFragment : Fragment() {
 
             view!!.findViewById<RecyclerView>(R.id.recycler_view).adapter = flexBoxAdapter
 
-            var f_listOfImages : ArrayList<Image> = cardData.frontImages!!
-            var b_listOfImages : ArrayList<Image> = cardData.backImages!!
-            var f_listOfContents : ArrayList<Contents> = cardData.frontContents!!
-            var b_listOfContents : ArrayList<Contents> = cardData.backContents!!
-            var f_listOfLinks : ArrayList<Link> = cardData.frontLinks!!
-            var b_listOfLinks : ArrayList<Link> = cardData.backLinks!!
+            var f_listOfImages: ArrayList<Image> = cardData.frontImages!!
+            var b_listOfImages: ArrayList<Image> = cardData.backImages!!
+            var f_listOfContents: ArrayList<Contents> = cardData.frontContents!!
+            var b_listOfContents: ArrayList<Contents> = cardData.backContents!!
+            var f_listOfLinks: ArrayList<Link> = cardData.frontLinks!!
+            var b_listOfLinks: ArrayList<Link> = cardData.backLinks!!
 
             drawImage(context!!, front_card, back_card, f_listOfImages)
             drawImage(context!!, front_card, back_card, b_listOfImages)
-            drawText(context!!,front_card, back_card, f_listOfContents)
-            drawText(context!!,front_card, back_card, b_listOfContents)
-            drawLink(context!!,front_card, back_card, f_listOfLinks)
-            drawLink(context!!,front_card, back_card, b_listOfLinks)
+            drawText(context!!, front_card, back_card, f_listOfContents)
+            drawText(context!!, front_card, back_card, b_listOfContents)
+            drawLink(context!!, front_card, back_card, f_listOfLinks)
+            drawLink(context!!, front_card, back_card, b_listOfLinks)
 
         }
     }

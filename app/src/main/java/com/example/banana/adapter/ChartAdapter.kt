@@ -38,7 +38,6 @@ class ChartAdapter (
             binding.setLikeClick {
                 onLikeClick!!()
 
-//                binding.btnHeart?.isSelected = binding.btnHeart?.isSelected != true
                 if(binding.btnHeart?.isSelected == true) {
                     binding.btnHeart?.isSelected = false
                     var like = chart.favoriteCount.toInt()

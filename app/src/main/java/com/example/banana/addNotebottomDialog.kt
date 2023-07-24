@@ -21,32 +21,29 @@ import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class addNotebottomDialog(context: Context, var note : String) : BottomSheetDialogFragment()
-{
+class addNotebottomDialog(context: Context, var note: String) : BottomSheetDialogFragment() {
     lateinit var listener: addNoteListner
 
-    interface addNoteListner{
-        fun save(note : String)
+    interface addNoteListner {
+        fun save(note: String)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View?
-    {
+    ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogStyle)
         val view = inflater.inflate(R.layout.fragment_add_note_bottomsheet, container, false)
         var text_area = view.findViewById<EditText>(R.id.text_note)
-        if(note != "")
+        if (note != "")
             text_area.setText(note)
 
         return view
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?)
-    {
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
         view?.findViewById<Button>(R.id.btn_add_note)?.setOnClickListener {
