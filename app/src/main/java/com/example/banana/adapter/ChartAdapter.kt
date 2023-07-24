@@ -38,6 +38,7 @@ class ChartAdapter (
             binding.setLikeClick {
                 onLikeClick!!()
 
+//                binding.btnHeart?.isSelected = binding.btnHeart?.isSelected != true
                 if(binding.btnHeart?.isSelected == true) {
                     binding.btnHeart?.isSelected = false
                     var like = chart.favoriteCount.toInt()
@@ -72,6 +73,8 @@ class ChartAdapter (
         holder.rv_chart_card.setImageResource(chartList[position].chartCard)
         holder.rv_rank_text.text = chartList[position].rankText
         holder.rv_favorite_count.text = chartList[position].favoriteCount
+
+//        holder.rv_chart_card = chartList[position].framelayout
 
 
         holder.bind(chartList[position])

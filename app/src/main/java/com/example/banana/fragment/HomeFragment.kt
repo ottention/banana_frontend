@@ -2,6 +2,7 @@ package com.example.banana.fragment
 
 import android.app.ActionBar
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
@@ -25,6 +26,8 @@ import com.bumptech.glide.Glide
 import com.example.banana.activity.MakeCardActivity
 import com.example.banana.data.*
 import com.example.banana.viewModel.HomeViewModel
+import com.google.zxing.BarcodeFormat
+import com.journeyapps.barcodescanner.BarcodeEncoder
 import retrofit2.Call
 import retrofit2.Response
 
@@ -80,16 +83,10 @@ class HomeFragment : Fragment() {
 
             binding.btnCard03.setBackgroundColor(Color.parseColor("#ffffff"))
             binding.btnCard03.setTextColor(Color.parseColor("#f0f0f0"))
+            viewModel.showCard1()
+            cardIdlist = viewModel.getCard.value!!
 
-            // 원래 있던 코드들
-//            viewModel.showCard1()
-//            cardIdlist = viewModel.getCard.value!!
-//            makeUI(cardIdlist,front_card,back_card)
-
-            // 테스트 코드 - 테스트 끝나면 지우기
-            var intent = Intent(context, MakeCardActivity::class.java)
-            intent.putExtra("cardId", -1)
-            startActivity(intent)
+            makeUI(cardIdlist,front_card,back_card)
 
         }
 
@@ -281,15 +278,13 @@ class HomeFragment : Fragment() {
         //qr코드 버튼
         binding.btnQr.setOnClickListener {
 
-//            val intent = Intent(context, CreateQRActivity::class.java)
-//            intent.putExtra("QrUrl", imageString)
-//            Log.d("urllll2", imageString.toString())
-
-            val intent = Intent(context, MakeCardActivity::class.java)
+            val intent = Intent(context, CreateQRActivity::class.java)
             intent.putExtra("cardId", -1)
             Log.d("urllll2", imageString.toString())
 
             startActivity(intent,)
+
+//            generateBitmapQRCode("https://www.naver.com")
 
 
         }
@@ -341,6 +336,10 @@ class HomeFragment : Fragment() {
                 commit()
             }
         }
+    }
+    private fun generateBitmapQRCode(contents: String): Bitmap {
+        val barcodeEncoder = BarcodeEncoder()
+        return barcodeEncoder.encodeBitmap(contents, BarcodeFormat.QR_CODE, 512, 512)
     }
 
 
