@@ -1,6 +1,8 @@
 package com.example.banana.activity
 
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
@@ -8,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.banana.R
 import com.example.banana.retrofit.API
+import com.google.zxing.BarcodeFormat
+import com.google.zxing.qrcode.QRCodeWriter
 
 class CreateQRActivity : AppCompatActivity() {
 
@@ -16,6 +20,7 @@ class CreateQRActivity : AppCompatActivity() {
     private lateinit var retAPI :API
 
     lateinit var imageViewQrCode : ImageView
+    val qa_contents = "https://www.naver.com"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,16 +34,21 @@ class CreateQRActivity : AppCompatActivity() {
         val btn_x = findViewById<ImageView>(R.id.btn_x)
 
 
-        var imageUrl = intent.getStringExtra("QrUrl")
-        Log.d("url", imageUrl.toString())
+
+        createQRCode()
+
+//        var imageUrl = intent.getStringExtra("QrUrl")
+//        Log.d("url", imageUrl.toString())
+//
+//
+//                            Glide.with(this@CreateQRActivity)
+//                        .load(imageUrl)
+//                        .into(imageViewQrCode)
 
 
-                            Glide.with(this@CreateQRActivity)
-                        .load(imageUrl)
-                        .into(imageViewQrCode)
 
 
-        Log.d("urlqr", imageUrl.toString())
+
         //뒤로가기 버튼
         btn_x.setOnClickListener{
             val intent = Intent(this, FragmentActivity::class.java)
@@ -47,6 +57,29 @@ class CreateQRActivity : AppCompatActivity() {
 
 //        getQRCode()
 
+    }
+
+    fun createQRCode(){
+        val qrCode = QRCodeWriter()
+        val bitMtx = qrCode.encode(
+            qa_contents,
+            BarcodeFormat.QR_CODE,
+            350,
+            350
+        )
+        val bitmap: Bitmap = Bitmap.createBitmap(bitMtx.width, bitMtx.height, Bitmap.Config.RGB_565)
+        for(i in 0 .. bitMtx.width-1){
+            for(j in 0 .. bitMtx.height-1){
+                var color = 0
+                if(bitMtx.get(i, j)){
+                    color = Color.BLACK
+                }else{
+                    color = Color.WHITE
+                }
+                bitmap.setPixel(i, j, color)
+            }
+        }
+        imageViewQrCode.setImageBitmap(bitmap)
     }
 
 //    val accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjg3OTM3MjQ3LCJleHAiOjE2OTA1MjkyNDd9.aiKbUg52Uj0rSvQTumCd_pfvc_SOlk6C4xKcaN1tZbE"
