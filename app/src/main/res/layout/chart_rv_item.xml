@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
             name="likeClick"
@@ -12,8 +14,6 @@
             type="com.example.banana.data.ChartData" />
     </data>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
@@ -40,15 +40,14 @@
 
         <ImageView
             android:id="@+id/btn_heart"
-            android:layout_marginRight="5.6dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/favorite"
             android:background="@drawable/selector"
+            android:onClick="@{likeClick}"
+            android:src="@drawable/favorite"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/favorite_count"
-            app:layout_constraintTop_toTopOf="parent"
-            android:onClick="@{likeClick}"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/favorite_count"

@@ -2,13 +2,18 @@ package com.example.banana.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.banana.R
 import com.example.banana.data.ChartData
+import com.example.banana.data.Image
 import com.example.banana.databinding.ChartRvItemBinding
+
 
 class ChartAdapter (
 //    private val chartData: ArrayList<ChartData>,
@@ -74,6 +79,9 @@ class ChartAdapter (
         holder.rv_rank_text.text = chartList[position].rankText
         holder.rv_favorite_count.text = chartList[position].favoriteCount
 
+
+
+
 //        holder.rv_chart_card = chartList[position].framelayout
 
 
@@ -85,6 +93,7 @@ class ChartAdapter (
     override fun getItemCount(): Int {
         return chartList.size
     }
+
 
 
 }
