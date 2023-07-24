@@ -74,6 +74,8 @@ class ChartAdapter (
         holder.rv_rank_text.text = chartList[position].rankText
         holder.rv_favorite_count.text = chartList[position].favoriteCount
 
+//        holder.rv_chart_card = chartList[position].framelayout
+
 
         holder.bind(chartList[position])
 

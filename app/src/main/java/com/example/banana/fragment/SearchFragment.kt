@@ -45,31 +45,13 @@ class SearchFragment : Fragment() {
         val view = binding.root
 
 
-//        recentSearchWord.clear()
-//
-//        recentSearchWord.add(RecentSearchData("취준생"))
-//        recentSearchWord.add(RecentSearchData("대학생"))
-//        recentSearchWord.add(RecentSearchData("학생"))
-//        recentSearchWord.add(RecentSearchData("개발자"))
-//        recentSearchWord.add(RecentSearchData("디자이너"))
-//        recentSearchWord.add(RecentSearchData("고등학생"))
-//        recentSearchWord.add(RecentSearchData("인스타그램"))
-//        recentSearchWord.add(RecentSearchData("맞팔"))
-//        recentSearchWord.add(RecentSearchData("고등학교"))
-//        recentSearchWord.add(RecentSearchData("대외활동"))
+
 
         viewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
         viewModel.topTenTagsList.observe(viewLifecycleOwner) {
 
             recentSearchAdapter.updateList(it)
-//            recentSearchAdapter = RecentSearchAdapter(recentSearchWord)
-//            binding.rvRecentSearch.adapter = recentSearchAdapter
-//            // binding.rvRecentSearch.layoutManager = GridLayoutManager(context,3)
-//            binding.rvRecentSearch.layoutManager = FlexboxLayoutManager(context).apply {
-//                flexWrap = FlexWrap.WRAP
-//                flexDirection = FlexDirection.ROW
-//                justifyContent = JustifyContent.FLEX_START
-//            }
+
         }
 
 

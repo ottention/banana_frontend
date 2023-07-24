@@ -1,5 +1,6 @@
 package com.example.banana.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,8 +8,16 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.banana.R
 import com.example.banana.data.AlarmData
+import com.example.banana.data.ChartData
 
-class AlarmAdapter(private var alarmData : ArrayList<AlarmData>) : RecyclerView.Adapter<AlarmAdapter.ViewHolder>() {
+class AlarmAdapter(var alarmData : ArrayList<AlarmData>) : RecyclerView.Adapter<AlarmAdapter.ViewHolder>() {
+
+    fun updateList(newList : ArrayList<AlarmData>) {
+        alarmData.clear()
+        alarmData.addAll(newList)
+        Log.d("alarmdata", alarmData.toString())
+        notifyDataSetChanged()
+    }
 
     class ViewHolder(view : View) : RecyclerView.ViewHolder(view) {
 
