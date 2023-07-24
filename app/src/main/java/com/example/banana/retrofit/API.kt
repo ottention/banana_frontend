@@ -121,5 +121,11 @@ interface API {
         @Header("Authorization") Authorization : String,
     ) : Call<ArrayList<businessCardIdData>>
 
+   //top10 태그 조회
+    @GET("businessCard/topTenTags")
+    fun getTopTenTags(
+        @Header("Authorization") Authorization : String,
+    ) : Call<ArrayList<TopTenTags>>
+
 
 }

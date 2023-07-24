@@ -2,6 +2,7 @@ package com.example.banana.fragment
 
 import android.app.ActionBar
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
@@ -25,6 +26,8 @@ import com.bumptech.glide.Glide
 import com.example.banana.activity.MakeCardActivity
 import com.example.banana.data.*
 import com.example.banana.viewModel.HomeViewModel
+import com.google.zxing.BarcodeFormat
+import com.journeyapps.barcodescanner.BarcodeEncoder
 import retrofit2.Call
 import retrofit2.Response
 
@@ -66,9 +69,9 @@ class HomeFragment : Fragment() {
         binding.btnCard01.setTextColor(Color.parseColor("#ffffff"))
 
 
-        for(i : Int in 0 .. viewModel.businessCardId.value!!.size) {
-            idList[i] = viewModel.businessCardId.value!![i]
-        }
+//        for(i : Int in 0 .. viewModel.businessCardId.value!!.size) {
+//            idList[i] = viewModel.businessCardId.value!![i]
+//        }
 
         binding.btnCard01.setOnClickListener {
 
@@ -275,15 +278,13 @@ class HomeFragment : Fragment() {
         //qr코드 버튼
         binding.btnQr.setOnClickListener {
 
-//            val intent = Intent(context, CreateQRActivity::class.java)
-//            intent.putExtra("QrUrl", imageString)
-//            Log.d("urllll2", imageString.toString())
-
-            val intent = Intent(context, MakeCardActivity::class.java)
+            val intent = Intent(context, CreateQRActivity::class.java)
             intent.putExtra("cardId", -1)
             Log.d("urllll2", imageString.toString())
 
             startActivity(intent,)
+
+//            generateBitmapQRCode("https://www.naver.com")
 
 
         }
@@ -335,6 +336,10 @@ class HomeFragment : Fragment() {
                 commit()
             }
         }
+    }
+    private fun generateBitmapQRCode(contents: String): Bitmap {
+        val barcodeEncoder = BarcodeEncoder()
+        return barcodeEncoder.encodeBitmap(contents, BarcodeFormat.QR_CODE, 512, 512)
     }
 
 

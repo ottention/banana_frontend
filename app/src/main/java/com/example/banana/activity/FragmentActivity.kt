@@ -48,7 +48,7 @@ class FragmentActivity : AppCompatActivity() {
                 }
                 R.id.tab3 -> {
                     val transaction = manager.beginTransaction()
-                    transaction.replace(R.id.frameArea, ChartCardDetailFragment)
+                    transaction.replace(R.id.frameArea, WalletFragment)
                     transaction.commit()
                     true
                 }
