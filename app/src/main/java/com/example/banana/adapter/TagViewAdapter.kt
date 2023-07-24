@@ -48,3 +48,4 @@ class TagViewAdapter(val context : Context, val stringList : List<String>, priva
     }
 }
 
+

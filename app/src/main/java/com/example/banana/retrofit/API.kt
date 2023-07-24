@@ -8,16 +8,7 @@ import com.example.banana.model.LoginKaKaoResponseModel
 import com.example.banana.model.reIssueResponseModel
 import org.apache.commons.lang3.ObjectUtils.Null
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.DELETE
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.PATCH
-import retrofit2.http.POST
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.http.*
 
 
 interface API {
@@ -83,28 +74,36 @@ interface API {
 
     ) : Call<ArrayList<comment>>
 
+    // 특정 타인 명함에 작성한 방명록 가져오기
+    @GET("banana/businessCard/{guestBookId}/otherGuestBooks")
+    fun getComment(
+        @Header("Authorization") Authorization: String,
+        @Path("guestBookId") guestBookId: Long,
+    ): Call<ArrayList<comment>>
+
     // 타인명함에 방명록 쓰기
     @POST("banana/businessCard/{businessCardId}/writeGuestBook")
     fun addComment(
-        @Header("Authorization") Authorization : String,
-        @Path("businessCardId") businessCardId : Long,
-        @Body content : ccomment
-        ) : Call<Long>
+        @Header("Authorization") Authorization: String,
+        @Path("businessCardId") businessCardId: Long,
+        @Body content: ccomment
+    ): Call<Long>
 
 
     // 자신의 카드 삭제
-    @DELETE("businessCard/{businessCardId}/delete")
-    fun removeMyCard(
+    @POST("businessCard/myGuestBook/{guestBookId}/delete")
+    fun removeComment(
         @Header("Authorization") Authorization: String,
-        @Path("businessCardId") cardId: Long
+        @Path("guestBookId") commentId: Long,
     ): Call<Null>
 
+    // card 수정
     // card 수정
     @PATCH("businessCard/{businessCardId}/update")
     fun updateMyCard(
         @Header("Authorization") Authorization: String,
         @Path("businessCardId") cardId: Long,
-        @Body cardRequestData : cardRequestData
+        @Body cardRequestData: cardRequestData
 
     ): Call<Null>
 
@@ -127,5 +126,64 @@ interface API {
         @Header("Authorization") Authorization : String,
     ) : Call<ArrayList<TopTenTags>>
 
+    // 타인명함에 작성한 방명록 수정하기
+    @POST("businessCard/myGuestBook/{guestBookId}/edit")
+    fun updateComment(
+        @Header("Authorization") Authorization: String,
+        @Path("guestBookId") commentId: Long,
+        @Body content: ccomment
+    ): Call<Null>
+    // 자신의 카드 삭제
+    @DELETE("businessCard/{businessCardId}/delete")
+    fun removeMyCard(
+        @Header("Authorization") Authorization: String,
+        @Path("businessCardId") cardId: Long
+    ): Call<Null>
+    // 좋아요
+    @POST("businessCard/{businessCardId}/like")
+    fun like(
+        @Header("Authorization") Authorization: String,
+        @Path("businessCardId") cardId: Long
+    ): Call<Responselike>
 
+
+    // 좋아요 취소
+    @DELETE("businessCard/{businessCardId}/cancelLike")
+    fun unlike(
+        @Header("Authorization") Authorization: String,
+        @Path("businessCardId") cardId: Long
+    ): Call<Responselike>
+
+    // 작성한 노트 조회
+    @GET("banana/wallet/{id}/notes")
+    fun getNote(
+        @Header("Authorization") Authorization: String,
+        @Path("id") cardId: Long,
+    ): Call<ArrayList<ResponseNote>>
+
+    // 저장한 명함에 노트 추가
+    @POST("banana/wallet/{id}/notes")
+    fun addNote(
+        @Header("Authorization") Authorization: String,
+        @Path("id") cardId: Long,
+        @Body note: note
+    ): Call<Long>
+
+    // 노트 수정
+    @PUT("banana/wallet/{id}/notes/{noteId}")
+    fun updateNote(
+        @Header("Authorization") Authorization: String,
+        @Path("id") id: Long,
+        @Path("noteId") noteId: Long,
+        @Body note: note
+    ): Call<Null>
+
+    // 노트 삭제
+    @DELETE("banana/wallet/{id}/notes/{noteId}")
+    fun deleteNote(
+        @Header("Authorization") Authorization: String,
+        @Path("id") id: Long,
+        @Path("noteId") noteId: Long,
+
+        ): Call<Null>
 }
