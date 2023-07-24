@@ -36,6 +36,7 @@ class DetailCardDataViewModel : ViewModel() {
 
     @SuppressLint("SuspiciousIndentation")
     fun getCardData(cardId: Long) {
+
         APIS = RetrofitInstance.retrofitInstance().create(API::class.java)
         val token = authApplication.prefs.getString("accessToken", "")
         viewModelScope.launch {
