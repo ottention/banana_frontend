@@ -89,9 +89,11 @@ class JoinActivity : AppCompatActivity() {
             if(account!=null) {
 //                var code =
                     LoginRepository().sendGoogleToken(account.idToken.toString())
+                    var intent = Intent(this, FragmentActivity::class.java)
+                    startActivity(intent)
 //                if( code != -1) {
 //                    Log.d("Login", code.toString() )
-//                    var intent = Intent(this, FragmentActivity::class.java)
+
 //                    ContextCompat.startActivity(this, intent, null)
 //                }
             }
