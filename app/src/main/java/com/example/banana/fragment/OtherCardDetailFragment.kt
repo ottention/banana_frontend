@@ -9,30 +9,28 @@ import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.ViewModelProvider
 import com.example.banana.R
 import com.example.banana.addNotebottomDialog
 import com.example.banana.addTagbottomDialog
 import com.example.banana.changeMainCardDialog
-import com.example.banana.data.ResponseNote
-import com.example.banana.data.note
 import com.example.banana.databinding.FragmentAlarmBinding
 import com.example.banana.databinding.FragmentOtherCardDetailBinding
-import com.example.banana.viewModel.DetailCardDataViewModel
-import com.example.banana.viewModel.MyCardCommentsViewModel
 
+// TODO: Rename parameter arguments, choose names that match
+// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+private const val ARG_PARAM1 = "param1"
+private const val ARG_PARAM2 = "param2"
+
+/**
+ * A simple [Fragment] subclass.
+ * Use the [OtherCardDetailFragment.newInstance] factory method to
+ * create an instance of this fragment.
+ */
 class OtherCardDetailFragment : Fragment() {
 
     lateinit var fragmentActivity: FragmentActivity
-    private var _binding: FragmentOtherCardDetailBinding? = null
-    private lateinit var viewModel: DetailCardDataViewModel
-    private var memoDataList: ArrayList<ResponseNote> = arrayListOf()
-    private var cardId: Long = 1
-
+    private var _binding : FragmentOtherCardDetailBinding? = null
     private val binding get() = _binding!!
-    fun newInstance(): OtherCardDetailFragment {
-        return OtherCardDetailFragment()
-    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -41,7 +39,6 @@ class OtherCardDetailFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(DetailCardDataViewModel::class.java)
 
     }
 
@@ -49,33 +46,15 @@ class OtherCardDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        viewModel.MemoData.observe(viewLifecycleOwner) {
-            memoDataList.clear()
-            memoDataList = it
-        }
-
-        var btns = listOf<Button>(binding.btnAddNote1, binding.btnAddNote2)
-
-        _binding = FragmentOtherCardDetailBinding.inflate(inflater, container, false)
-
-        // 새로 추가하기
-        var onaddNoteListner = View.OnClickListener {
-            if (it is Button) {
-                val bottomSheet: addNotebottomDialog =
-                    addNotebottomDialog(fragmentActivity, it.text.toString())
-                bottomSheet.listener = object : addNotebottomDialog.addNoteListner {
-                    override fun save(note: String) {
-                        if (it is Button && (note != null || note != "")) {
+        _binding = FragmentOtherCardDetailBinding.inflate(inflater,container,false)
+        var onClickListener = View.OnClickListener {
+            if(it is Button) {
+                val bottomSheet: addNotebottomDialog = addNotebottomDialog(fragmentActivity, it.text.toString())
+                bottomSheet.listener = object: addNotebottomDialog.addNoteListner {
+                    override fun save(note : String) {
+                        if(it is Button && (note !=null || note != "")){
                             it.text = note
                             it.background = resources.getDrawable(R.drawable.bg_cotent_note)
-                            var note: note = note(it.text.toString())
-                            viewModel.addNote(cardId, note)
-                        }
-
-                        viewModel.MemoData.observe(viewLifecycleOwner) {
-                            memoDataList.clear()
-                            memoDataList = it
                         }
                     }
                 }
@@ -83,49 +62,8 @@ class OtherCardDetailFragment : Fragment() {
             }
         }
 
-        if (memoDataList.size == 1) {
-            binding.btnAddNote1.text = memoDataList[1].content
-            binding.btnAddNote1.background = resources.getDrawable(R.drawable.bg_cotent_note)
-
-        } else if (memoDataList.size == 2) {
-            binding.btnAddNote1.text = memoDataList[1].content
-            binding.btnAddNote1.background = resources.getDrawable(R.drawable.bg_cotent_note)
-            binding.btnAddNote2.text = memoDataList[1].content
-            binding.btnAddNote2.background = resources.getDrawable(R.drawable.bg_cotent_note)
-        }
-
-        for (i in 0..btns.size - 1) {
-            if (btns[i].text.toString().length == 0) {
-                btns[i].setOnClickListener(onaddNoteListner)
-            } else {
-                btns[i].setOnClickListener {
-                    View.OnClickListener {
-                        if (it is Button) {
-                            val bottomSheet: addNotebottomDialog =
-                                addNotebottomDialog(fragmentActivity, it.text.toString())
-                            bottomSheet.listener = object : addNotebottomDialog.addNoteListner {
-                                override fun save(note: String) {
-                                    if (it is Button && (note != null || note != "")) {
-                                        it.text = note
-                                        it.background =
-                                            resources.getDrawable(R.drawable.bg_cotent_note)
-                                        var Newnote = note(it.text.toString())
-                                        viewModel.updateNote(cardId, memoDataList[i].id, Newnote)
-                                    }
-
-                                    viewModel.MemoData.observe(viewLifecycleOwner) {
-                                        memoDataList.clear()
-                                        memoDataList = it
-                                    }
-                                }
-                            }
-                            bottomSheet.show(parentFragmentManager, bottomSheet.tag)
-                        }
-                    }
-                }
-
-            }
-        }
+        binding.btnAddNote1.setOnClickListener(onClickListener)
+        binding.btnAddNote2.setOnClickListener(onClickListener)
 
         val view = binding.root
         return view
@@ -133,5 +71,4 @@ class OtherCardDetailFragment : Fragment() {
 
 
 }
-
 

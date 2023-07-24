@@ -66,9 +66,9 @@ class HomeFragment : Fragment() {
         binding.btnCard01.setTextColor(Color.parseColor("#ffffff"))
 
 
-//        for(i : Int in 0 .. viewModel.businessCardId.value!!.size) {
-//            idList[i] = viewModel.businessCardId.value!![i]
-//        }
+        for(i : Int in 0 .. viewModel.businessCardId.value!!.size) {
+            idList[i] = viewModel.businessCardId.value!![i]
+        }
 
         binding.btnCard01.setOnClickListener {
 
@@ -80,16 +80,10 @@ class HomeFragment : Fragment() {
 
             binding.btnCard03.setBackgroundColor(Color.parseColor("#ffffff"))
             binding.btnCard03.setTextColor(Color.parseColor("#f0f0f0"))
+            viewModel.showCard1()
+            cardIdlist = viewModel.getCard.value!!
 
-            // 원래 있던 코드들
-//            viewModel.showCard1()
-//            cardIdlist = viewModel.getCard.value!!
-//            makeUI(cardIdlist,front_card,back_card)
-
-            // 테스트 코드 - 테스트 끝나면 지우기
-            var intent = Intent(context, MakeCardActivity::class.java)
-            intent.putExtra("cardId", -1)
-            startActivity(intent)
+            makeUI(cardIdlist,front_card,back_card)
 
         }
 

@@ -8,8 +8,6 @@ import com.example.banana.fragment.ChartCardDetailFragment
 import com.example.banana.data.getCardResponseModel
 import com.example.banana.fragment.ChartFragment
 import com.example.banana.fragment.HomeFragment
-import com.example.banana.fragment.MyCardCommentsFragment
-import com.example.banana.fragment.OtherCardDetailFragment
 import com.example.banana.fragment.VisitorCommentsFragment
 import com.example.banana.fragment.WalletFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -28,7 +26,6 @@ class FragmentActivity : AppCompatActivity() {
         val WalletFragment = WalletFragment().newInstance()
         val ChartCardDetailFragment = ChartCardDetailFragment().newInstance()
         val CommentFragment = VisitorCommentsFragment().newInstance()
-        val otherCardDetail = OtherCardDetailFragment().newInstance()
         transaction.replace(R.id.frameArea, Homefragment)
         transaction.addToBackStack(null)
         transaction.commit()
@@ -39,7 +36,7 @@ class FragmentActivity : AppCompatActivity() {
             when(item.itemId)  {
                 R.id.tab1 -> {
                     val transaction = manager.beginTransaction()
-                    transaction.replace(R.id.frameArea, otherCardDetail)
+                    transaction.replace(R.id.frameArea, ChartFragment)
                     transaction.commit()
                     true
                 }
