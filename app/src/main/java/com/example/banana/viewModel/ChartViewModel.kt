@@ -11,7 +11,6 @@ import com.example.banana.auth.authApplication
 import com.example.banana.data.ChartData
 import com.example.banana.data.TopTenTags
 import com.example.banana.data.businessCardIdData
-import com.example.banana.data.getCardResponseModel
 import com.example.banana.retrofit.API
 import com.example.banana.retrofit.RetrofitInstance
 import kotlinx.coroutines.launch
@@ -26,9 +25,6 @@ class ChartViewModel : ViewModel() {
 
     private var _chartList = MutableLiveData<ArrayList<ChartData>>()
     var chartList : LiveData<ArrayList<ChartData>> = _chartList
-
-    private var _topTenCardList = MutableLiveData<ArrayList<getCardResponseModel>>()
-    var topTenCardList : LiveData<ArrayList<getCardResponseModel>> = _topTenCardList
 
     init {
 //        showChartList()
@@ -56,7 +52,7 @@ class ChartViewModel : ViewModel() {
 //        }
 //    }
 
-    private fun showTopTenTags() {
+     private fun showTopTenTags() {
 
             APIS = RetrofitInstance.retrofitInstance().create(API::class.java)
             val token ="eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjg5ODU4ODI2LCJleHAiOjE2OTI0NTA4MjZ9.Sgv-vKEeQ4Zbb5zR6SQuQ7wD2W_FrFuqSyJcPU_6Wos"
@@ -91,40 +87,6 @@ class ChartViewModel : ViewModel() {
                 }
             }
         }
-
-    fun getTopTenBusinessCards(name : String) {
-        APIS = RetrofitInstance.retrofitInstance().create(API::class.java)
-        val token ="eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjg5ODU4ODI2LCJleHAiOjE2OTI0NTA4MjZ9.Sgv-vKEeQ4Zbb5zR6SQuQ7wD2W_FrFuqSyJcPU_6Wos"
-        viewModelScope.launch {
-            try{
-                APIS.getTopTenBusinessCards(token,name).enqueue(object : retrofit2.Callback<ArrayList<getCardResponseModel>> {
-                    override fun onResponse(call: Call<ArrayList<getCardResponseModel>>, response: Response<ArrayList<getCardResponseModel>>) {
-                        if (response.isSuccessful) {
-
-                            Log.d("getCardResponseModel Response : ", "success")
-                            _topTenCardList.value = response.body()
-
-
-
-                            Log.d("getCardResponseModel : " , response.body().toString())
-
-
-                        } else {
-
-                            Log.d("getCardResponseModel Response : ", "Fail 1")
-                            Log.d("getCardResponseModel Response : ", response.message().toString())
-                        }
-                    }
-
-                    override fun onFailure(call: Call<ArrayList<getCardResponseModel>>, t: Throwable) {
-                        Log.d("getCardResponseModel Response : ", t.message.toString())
-                    }
-                })
-            } catch (e:Exception) {
-                Log.d("getCardResponseModel response : ", "Fail 3")
-            }
-        }
-    }
 
 
 

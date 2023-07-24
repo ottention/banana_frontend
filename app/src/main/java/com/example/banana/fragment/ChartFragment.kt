@@ -44,6 +44,20 @@ class ChartFragment : Fragment() {
 
         binding.btnTag1.setBackgroundColor(Color.parseColor("#000000"))
 
+        chartData.clear()
+
+        chartData.add(ChartData(R.drawable.default_card,"Top1","24"))
+        chartData.add(ChartData(R.drawable.default_card,"Top2","23"))
+        chartData.add(ChartData(R.drawable.default_card,"Top3","22"))
+        chartData.add(ChartData(R.drawable.default_card,"Top4","21"))
+        chartData.add(ChartData(R.drawable.default_card,"Top5","20"))
+        chartData.add(ChartData(R.drawable.default_card,"Top6","19"))
+        chartData.add(ChartData(R.drawable.default_card,"Top7","18"))
+        chartData.add(ChartData(R.drawable.default_card,"Top8","17"))
+        chartData.add(ChartData(R.drawable.default_card,"Top9","16"))
+        chartData.add(ChartData(R.drawable.default_card,"Top10","15"))
+
+
 
         viewModel = ViewModelProvider(this).get(ChartViewModel::class.java)
 
@@ -69,11 +83,26 @@ class ChartFragment : Fragment() {
         binding.btnTag9.setBackgroundColor(Color.parseColor("#E6E6E6"))
         binding.btnTag10.setBackgroundColor(Color.parseColor("#E6E6E6"))
 
-//        viewModel = ViewModelProvider(this).get(ChartViewModel::class.java)
-//
-//        chartAdapter = ChartAdapter(chartData,::onCardClick,::onLikeClick)
-//        binding.rvChart.adapter = chartAdapter
-//        binding.rvChart.layoutManager = LinearLayoutManager(context)
+                    chartData.clear()
+
+        chartData.add(ChartData(R.drawable.default_card,"Top1","24"))
+        chartData.add(ChartData(R.drawable.default_card,"Top2","23"))
+        chartData.add(ChartData(R.drawable.default_card,"Top3","22"))
+        chartData.add(ChartData(R.drawable.default_card,"Top4","21"))
+        chartData.add(ChartData(R.drawable.default_card,"Top5","20"))
+        chartData.add(ChartData(R.drawable.default_card,"Top6","19"))
+        chartData.add(ChartData(R.drawable.default_card,"Top7","18"))
+        chartData.add(ChartData(R.drawable.default_card,"Top8","17"))
+        chartData.add(ChartData(R.drawable.default_card,"Top9","16"))
+        chartData.add(ChartData(R.drawable.default_card,"Top10","15"))
+
+
+            viewModel = ViewModelProvider(this).get(ChartViewModel::class.java)
+
+            chartAdapter = ChartAdapter(chartData,::onCardClick,::onLikeClick)
+            binding.rvChart.adapter = chartAdapter
+            binding.rvChart.layoutManager = LinearLayoutManager(context)
+
 
         viewModel.chartList.observe(viewLifecycleOwner) {
             chartAdapter.updateList(it)
@@ -93,6 +122,19 @@ class ChartFragment : Fragment() {
         binding.btnTag8.setBackgroundColor(Color.parseColor("#E6E6E6"))
         binding.btnTag9.setBackgroundColor(Color.parseColor("#E6E6E6"))
         binding.btnTag10.setBackgroundColor(Color.parseColor("#E6E6E6"))
+
+            chartData.clear()
+
+            chartData.add(ChartData(R.drawable.default_card,"Top1","24"))
+            chartData.add(ChartData(R.drawable.default_card,"Top2","23"))
+            chartData.add(ChartData(R.drawable.default_card,"Top3","22"))
+            chartData.add(ChartData(R.drawable.default_card,"Top4","21"))
+            chartData.add(ChartData(R.drawable.default_card,"Top5","20"))
+            chartData.add(ChartData(R.drawable.default_card,"Top6","19"))
+            chartData.add(ChartData(R.drawable.default_card,"Top7","18"))
+            chartData.add(ChartData(R.drawable.default_card,"Top8","17"))
+            chartData.add(ChartData(R.drawable.default_card,"Top9","16"))
+            chartData.add(ChartData(R.drawable.default_card,"Top10","15"))
 
         viewModel = ViewModelProvider(this).get(ChartViewModel::class.java)
 
@@ -117,6 +159,20 @@ class ChartFragment : Fragment() {
             binding.btnTag8.setBackgroundColor(Color.parseColor("#E6E6E6"))
             binding.btnTag9.setBackgroundColor(Color.parseColor("#E6E6E6"))
             binding.btnTag10.setBackgroundColor(Color.parseColor("#E6E6E6"))
+
+            chartData.clear()
+
+            chartData.add(ChartData(R.drawable.default_card,"Top1","24"))
+            chartData.add(ChartData(R.drawable.default_card,"Top2","23"))
+            chartData.add(ChartData(R.drawable.default_card,"Top3","22"))
+            chartData.add(ChartData(R.drawable.default_card,"Top4","21"))
+            chartData.add(ChartData(R.drawable.default_card,"Top5","20"))
+            chartData.add(ChartData(R.drawable.default_card,"Top6","19"))
+            chartData.add(ChartData(R.drawable.default_card,"Top7","18"))
+            chartData.add(ChartData(R.drawable.default_card,"Top8","17"))
+            chartData.add(ChartData(R.drawable.default_card,"Top9","16"))
+            chartData.add(ChartData(R.drawable.default_card,"Top10","15"))
+
 
 
             viewModel = ViewModelProvider(this).get(ChartViewModel::class.java)
@@ -143,6 +199,20 @@ class ChartFragment : Fragment() {
             binding.btnTag9.setBackgroundColor(Color.parseColor("#E6E6E6"))
             binding.btnTag10.setBackgroundColor(Color.parseColor("#E6E6E6"))
 
+            chartData.clear()
+
+            chartData.add(ChartData(R.drawable.default_card,"Top1","24"))
+            chartData.add(ChartData(R.drawable.default_card,"Top2","23"))
+            chartData.add(ChartData(R.drawable.default_card,"Top3","22"))
+            chartData.add(ChartData(R.drawable.default_card,"Top4","21"))
+            chartData.add(ChartData(R.drawable.default_card,"Top5","20"))
+            chartData.add(ChartData(R.drawable.default_card,"Top6","19"))
+            chartData.add(ChartData(R.drawable.default_card,"Top7","18"))
+            chartData.add(ChartData(R.drawable.default_card,"Top8","17"))
+            chartData.add(ChartData(R.drawable.default_card,"Top9","16"))
+            chartData.add(ChartData(R.drawable.default_card,"Top10","15"))
+
+
 
             viewModel = ViewModelProvider(this).get(ChartViewModel::class.java)
 
@@ -167,6 +237,20 @@ class ChartFragment : Fragment() {
             binding.btnTag8.setBackgroundColor(Color.parseColor("#E6E6E6"))
             binding.btnTag9.setBackgroundColor(Color.parseColor("#E6E6E6"))
             binding.btnTag10.setBackgroundColor(Color.parseColor("#E6E6E6"))
+
+            chartData.clear()
+
+            chartData.add(ChartData(R.drawable.default_card,"Top1","24"))
+            chartData.add(ChartData(R.drawable.default_card,"Top2","23"))
+            chartData.add(ChartData(R.drawable.default_card,"Top3","22"))
+            chartData.add(ChartData(R.drawable.default_card,"Top4","21"))
+            chartData.add(ChartData(R.drawable.default_card,"Top5","20"))
+            chartData.add(ChartData(R.drawable.default_card,"Top6","19"))
+            chartData.add(ChartData(R.drawable.default_card,"Top7","18"))
+            chartData.add(ChartData(R.drawable.default_card,"Top8","17"))
+            chartData.add(ChartData(R.drawable.default_card,"Top9","16"))
+            chartData.add(ChartData(R.drawable.default_card,"Top10","15"))
+
 
 
             viewModel = ViewModelProvider(this).get(ChartViewModel::class.java)
@@ -193,6 +277,18 @@ class ChartFragment : Fragment() {
             binding.btnTag9.setBackgroundColor(Color.parseColor("#E6E6E6"))
             binding.btnTag10.setBackgroundColor(Color.parseColor("#E6E6E6"))
 
+            chartData.clear()
+
+            chartData.add(ChartData(R.drawable.default_card,"Top1","24"))
+            chartData.add(ChartData(R.drawable.default_card,"Top2","23"))
+            chartData.add(ChartData(R.drawable.default_card,"Top3","22"))
+            chartData.add(ChartData(R.drawable.default_card,"Top4","21"))
+            chartData.add(ChartData(R.drawable.default_card,"Top5","20"))
+            chartData.add(ChartData(R.drawable.default_card,"Top6","19"))
+            chartData.add(ChartData(R.drawable.default_card,"Top7","18"))
+            chartData.add(ChartData(R.drawable.default_card,"Top8","17"))
+            chartData.add(ChartData(R.drawable.default_card,"Top9","16"))
+            chartData.add(ChartData(R.drawable.default_card,"Top10","15"))
 
             viewModel = ViewModelProvider(this).get(ChartViewModel::class.java)
 
@@ -218,6 +314,18 @@ class ChartFragment : Fragment() {
             binding.btnTag9.setBackgroundColor(Color.parseColor("#E6E6E6"))
             binding.btnTag10.setBackgroundColor(Color.parseColor("#E6E6E6"))
 
+            chartData.clear()
+
+            chartData.add(ChartData(R.drawable.default_card,"Top1","24"))
+            chartData.add(ChartData(R.drawable.default_card,"Top2","23"))
+            chartData.add(ChartData(R.drawable.default_card,"Top3","22"))
+            chartData.add(ChartData(R.drawable.default_card,"Top4","21"))
+            chartData.add(ChartData(R.drawable.default_card,"Top5","20"))
+            chartData.add(ChartData(R.drawable.default_card,"Top6","19"))
+            chartData.add(ChartData(R.drawable.default_card,"Top7","18"))
+            chartData.add(ChartData(R.drawable.default_card,"Top8","17"))
+            chartData.add(ChartData(R.drawable.default_card,"Top9","16"))
+            chartData.add(ChartData(R.drawable.default_card,"Top10","15"))
 
             viewModel = ViewModelProvider(this).get(ChartViewModel::class.java)
 
@@ -243,6 +351,18 @@ class ChartFragment : Fragment() {
             binding.btnTag9.setBackgroundColor(Color.parseColor("#E6E6E6"))
             binding.btnTag10.setBackgroundColor(Color.parseColor("#E6E6E6"))
 
+            chartData.clear()
+
+            chartData.add(ChartData(R.drawable.default_card,"Top1","24"))
+            chartData.add(ChartData(R.drawable.default_card,"Top2","23"))
+            chartData.add(ChartData(R.drawable.default_card,"Top3","22"))
+            chartData.add(ChartData(R.drawable.default_card,"Top4","21"))
+            chartData.add(ChartData(R.drawable.default_card,"Top5","20"))
+            chartData.add(ChartData(R.drawable.default_card,"Top6","19"))
+            chartData.add(ChartData(R.drawable.default_card,"Top7","18"))
+            chartData.add(ChartData(R.drawable.default_card,"Top8","17"))
+            chartData.add(ChartData(R.drawable.default_card,"Top9","16"))
+            chartData.add(ChartData(R.drawable.default_card,"Top10","15"))
 
             viewModel = ViewModelProvider(this).get(ChartViewModel::class.java)
 
@@ -268,6 +388,18 @@ class ChartFragment : Fragment() {
             binding.btnTag2.setBackgroundColor(Color.parseColor("#E6E6E6"))
             binding.btnTag10.setBackgroundColor(Color.parseColor("#E6E6E6"))
 
+            chartData.clear()
+
+            chartData.add(ChartData(R.drawable.default_card,"Top1","24"))
+            chartData.add(ChartData(R.drawable.default_card,"Top2","23"))
+            chartData.add(ChartData(R.drawable.default_card,"Top3","22"))
+            chartData.add(ChartData(R.drawable.default_card,"Top4","21"))
+            chartData.add(ChartData(R.drawable.default_card,"Top5","20"))
+            chartData.add(ChartData(R.drawable.default_card,"Top6","19"))
+            chartData.add(ChartData(R.drawable.default_card,"Top7","18"))
+            chartData.add(ChartData(R.drawable.default_card,"Top8","17"))
+            chartData.add(ChartData(R.drawable.default_card,"Top9","16"))
+            chartData.add(ChartData(R.drawable.default_card,"Top10","15"))
 
             viewModel = ViewModelProvider(this).get(ChartViewModel::class.java)
 
@@ -292,6 +424,18 @@ class ChartFragment : Fragment() {
             binding.btnTag8.setBackgroundColor(Color.parseColor("#E6E6E6"))
             binding.btnTag9.setBackgroundColor(Color.parseColor("#E6E6E6"))
             binding.btnTag2.setBackgroundColor(Color.parseColor("#E6E6E6"))
+            chartData.clear()
+
+            chartData.add(ChartData(R.drawable.default_card,"Top1","24"))
+            chartData.add(ChartData(R.drawable.default_card,"Top2","23"))
+            chartData.add(ChartData(R.drawable.default_card,"Top3","22"))
+            chartData.add(ChartData(R.drawable.default_card,"Top4","21"))
+            chartData.add(ChartData(R.drawable.default_card,"Top5","20"))
+            chartData.add(ChartData(R.drawable.default_card,"Top6","19"))
+            chartData.add(ChartData(R.drawable.default_card,"Top7","18"))
+            chartData.add(ChartData(R.drawable.default_card,"Top8","17"))
+            chartData.add(ChartData(R.drawable.default_card,"Top9","16"))
+            chartData.add(ChartData(R.drawable.default_card,"Top10","15"))
 
 
             viewModel = ViewModelProvider(this).get(ChartViewModel::class.java)
@@ -323,9 +467,6 @@ class ChartFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-        //처음 TOP10 TAG 설정
-
         viewModel.topTenTagsList.observe(viewLifecycleOwner) {
             binding.btnTag1.text = viewModel.topTenTagsList.value!!.get(0).tag
             binding.btnTag2.text = viewModel.topTenTagsList.value!!.get(1).tag
@@ -338,8 +479,6 @@ class ChartFragment : Fragment() {
             binding.btnTag9.text = viewModel.topTenTagsList.value!!.get(8).tag
             binding.btnTag10.text = viewModel.topTenTagsList.value!!.get(9).tag
         }
-
-
     }
 
     //--------------------------------------함수-------------------------------------------

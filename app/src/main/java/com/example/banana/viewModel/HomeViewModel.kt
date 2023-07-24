@@ -47,35 +47,35 @@ class HomeViewModel : ViewModel() {
 
 
     //card01 클릭
-    fun showCard(a : Long){
+    fun showCard1(){
 
-//        var card01 = _businessCardId.value?.get(0)!!.businessCardId
-        getCard(a)
-        Log.d("showCard",a.toString())
+        var card01 = _businessCardId.value?.get(0)!!.businessCardId
+        getCard(card01)
+        Log.d("showCard1",card01.toString())
 
     }
 
     //card02 클릭
-//    fun showCard2(){
-//
-//        var card02 = _businessCardId.value?.get(1)!!.businessCardId
-//        getCard(card02)
-//        Log.d("showCard2",card02.toString())
-//    }
-//
-//    //card03 클릭
-//    fun showCard3(){
-//
-//        var card03 = _businessCardId.value?.get(2)!!.businessCardId
-//        getCard(card03)
-//        Log.d("showCard3",card03.toString())
-//
-//    }
+    fun showCard2(){
+
+        var card02 = _businessCardId.value?.get(1)!!.businessCardId
+        getCard(card02)
+        Log.d("showCard2",card02.toString())
+    }
+
+    //card03 클릭
+    fun showCard3(){
+
+        var card03 = _businessCardId.value?.get(2)!!.businessCardId
+        getCard(card03)
+        Log.d("showCard3",card03.toString())
+
+    }
 
     //카드 id 가져오기
     fun getBusinessCardId() {
         APIS = RetrofitInstance.retrofitInstance().create(API::class.java)
-        val token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjg5ODU4ODI2LCJleHAiOjE2OTI0NTA4MjZ9.Sgv-vKEeQ4Zbb5zR6SQuQ7wD2W_FrFuqSyJcPU_6Wos"
+        val token = authApplication.prefs.getString("accessToken", "")
         viewModelScope.launch {
             try{
                 APIS.getBusinessCardId(token).enqueue(object : retrofit2.Callback<ArrayList<businessCardIdData>> {
@@ -105,17 +105,14 @@ class HomeViewModel : ViewModel() {
     //cardId 조회
     fun getCard(a:Long) {
         APIS = RetrofitInstance.retrofitInstance().create(API::class.java)
-        Log.d("getCard  : ", "start")
-        val token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjg5ODU4ODI2LCJleHAiOjE2OTI0NTA4MjZ9.Sgv-vKEeQ4Zbb5zR6SQuQ7wD2W_FrFuqSyJcPU_6Wos"
+
+        val token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjg5MDUzNTgwLCJleHAiOjE2OTE2NDU1ODB9.I3ART9XCYkp1l7YnC6cGv6uMvCwBqsqcUW2r1GXMKx4"
 
         viewModelScope.launch {
-            try {
+            try{
 
-                APIS.getCard(token, a).enqueue(object : retrofit2.Callback<getCardResponseModel> {
-                    override fun onResponse(
-                        call: Call<getCardResponseModel>,
-                        response: Response<getCardResponseModel>
-                    ) {
+                APIS.getCard(token,a).enqueue(object : retrofit2.Callback<getCardResponseModel> {
+                    override fun onResponse(call: Call<getCardResponseModel>, response: Response<getCardResponseModel>) {
                         if (response.isSuccessful) {
 
 
@@ -125,12 +122,12 @@ class HomeViewModel : ViewModel() {
                             _getCard.value = response.body()
 
 
-                            Log.d("getCard : ", response.body().toString())
+                            Log.d("getCard : " , response.body().toString())
 
 
                         } else {
-                            Log.d("getCard : ", response.body().toString())
-                            Log.d("getCard : ", response.message())
+                            Log.d("getCard : " , response.body().toString())
+                            Log.d("getCard : " , response.message())
                             Log.d("getCard Response : ", "Fail 1")
                         }
                     }
@@ -139,7 +136,7 @@ class HomeViewModel : ViewModel() {
                         Log.d("getCard Response : ", t.message.toString())
                     }
                 })
-            } catch (e: Exception) {
+            } catch (e:Exception) {
                 Log.d("getCard response : ", "Fail 3")
             }
         }

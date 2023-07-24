@@ -7,10 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
+import androidx.lifecycle.ViewModelProvider
 import com.example.banana.R
 import com.example.banana.adapter.RecentSearchAdapter
 import com.example.banana.data.RecentSearchData
+import com.example.banana.data.TopTenTags
 import com.example.banana.databinding.FragmentSearchBinding
+import com.example.banana.viewModel.SearchViewModel
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
@@ -21,7 +24,8 @@ class SearchFragment : Fragment() {
     private lateinit var recentSearchAdapter : RecentSearchAdapter
     private var _binding : FragmentSearchBinding ?= null
     private val binding get() = _binding!!
-    private var recentSearchWord = ArrayList<RecentSearchData>()
+    private var recentSearchWord = ArrayList<TopTenTags>()
+    private lateinit var viewModel : SearchViewModel
 
     fun newInstance() : SearchFragment{
         return  SearchFragment()
@@ -42,17 +46,32 @@ class SearchFragment : Fragment() {
 
 
 //        recentSearchWord.clear()
+//
+//        recentSearchWord.add(RecentSearchData("취준생"))
+//        recentSearchWord.add(RecentSearchData("대학생"))
+//        recentSearchWord.add(RecentSearchData("학생"))
+//        recentSearchWord.add(RecentSearchData("개발자"))
+//        recentSearchWord.add(RecentSearchData("디자이너"))
+//        recentSearchWord.add(RecentSearchData("고등학생"))
+//        recentSearchWord.add(RecentSearchData("인스타그램"))
+//        recentSearchWord.add(RecentSearchData("맞팔"))
+//        recentSearchWord.add(RecentSearchData("고등학교"))
+//        recentSearchWord.add(RecentSearchData("대외활동"))
 
-        recentSearchWord.add(RecentSearchData("취준생"))
-        recentSearchWord.add(RecentSearchData("대학생"))
-        recentSearchWord.add(RecentSearchData("학생"))
-        recentSearchWord.add(RecentSearchData("개발자"))
-        recentSearchWord.add(RecentSearchData("디자이너"))
-        recentSearchWord.add(RecentSearchData("고등학생"))
-        recentSearchWord.add(RecentSearchData("인스타그램"))
-        recentSearchWord.add(RecentSearchData("맞팔"))
-        recentSearchWord.add(RecentSearchData("고등학교"))
-        recentSearchWord.add(RecentSearchData("대외활동"))
+        viewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
+        viewModel.topTenTagsList.observe(viewLifecycleOwner) {
+
+            recentSearchAdapter.updateList(it)
+//            recentSearchAdapter = RecentSearchAdapter(recentSearchWord)
+//            binding.rvRecentSearch.adapter = recentSearchAdapter
+//            // binding.rvRecentSearch.layoutManager = GridLayoutManager(context,3)
+//            binding.rvRecentSearch.layoutManager = FlexboxLayoutManager(context).apply {
+//                flexWrap = FlexWrap.WRAP
+//                flexDirection = FlexDirection.ROW
+//                justifyContent = JustifyContent.FLEX_START
+//            }
+        }
+
 
 
         recentSearchAdapter = RecentSearchAdapter(recentSearchWord)
@@ -95,5 +114,20 @@ class SearchFragment : Fragment() {
         return view
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+    }
 
+//    viewModel.topTenTagsList.observe(viewLifecycleOwner) {
+//
+//        recentSearchAdapter.updateList(it)
+//        recentSearchAdapter = RecentSearchAdapter(recentSearchWord)
+//        binding.rvRecentSearch.adapter = recentSearchAdapter
+//        // binding.rvRecentSearch.layoutManager = GridLayoutManager(context,3)
+//        binding.rvRecentSearch.layoutManager = FlexboxLayoutManager(context).apply {
+//            flexWrap = FlexWrap.WRAP
+//            flexDirection = FlexDirection.ROW
+//            justifyContent = JustifyContent.FLEX_START
+//        }
+//    }
 }
