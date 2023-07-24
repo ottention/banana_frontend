@@ -1,5 +1,6 @@
 package com.example.banana.fragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -36,6 +37,7 @@ class AlarmFragment : Fragment() {
 
     }
 
+    @SuppressLint("SuspiciousIndentation")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -44,7 +46,7 @@ class AlarmFragment : Fragment() {
         _binding = FragmentAlarmBinding.inflate(inflater,container,false)
         val view = binding.root
 
-                alarmData.add(AlarmData("23.03.03","000님이 방명록에 좋아요를 눌렀습니다."))
+        alarmData.add(AlarmData("23.03.03","000님이 방명록에 좋아요를 눌렀습니다."))
         alarmData.add(AlarmData("23.03.02","001님이 방명록에 좋아요를 눌렀습니다."))
         alarmData.add(AlarmData("23.03.01","002님이 방명록에 좋아요를 눌렀습니다."))
         alarmData.add(AlarmData("23.03.02","003님이 방명록에 좋아요를 눌렀습니다."))
