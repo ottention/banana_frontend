@@ -1,7 +1,6 @@
 package com.example.banana
 
 import android.content.Context
-import android.content.DialogInterface
 import android.net.Uri
 import android.os.Bundle
 import android.view.Gravity
@@ -21,7 +20,7 @@ import com.google.android.flexbox.JustifyContent
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 
-class addTagbottomDialog (context: Context, private val onSave: (tagList: MutableList<String>) -> Unit) : BottomSheetDialogFragment()
+class addTagbottomDialog (context: Context) : BottomSheetDialogFragment()
 {
 
     lateinit var tagList : MutableList<String>
@@ -66,15 +65,9 @@ class addTagbottomDialog (context: Context, private val onSave: (tagList: Mutabl
             }else {
                 val newTag = view?.findViewById<EditText>(R.id.new_tag)?.text.toString()
                 tagList.add(newTag)
-                view?.findViewById<EditText>(R.id.new_tag)!!.setText("")
                 flexBoxAdapter.notifyDataSetChanged()
             }
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        onSave.invoke(tagList)
     }
 
     fun removeTag(pos : Int) {
