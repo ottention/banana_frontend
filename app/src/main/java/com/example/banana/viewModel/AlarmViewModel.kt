@@ -13,10 +13,17 @@ class AlarmViewModel: ViewModel() {
 
     init {
 
-//        showAlarm()
+        showAlarm()
     }
 
 
+fun showAlarm(){
+    _alarmList.value?.add(AlarmData("23.03.03","000님이 방명록에 좋아요를 눌렀습니다."))
+    _alarmList.value?.add(AlarmData("23.03.03","000님이 방명록에 좋아요를 눌렀습니다."))
+    _alarmList.value?.add(AlarmData("23.03.03","000님이 방명록에 좋아요를 눌렀습니다."))
+    _alarmList.value?.add(AlarmData("23.03.03","000님이 방명록에 좋아요를 눌렀습니다."))
+    _alarmList.value?.add(AlarmData("23.03.03","000님이 방명록에 좋아요를 눌렀습니다."))
 
+}
 
 }

@@ -55,6 +55,7 @@ class AlarmFragment : Fragment() {
         alarmData.add(AlarmData("23.02.20","008님이 방명록에 좋아요를 눌렀습니다."))
         viewModel = ViewModelProvider(this).get(AlarmViewModel::class.java)
 
+
         viewModel.alarmList.observe(viewLifecycleOwner) {
             alarmAdapter.updateList(it)
         }
@@ -64,17 +65,32 @@ class AlarmFragment : Fragment() {
         binding.rvAlarm.layoutManager = LinearLayoutManager(context)
 
 
-        alarmAdapter.itemClick = object : AlarmAdapter.ItemClick {
-            override fun onClick(view: View, position: Int) {
 
-                Log.d("click", alarmData[position].toString())
-                alarmData.removeAt(position)
-                alarmAdapter.updateList(alarmData)
-                Log.d("delete", alarmData.toString())
-                Toast.makeText(context,"방명록 삭제",Toast.LENGTH_SHORT).show()
-
-            }
-        }
+//            alarmAdapter.itemClick = object : AlarmAdapter.ItemClick {
+//                override fun onClick(view: View, position: Int) {
+//
+//                    Log.d("click", alarmData[position].toString())
+//                    alarmData.removeAt(position)
+//                    viewModel.alarmList.observe(viewLifecycleOwner) {
+//                        alarmAdapter.updateList(it)
+//                    }
+//                    Log.d("delete", alarmData.toString())
+////                    Toast.makeText(context,"방명록 삭제",Toast.LENGTH_SHORT).show()
+//
+//                }
+//
+//        }
+//        alarmAdapter.itemClick = object : AlarmAdapter.ItemClick {
+//            override fun onClick(view: View, position: Int) {
+//
+//                Log.d("click", alarmData[position].toString())
+//                alarmData.removeAt(position)
+//                alarmAdapter.updateList(alarmData)
+//                Log.d("delete", alarmData.toString())
+//                Toast.makeText(context,"방명록 삭제",Toast.LENGTH_SHORT).show()
+//
+//            }
+//        }
         //알람 호출
 //        showAlarm()
 

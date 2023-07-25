@@ -10,9 +10,9 @@ import com.example.banana.R
 import com.example.banana.data.AlarmData
 import com.example.banana.data.ChartData
 
-class AlarmAdapter(var alarmData : ArrayList<AlarmData>) : RecyclerView.Adapter<AlarmAdapter.ViewHolder>() {
+class AlarmAdapter(var alarmData : MutableList<AlarmData> = mutableListOf()) : RecyclerView.Adapter<AlarmAdapter.ViewHolder>() {
 
-    fun updateList(newList : ArrayList<AlarmData>) {
+    fun updateList(newList : MutableList<AlarmData>) {
         alarmData.clear()
         alarmData.addAll(newList)
         Log.d("alarmdata", alarmData.toString())
