@@ -108,7 +108,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="30dp"
             android:layout_marginLeft="31dp"
             android:textColor="#000000"
             android:fontFamily="@font/pretendardmedium"
@@ -124,7 +124,7 @@
             android:scaleType="fitXY"
             android:background="@android:color/transparent"
             android:src="@drawable/social"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="30dp"
             android:layout_marginRight="31dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -134,7 +134,7 @@
             android:layout_width="300dp"
             android:layout_height="160dp"
             android:elevation="15dp"
-            android:layout_marginTop="65dp"
+            android:layout_marginTop="80dp"
             android:background="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -154,7 +154,7 @@
 
         <Button
             android:id="@+id/btn_qr"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="50dp"
             android:layout_width="340dp"
             android:layout_height="44dp"
             android:background="#000000"
