@@ -23,11 +23,14 @@ import com.example.banana.retrofit.API
 import com.example.banana.retrofit.RetrofitInstance
 import android.widget.*
 import com.bumptech.glide.Glide
+import com.example.banana.activity.MakeActivity
 import com.example.banana.activity.MakeCardActivity
+import com.example.banana.adapter.otherCardCommentAdapter
 import com.example.banana.data.*
 import com.example.banana.viewModel.HomeViewModel
 import com.google.zxing.BarcodeFormat
 import com.journeyapps.barcodescanner.BarcodeEncoder
+import okhttp3.internal.immutableListOf
 import retrofit2.Call
 import retrofit2.Response
 
@@ -40,6 +43,19 @@ class HomeFragment : Fragment() {
     private lateinit var viewModel : HomeViewModel
     private lateinit var cardIdlist : getCardResponseModel
     private lateinit var idList : Array<businessCardIdData>
+
+    var btnIconSoucre = immutableListOf(
+        R.drawable.icon_notion_black,
+        R.drawable.icon_creditcard_black,
+        R.drawable.icon_phone_book_black,
+        R.drawable.icon_work_black,
+        R.drawable.icon_bookmark_black,
+        R.drawable.icon_check_black,
+        R.drawable.icon_mail_black,
+        R.drawable.icon_phone_blakc,
+        R.drawable.icon_time_black,
+        R.drawable.icon_graduation_black
+    )
 
     fun newInstance() : HomeFragment{
         return HomeFragment()
@@ -83,10 +99,20 @@ class HomeFragment : Fragment() {
 
             binding.btnCard03.setBackgroundColor(Color.parseColor("#ffffff"))
             binding.btnCard03.setTextColor(Color.parseColor("#f0f0f0"))
-            viewModel.showCard1()
-            cardIdlist = viewModel.getCard.value!!
+            // testCode
+//            var otherCardDetailFragment = otherCardCommentAdapter.getInstance();
+//            fragmentManager?.beginTransaction()?.apply {
+//                replace(R.id.frameArea,search)
+////                addToBackStack(null)
+//                commit()
+//            }
 
-            makeUI(cardIdlist,front_card,back_card)
+            var intent = Intent(context, MakeCardActivity::class.java)
+            startActivity(intent)
+//            viewModel.showCard1()
+//            cardIdlist = viewModel.getCard.value!!
+//
+//            makeUI(cardIdlist,front_card,back_card)
 
         }
 
@@ -175,23 +201,29 @@ class HomeFragment : Fragment() {
 
     fun drawImage(front_card : FrameLayout, back_card : FrameLayout, images : List<Image>) {
 
-        for(i in images) {
+        for (i in images) {
             val image = ImageView(context)
             //크기 설정
             var imageLayoutParams = LinearLayout.LayoutParams(100, 100)
             image.layoutParams = imageLayoutParams
             image.x = i.coordinate!!.xAxis!!
             image.y = i.coordinate!!.yAxis!!
-            Glide.with(context!!).load(i.imageUrl).into(image)
+
+            if (i.imageUrl.length <= 2) {
+                Glide.with(context!!).load(btnIconSoucre[i.imageUrl.toInt()]).into(image)
+            } else {
+                Glide.with(context!!).load(i.imageUrl).into(image)
+            }
             if (image.getParent() != null)
                 (image.getParent() as ViewGroup).removeView(
                     image
                 )
-            if(i.isFront) {
+            if (i.isFront) {
                 front_card.addView(image)
-            }else {
+            } else {
                 back_card.addView(image)
             }
+
         }
     }
 

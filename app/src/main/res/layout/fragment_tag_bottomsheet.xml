@@ -13,7 +13,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:padding="10dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/bg_addtag_box">
 
         <EditText
@@ -50,6 +50,8 @@
         app:alignContent="stretch"
         android:paddingTop="10dp"
         android:overScrollMode="never"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:layout_marginBottom="50dp"
         app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
         app:flexWrap="wrap">
