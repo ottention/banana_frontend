@@ -18,6 +18,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.provider.MediaStore
+import android.text.Layout
 import android.util.Log
 import android.util.TypedValue
 import android.view.MotionEvent
@@ -52,6 +53,7 @@ import com.example.banana.data.Image
 import com.example.banana.data.Link
 import com.example.banana.data.cardRequestData
 import com.example.banana.data.getCardResponseModel
+import com.example.banana.data.linkIndexData
 import com.example.banana.editTextDialog
 import com.example.banana.retrofit.API
 import com.example.banana.retrofit.RetrofitInstance
@@ -102,8 +104,8 @@ class MakeCardActivity : AppCompatActivity() {
     var backImageList: HashMap<String, ImageView> = HashMap()
 
     // linkList
-    var frontLinkList: HashMap<ImageView, String> = HashMap()
-    var backLinkList: HashMap<ImageView, String> = HashMap()
+    var frontLinkList: HashMap<linkIndexData, String> = HashMap()
+    var backLinkList: HashMap<linkIndexData, String> = HashMap()
 
 
     var frontContents = arrayListOf<Contents>()
@@ -153,16 +155,22 @@ class MakeCardActivity : AppCompatActivity() {
         R.drawable.icon_graduation_black
     )
 
-    inner class DragListner : OnTouchListener {
+    var btnLinkSoucre = immutableListOf(
+        R.drawable.icon_etc_link,
+        R.drawable.icon_twitter_link,
+        R.drawable.icon_instagram_link
+    )
+
+    inner class DragListner(baseContext : Context) : OnTouchListener {
 
         var moveX = 0f
         var moveY = 0f
+        val context = baseContext
 
         override fun onTouch(v: View?, event: MotionEvent?): Boolean {
             val action = event!!.action
             val parentWidth = (v!!.parent as ViewGroup).width // 부모 View 의 Width
             val parentHeight = (v.parent as ViewGroup).height // 부모 View 의 Height
-
             when (event?.action) {
                 MotionEvent.ACTION_DOWN -> {
                     doubleClickFlag++
@@ -182,7 +190,7 @@ class MakeCardActivity : AppCompatActivity() {
 
                         if (v is TextView) {
                             val editOrDeleteBtn =
-                                View.inflate(baseContext, R.layout.delete_n_edit_btn, null)
+                                View.inflate(context, R.layout.delete_n_edit_btn, null)
 
                             val width = TypedValue.applyDimension(
                                 TypedValue.COMPLEX_UNIT_DIP,
@@ -200,7 +208,7 @@ class MakeCardActivity : AppCompatActivity() {
                                 .setOnClickListener {
                                     editText(v)
                                     removeView(editOrDeleteBtn)
-                                    v.setOnTouchListener(DragListner())
+                                    v.setOnTouchListener(DragListner(this@MakeCardActivity))
                                 }
 
                             editOrDeleteBtn.findViewById<ImageButton>(R.id.icon_delete_btn)
@@ -212,8 +220,19 @@ class MakeCardActivity : AppCompatActivity() {
                             cardView.setOnClickListener { removeOpBtn(v, editOrDeleteBtn) }
                             cardView_back.setOnClickListener { removeOpBtn(v, editOrDeleteBtn) }
                         } else {
-                            val deleteBtn: Button = Button(baseContext)
-                            deleteBtn.setBackgroundResource(R.drawable.icon_deleteicons)
+
+                            val deleteBtn =
+                                View.inflate(context, R.layout.delete_btn, null)
+
+                            val width = TypedValue.applyDimension(
+                                TypedValue.COMPLEX_UNIT_DIP,
+                                50f,
+                                resources.displayMetrics
+                            ).toInt()
+
+                            var layout_deleteBtn = LinearLayout.LayoutParams(width, 50)
+                            deleteBtn.layoutParams = layout_deleteBtn
+
 
                             deleteBtn.setOnClickListener {
                                 removeView(v!!) // 해당 뷰 삭제
@@ -317,7 +336,8 @@ class MakeCardActivity : AppCompatActivity() {
 
     inner class addIconListner(i: Int) : View.OnClickListener {
 
-        val listener: OnTouchListener = DragListner()
+        val listener: OnTouchListener = DragListner(this@MakeCardActivity)
+
         var icon_i = i
         override fun onClick(v: View?) {
 
@@ -330,7 +350,7 @@ class MakeCardActivity : AppCompatActivity() {
 
             var imageLayoutParams = LinearLayout.LayoutParams(100, 100)
             image.layoutParams = imageLayoutParams
-            image.scaleType = ImageView.ScaleType.MATRIX
+//            image.scaleType = ImageView.ScaleType.MATRIX
 
             image.setOnTouchListener(listener)
 
@@ -353,7 +373,7 @@ class MakeCardActivity : AppCompatActivity() {
 
     inner class addTextBoxListner(type: String) : View.OnClickListener {
         val type: String = type
-        val listener: OnTouchListener = DragListner()
+        val listener: OnTouchListener = DragListner(this@MakeCardActivity)
         override fun onClick(v: View?) {
 
             val text = TextView(v!!.context)
@@ -397,7 +417,7 @@ class MakeCardActivity : AppCompatActivity() {
         back_card: FrameLayout,
         contents: List<Contents>
     ) {
-        val listener: OnTouchListener = DragListner()
+        val listener: OnTouchListener = DragListner(this)
 
         for (i in contents) {
             val text = TextView(c)
@@ -438,13 +458,12 @@ class MakeCardActivity : AppCompatActivity() {
     ) {
 
         for (i in contents) {
-            val listener: OnTouchListener = DragListner()
+            val listener: OnTouchListener = DragListner(this)
             val image = ImageView(c)
             image.isClickable = true
 
-            val inputStream = MakeCardActivity().contentResolver.openInputStream(i.link.toUri())
-            val drawable = Drawable.createFromStream(inputStream, i.link.toUri().toString())
-            image.setImageDrawable(drawable)
+            var index = i.linkText.toInt()
+            image.background = ContextCompat.getDrawable(this, btnLinkSoucre[index])
             image.x = i.coordinate!!.xAxis!!
             image.y = i.coordinate!!.yAxis!!
             var link_intent = Intent(Intent.ACTION_VIEW, Uri.parse((i.link)))
@@ -459,10 +478,12 @@ class MakeCardActivity : AppCompatActivity() {
 
             if (i.isFront) {
                 front_card.addView(image)
-                frontLinkList.put(image, i.linkText)
+                var link_data = linkIndexData(image,i.linkText.toInt())
+                frontLinkList.put(link_data, i.linkText)
             } else {
                 back_card.addView(image)
-                backLinkList.put(image, i.linkText)
+                var link_data = linkIndexData(image,i.linkText.toInt())
+                backLinkList.put(link_data, i.linkText)
             }
         }
     }
@@ -473,13 +494,13 @@ class MakeCardActivity : AppCompatActivity() {
         back_card: FrameLayout,
         images: List<Image>
     ) {
-        val listener: OnTouchListener = DragListner()
+        val listener: OnTouchListener = DragListner(this)
 
         for (i in images) {
             val image = ImageView(c)
             image.setOnTouchListener(listener)
             //크기 설정
-            var imageLayoutParams = LinearLayout.LayoutParams(100, 100)
+            var imageLayoutParams = LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)
             image.layoutParams = imageLayoutParams
             image.x = i.coordinate!!.xAxis!!
             image.y = i.coordinate!!.yAxis!!
@@ -566,7 +587,6 @@ class MakeCardActivity : AppCompatActivity() {
         var cardId = intent.getLongExtra("cardId", -1) as Long
         if ((!cardId.equals(-1)) && (cardData != null)) {
             Log.d("Card check : get update", cardData.toString())
-//            Toast.makeText(this, cardData.toString() + " : 명함 수정 중", Toast.LENGTH_SHORT).show()
             CARD_ID = intent.getLongExtra("cardId", -1)
             makeUI(cardView, cardView_back, cardData)
         } else {
@@ -655,7 +675,7 @@ class MakeCardActivity : AppCompatActivity() {
 
         for (i: Int in 0..colorBtnList.size - 1) {
             colorBtnList[i].setOnClickListener {
-                if (template != 1) {
+                if (template == 1) {
                     if (cardView.visibility == View.VISIBLE) {
                         if (template == 1) {
                             cardView.background = (colorBtnList[i].background)
@@ -697,8 +717,8 @@ class MakeCardActivity : AppCompatActivity() {
             var makeCardActivity = this
             val dlg = addLinkDialog(makeCardActivity)
             dlg.listener = object : addLinkDialog.addLinkClickListner {
-                override fun save(icon: Drawable, link: String) {
-                    addLink(icon, link)
+                override fun save(index : Int, icon: Drawable, link: String) {
+                    addLink(index, icon, link)
                     Log.d("image check - main", icon.toString())
                 }
             }
@@ -763,7 +783,7 @@ class MakeCardActivity : AppCompatActivity() {
         //  태그 수정하기 버튼
         val goEditTag = findViewById<Button>(R.id.goeditTag)
         goEditTag.setOnClickListener {
-            val bottomSheet = addTagbottomDialog(this, { addTagList(it) })
+            val bottomSheet = addTagbottomDialog(this, savedTagList,{ addTagList(it) })
             bottomSheet.show(supportFragmentManager, bottomSheet.tag)
         }
 
@@ -842,15 +862,15 @@ class MakeCardActivity : AppCompatActivity() {
 
             // link값 저장
             for ((icon_image, link) in backLinkList) {
-                var linkCoordinate = Coordinate(icon_image.x, icon_image.y)
-                var link = Link(link, drawalbeToUri(icon_image), true, linkCoordinate)
+                var linkCoordinate = Coordinate(icon_image.image.x, icon_image.image.y)
+                var link = Link(link, icon_image.index.toString(), true, linkCoordinate)
                 frontLinks.add(link)
             }
 
             // link값 저장
             for ((icon_image, link) in backLinkList) {
-                var linkCoordinate = Coordinate(icon_image.x, icon_image.y)
-                var link = Link(link, drawalbeToUri(icon_image), false, linkCoordinate)
+                var linkCoordinate = Coordinate(icon_image.image.x, icon_image.image.y)
+                var link = Link(link, icon_image.index.toString(), true, linkCoordinate)
                 backLinks.add(link)
             }
 
@@ -875,13 +895,15 @@ class MakeCardActivity : AppCompatActivity() {
 
     fun addTagList(newTagList: MutableList<String>) {
         savedTagList.clear()
-        for (i in newTagList)
+        for (i in newTagList) {
             savedTagList.add(i)
+            Log.d("tagList", savedTagList.toString())
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
 
-        val listener: OnTouchListener = MakeCardActivity().DragListner()
+        val listener: OnTouchListener = MakeCardActivity().DragListner(this)
 
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK && requestCode == REQ_GALLERY) {
@@ -899,7 +921,7 @@ class MakeCardActivity : AppCompatActivity() {
                     // 위치 설정
                     image.x = x
                     image.y = y
-                    var imageLayoutParams = LinearLayout.LayoutParams(width, height)
+                    var imageLayoutParams = LinearLayout.LayoutParams(300, 300)
                     image.layoutParams = imageLayoutParams
                     Glide.with(this).load(imageUri).into(image)
 
@@ -1011,14 +1033,11 @@ class MakeCardActivity : AppCompatActivity() {
         }
     }
 
-    fun addLink(link_icon: Drawable, link: String) {
+    fun addLink(index: Int, link_icon: Drawable, link: String) {
 
-        val listener: OnTouchListener = MakeCardActivity().DragListner()
+        val listener: OnTouchListener = MakeCardActivity().DragListner(this)
         val image = ImageView(this)
-        image.setImageDrawable(link_icon)
-        if (image != null) {
-            image.drawable.setTint(Color.BLACK)
-        }
+        image.background = ContextCompat.getDrawable(this, btnLinkSoucre[index])
         // 위치 설정
         image.x = 10f
         image.y = 10f
@@ -1028,11 +1047,11 @@ class MakeCardActivity : AppCompatActivity() {
         image.layoutParams = imageLayoutParams
         image.scaleType = ImageView.ScaleType.MATRIX
         image.setOnTouchListener(listener)
-
+        var link_data = linkIndexData(image, index)
         if (cardView.visibility == View.VISIBLE) {
-            frontLinkList.put(image, link)
+            frontLinkList.put(link_data, link)
         } else {
-            backLinkList.put(image, link)
+            backLinkList.put(link_data, link)
         }
 
         addView(image)
@@ -1073,7 +1092,7 @@ class MakeCardActivity : AppCompatActivity() {
     }
 
     fun editText(v: TextView) {
-        val dlg = editTextDialog(this)
+        val dlg = editTextDialog(this, v.text.toString())
         dlg.listener = object : editTextDialog.editText {
             override fun edit(text: String) {
                 v.text = text
@@ -1083,7 +1102,7 @@ class MakeCardActivity : AppCompatActivity() {
     }
 
     fun removeOpBtn(v: View, element: View) {
-        v.setOnTouchListener(MakeCardActivity().DragListner())
+        v.setOnTouchListener(MakeCardActivity().DragListner(this))
         if (cardView.visibility == View.VISIBLE) {
             cardView.removeView(element)
         } else {

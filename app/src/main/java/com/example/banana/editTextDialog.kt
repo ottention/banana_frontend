@@ -11,10 +11,11 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 
-class editTextDialog  (context: Context) {
+class editTextDialog  (context: Context, text : String) {
 
     lateinit var listener: editTextDialog.editText
     lateinit var btnEdit: Button
+    var ogText = text
 
     interface editText {
         fun edit(text : String)
@@ -28,6 +29,7 @@ class editTextDialog  (context: Context) {
         /*커스텀 다이얼로그 radius 적용*/
         dlg.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dlg.setContentView(R.layout.dialog_edit_text)
+        dlg.findViewById<EditText>(R.id.edited_text).setText(ogText)
 
         btnEdit = dlg.findViewById(R.id.editBtn)
         btnEdit.setOnClickListener {

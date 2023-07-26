@@ -22,11 +22,11 @@
 
         <ImageButton
             android:id="@+id/btn_instagram_link"
-            android:background="@drawable/icon_instagram_link"
+            android:src="@drawable/icon_instagram_link"
             android:layout_gravity="center"
-            android:elevation="2dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:layout_width="60dp"
+            android:layout_height="60dp"/>
 
         <View
             android:layout_width="0dp"
@@ -35,10 +35,11 @@
 
         <ImageButton
             android:id="@+id/btn_twitter_link"
-            android:background="@drawable/icon_twitter_link"
+            android:src="@drawable/icon_twitter_link"
             android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:layout_width="60dp"
+            android:layout_height="60dp"/>
 
         <View
             android:layout_width="0dp"
@@ -47,11 +48,11 @@
 
         <ImageButton
             android:id="@+id/btn_etc_link"
-            android:elevation="10dp"
-            android:background="@drawable/icon_etc_link"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
             android:layout_gravity="center"
-            android:layout_width="60dp"
-            android:layout_height="60dp"/>
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/icon_etc_link" />
 
     </LinearLayout>
 

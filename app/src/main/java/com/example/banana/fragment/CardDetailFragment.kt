@@ -16,6 +16,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
@@ -33,6 +34,7 @@ import com.example.banana.data.Contents
 import com.example.banana.data.Image
 import com.example.banana.data.Link
 import com.example.banana.data.getCardResponseModel
+import com.example.banana.data.linkIndexData
 import com.example.banana.databinding.FragmentCardDetailBinding
 import com.example.banana.databinding.FragmentChartBinding
 import com.example.banana.deleteCardDialog
@@ -71,7 +73,11 @@ class CardDetailFragment : Fragment() {
         R.drawable.icon_time_black,
         R.drawable.icon_graduation_black
     )
-
+    var btnLinkSoucre = immutableListOf(
+        R.drawable.icon_etc_link,
+        R.drawable.icon_twitter_link,
+        R.drawable.icon_instagram_link
+    )
 
     fun newInstance(): CardDetailFragment {
         return CardDetailFragment()
@@ -256,30 +262,26 @@ class CardDetailFragment : Fragment() {
     ) {
 
         for (i in contents) {
-            val text = TextView(c)
-            // 링크설정
-            text.linksClickable = true
+            val image = ImageView(c)
+            image.isClickable = true
 
-            // 상세설정
-            text.setTextColor(Color.BLACK)
-
-            text.x = i.coordinate!!.xAxis!!
-            text.y = i.coordinate!!.yAxis!!
-            text.text = i.linkText
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse((i.link)))
-            text.setOnClickListener {
-                startActivity(intent)
+            var index = i.linkText.toInt()
+            image.background = ContextCompat.getDrawable(c, btnLinkSoucre[index])
+            image.x = i.coordinate!!.xAxis!!
+            image.y = i.coordinate!!.yAxis!!
+            var link_intent = Intent(Intent.ACTION_VIEW, Uri.parse((i.link)))
+            image.setOnClickListener {
+                startActivity(link_intent)
             }
-
-            if (text.getParent() != null)
-                (text.getParent() as ViewGroup).removeView(
-                    text
-                )
+            var imageLayoutParams =
+                LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)
+            image.layoutParams = imageLayoutParams
+            image.scaleType = ImageView.ScaleType.MATRIX
 
             if (i.isFront) {
-                front_card.addView(text)
+                front_card.addView(image)
             } else {
-                back_card.addView(text)
+                back_card.addView(image)
             }
         }
     }
