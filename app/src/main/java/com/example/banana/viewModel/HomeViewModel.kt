@@ -47,35 +47,34 @@ class HomeViewModel : ViewModel() {
 
 
     //card01 클릭
-    fun showCard1(){
+    fun showCard(a : Long){
 
-        var card01 = _businessCardId.value?.get(0)!!.businessCardId
-        getCard(card01)
-        Log.d("showCard1",card01.toString())
+        getCard(a)
+        Log.d("showCard",a.toString())
 
     }
 
     //card02 클릭
-    fun showCard2(){
-
-        var card02 = _businessCardId.value?.get(1)!!.businessCardId
-        getCard(card02)
-        Log.d("showCard2",card02.toString())
-    }
-
-    //card03 클릭
-    fun showCard3(){
-
-        var card03 = _businessCardId.value?.get(2)!!.businessCardId
-        getCard(card03)
-        Log.d("showCard3",card03.toString())
-
-    }
+//    fun showCard2(){
+//
+//        var card02 = _businessCardId.value?.get(1)!!.businessCardId
+//        getCard(card02)
+//        Log.d("showCard2",card02.toString())
+//    }
+//
+//    //card03 클릭
+//    fun showCard3(){
+//
+//        var card03 = _businessCardId.value?.get(2)!!.businessCardId
+//        getCard(card03)
+//        Log.d("showCard3",card03.toString())
+//
+//    }
 
     //카드 id 가져오기
     fun getBusinessCardId() {
         APIS = RetrofitInstance.retrofitInstance().create(API::class.java)
-        val token = authApplication.prefs.getString("accessToken", "")
+        val token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjg5OTM4MjAwLCJleHAiOjE2OTI1MzAyMDB9.UT1quxShqDyDKqUccqUZ8XUNQmLJiZluitgJUha7jvw"
         viewModelScope.launch {
             try{
                 APIS.getBusinessCardId(token).enqueue(object : retrofit2.Callback<ArrayList<businessCardIdData>> {

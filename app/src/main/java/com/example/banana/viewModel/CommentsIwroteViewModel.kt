@@ -27,11 +27,11 @@ class CommentsIwroteViewModel: ViewModel() {
     fun  showCommentsList() {
 
         APIS = RetrofitInstance.retrofitInstance().create(API::class.java)
-        val token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwiaWF0IjoxNjg5MDUzNTgwLCJleHAiOjE2OTE2NDU1ODB9.0AvbVqizNfP3FpARzZmB2UgbJqCvvZo5Pa7tuGc7Bco"
+        val token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwiaWF0IjoxNjg5OTM4MjAwLCJleHAiOjE2OTI1MzAyMDB9.eIPybFrYO7NF8YHNskqQIWDTaAmEBcQZz1vYyHt1-VY"
         viewModelScope.launch {
             try{
 
-                APIS.getCommentsIwrote(token,4).enqueue(object : retrofit2.Callback<ArrayList<comment>> {
+                APIS.getCommentsIwrote(token,1).enqueue(object : retrofit2.Callback<ArrayList<comment>> {
                     override fun onResponse(call: Call<ArrayList<comment>>, response: Response<ArrayList<comment>>) {
                         if (response.isSuccessful) {
 
