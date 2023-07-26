@@ -68,9 +68,9 @@ class MyCardCommentsFragment : Fragment() {
 //
         //card03 클릭
 
-        binding.btnCard03.setOnClickListener {
-            myCardCommentsCard3()
-        }
+//        binding.btnCard03.setOnClickListener {
+//            myCardCommentsCard3()
+//        }
         return view
     }
 

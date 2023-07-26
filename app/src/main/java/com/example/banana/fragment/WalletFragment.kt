@@ -71,12 +71,22 @@ class WalletFragment : Fragment() {
 
         //검색 버튼
         binding.btnSearch.setOnClickListener {
-           search()
+            val search = SearchFragment()
+            fragmentManager?.beginTransaction()?.apply {
+                replace(R.id.frameArea,search)
+                addToBackStack(null)
+                commit()
+            }
         }
 
         //알람 버튼
         binding.btnAlarm.setOnClickListener {
-            alarm()
+            val alarm = AlarmFragment()
+            fragmentManager?.beginTransaction()?.apply {
+                replace(R.id.frameArea,alarm)
+                addToBackStack(null)
+                commit()
+            }
         }
 
         return view
@@ -96,15 +106,15 @@ class WalletFragment : Fragment() {
         walletData.clear()
 
         walletData.add(WalletData(R.drawable.default_card,"[잇타] 한윤이(디자이너)"))
-        walletData.add(WalletData(R.drawable.default_card,"[잇타] 한윤이(디자이너)"))
-        walletData.add(WalletData(R.drawable.default_card,"[잇타] 한윤이(디자이너)"))
-        walletData.add(WalletData(R.drawable.default_card,"[잇타] 한윤이(디자이너)"))
-        walletData.add(WalletData(R.drawable.default_card,"[잇타] 한윤이(디자이너)"))
-        walletData.add(WalletData(R.drawable.default_card,"[잇타] 한윤이(디자이너)"))
-        walletData.add(WalletData(R.drawable.default_card,"[잇타] 한윤이(디자이너)"))
-        walletData.add(WalletData(R.drawable.default_card,"[잇타] 한윤이(디자이너)"))
-        walletData.add(WalletData(R.drawable.default_card,"[잇타] 한윤이(디자이너)"))
-        walletData.add(WalletData(R.drawable.default_card,"[잇타] 한윤이(디자이너)"))
+        walletData.add(WalletData(R.drawable.card011,"[잇타] 김민수(기획)"))
+        walletData.add(WalletData(R.drawable.card012,"[잇타] 신승균(개발)"))
+        walletData.add(WalletData(R.drawable.card022,"[잇타] 김아림(개발)"))
+        walletData.add(WalletData(R.drawable.card021,"[잇타] 최민혁(개발)"))
+        walletData.add(WalletData(R.drawable.card032,"[잇타] 임수현(개발)"))
+        walletData.add(WalletData(R.drawable.card031,"[잇타] 임연지(개발)"))
+        walletData.add(WalletData(R.drawable.card032,"[잇타] 한윤이(디자이너)"))
+        walletData.add(WalletData(R.drawable.card022,"[잇타] 김민수(기획)"))
+        walletData.add(WalletData(R.drawable.card011,"[잇타] 신승균(개발)"))
 
         walletAdapter = WalletAdapter(walletData)
         binding.rvWallet.adapter = walletAdapter
@@ -130,15 +140,15 @@ class WalletFragment : Fragment() {
         walletData.clear()
 
         walletData.add(WalletData(R.drawable.default_card,"[잇타] 한윤이(디자이너)"))
-        walletData.add(WalletData(R.drawable.default_card,"[잇타] 한윤이(디자이너)"))
-        walletData.add(WalletData(R.drawable.default_card,"[잇타] 한윤이(디자이너)"))
-        walletData.add(WalletData(R.drawable.default_card,"[잇타] 한윤이(디자이너)"))
-        walletData.add(WalletData(R.drawable.default_card,"[잇타] 한윤이(디자이너)"))
-        walletData.add(WalletData(R.drawable.default_card,"[잇타] 한윤이(디자이너)"))
-        walletData.add(WalletData(R.drawable.default_card,"[잇타] 한윤이(디자이너)"))
-        walletData.add(WalletData(R.drawable.default_card,"[잇타] 한윤이(디자이너)"))
-        walletData.add(WalletData(R.drawable.default_card,"[잇타] 한윤이(디자이너)"))
-        walletData.add(WalletData(R.drawable.default_card,"[잇타] 한윤이(디자이너)"))
+        walletData.add(WalletData(R.drawable.card011,"[잇타] 김민수(기획)"))
+        walletData.add(WalletData(R.drawable.card012,"[잇타] 신승균(개발)"))
+        walletData.add(WalletData(R.drawable.card022,"[잇타] 김아림(개발)"))
+        walletData.add(WalletData(R.drawable.card021,"[잇타] 최민혁(개발)"))
+        walletData.add(WalletData(R.drawable.card032,"[잇타] 임수현(개발)"))
+        walletData.add(WalletData(R.drawable.card031,"[잇타] 임연지(개발)"))
+        walletData.add(WalletData(R.drawable.card032,"[잇타] 한윤이(디자이너)"))
+        walletData.add(WalletData(R.drawable.card022,"[잇타] 김민수(기획)"))
+        walletData.add(WalletData(R.drawable.card011,"[잇타] 신승균(개발)"))
 
 
 
@@ -165,6 +175,8 @@ class WalletFragment : Fragment() {
         binding.btnFolder.setBackgroundColor(Color.parseColor("#ffffff"))
         walletData.clear()
 
+        walletData.add(WalletData(R.drawable.marked_card,"[잇타] 한윤이(디자이너)"))
+        walletData.add(WalletData(R.drawable.marked_card,"[잇타] 한윤이(디자이너)"))
         walletData.add(WalletData(R.drawable.marked_card,"[잇타] 한윤이(디자이너)"))
         walletData.add(WalletData(R.drawable.marked_card,"[잇타] 한윤이(디자이너)"))
         walletData.add(WalletData(R.drawable.marked_card,"[잇타] 한윤이(디자이너)"))
@@ -201,13 +213,13 @@ class WalletFragment : Fragment() {
         walletData.clear()
 
         walletData.add(WalletData(R.drawable.wallet_folder,"[대외활동] 잇타 멤버들 명함"))
-        walletData.add(WalletData(R.drawable.wallet_folder,"[대외활동] 잇타 멤버들 명함"))
-        walletData.add(WalletData(R.drawable.wallet_folder,"[대외활동] 잇타 멤버들 명함"))
-        walletData.add(WalletData(R.drawable.wallet_folder,"[대외활동] 잇타 멤버들 명함"))
-        walletData.add(WalletData(R.drawable.wallet_folder,"[대외활동] 잇타 멤버들 명함"))
-        walletData.add(WalletData(R.drawable.wallet_folder,"[대외활동] 잇타 멤버들 명함"))
-        walletData.add(WalletData(R.drawable.wallet_folder,"[대외활동] 잇타 멤버들 명함"))
-        walletData.add(WalletData(R.drawable.wallet_folder,"[대외활동] 잇타 멤버들 명함"))
+        walletData.add(WalletData(R.drawable.wallet_folder,"[대외활동] 회사 멤버들 명함"))
+        walletData.add(WalletData(R.drawable.wallet_folder,"[대외활동] 동아리 멤버들 명함"))
+        walletData.add(WalletData(R.drawable.wallet_folder,"[대외활동] 개발 멤버들 명함"))
+        walletData.add(WalletData(R.drawable.wallet_folder,"[대외활동] 기획 멤버들 명함"))
+        walletData.add(WalletData(R.drawable.wallet_folder,"[대외활동] 디자인 멤버들 명함"))
+        walletData.add(WalletData(R.drawable.wallet_folder,"[대외활동] 프론트 멤버들 명함"))
+        walletData.add(WalletData(R.drawable.wallet_folder,"[대외활동] 백엔드 멤버들 명함"))
 
 
         walletAdapter = WalletAdapter(walletData)
@@ -235,10 +247,10 @@ class WalletFragment : Fragment() {
         walletData.clear()
 
         walletData.add(WalletData(R.drawable.marked_card,"[잇타] 한윤이(디자이너)"))
-        walletData.add(WalletData(R.drawable.default_card,"[잇타] 한윤이(디자이너)"))
-        walletData.add(WalletData(R.drawable.default_card,"[잇타] 한윤이(디자이너)"))
-        walletData.add(WalletData(R.drawable.default_card,"[잇타] 한윤이(디자이너)"))
-        walletData.add(WalletData(R.drawable.default_card,"[잇타] 한윤이(디자이너)"))
+        walletData.add(WalletData(R.drawable.card011,"[잇타] 신승균(개발)"))
+        walletData.add(WalletData(R.drawable.card022,"[잇타] 최민혁(개발)"))
+        walletData.add(WalletData(R.drawable.card031,"[잇타] 김아림(개발)"))
+
 
 
 

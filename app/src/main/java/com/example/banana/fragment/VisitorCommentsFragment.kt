@@ -69,6 +69,24 @@ class VisitorCommentsFragment : Fragment() {
             }
         }
 
+        binding.btnAlarm.setOnClickListener {
+            val alarm = AlarmFragment()
+            fragmentManager?.beginTransaction()?.apply {
+                replace(R.id.frameArea,alarm)
+                addToBackStack(null)
+                commit()
+            }
+        }
+
+        binding.btnSearch.setOnClickListener {
+            val search = SearchFragment()
+            fragmentManager?.beginTransaction()?.apply {
+                replace(R.id.frameArea,search)
+                addToBackStack(null)
+                commit()
+            }
+        }
+
 
         return view
     }
@@ -84,6 +102,7 @@ class VisitorCommentsFragment : Fragment() {
             commit()
         }
     }
+
 
 
 

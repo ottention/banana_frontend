@@ -47,15 +47,15 @@ class ChartFragment : Fragment() {
         chartData.clear()
 
         chartData.add(ChartData(R.drawable.default_card,"Top1","24"))
-        chartData.add(ChartData(R.drawable.default_card,"Top2","23"))
-        chartData.add(ChartData(R.drawable.default_card,"Top3","22"))
-        chartData.add(ChartData(R.drawable.default_card,"Top4","21"))
-        chartData.add(ChartData(R.drawable.default_card,"Top5","20"))
-        chartData.add(ChartData(R.drawable.default_card,"Top6","19"))
-        chartData.add(ChartData(R.drawable.default_card,"Top7","18"))
-        chartData.add(ChartData(R.drawable.default_card,"Top8","17"))
-        chartData.add(ChartData(R.drawable.default_card,"Top9","16"))
-        chartData.add(ChartData(R.drawable.default_card,"Top10","15"))
+        chartData.add(ChartData(R.drawable.card011,"Top2","23"))
+        chartData.add(ChartData(R.drawable.card021,"Top3","22"))
+        chartData.add(ChartData(R.drawable.card031,"Top4","21"))
+        chartData.add(ChartData(R.drawable.card012,"Top5","20"))
+        chartData.add(ChartData(R.drawable.card022,"Top6","19"))
+        chartData.add(ChartData(R.drawable.card032,"Top7","18"))
+        chartData.add(ChartData(R.drawable.card011,"Top8","17"))
+        chartData.add(ChartData(R.drawable.card021,"Top9","16"))
+        chartData.add(ChartData(R.drawable.card031,"Top10","15"))
 
 
 
@@ -85,17 +85,16 @@ class ChartFragment : Fragment() {
 
                     chartData.clear()
 
-        chartData.add(ChartData(R.drawable.default_card,"Top1","24"))
-        chartData.add(ChartData(R.drawable.default_card,"Top2","23"))
-        chartData.add(ChartData(R.drawable.default_card,"Top3","22"))
-        chartData.add(ChartData(R.drawable.default_card,"Top4","21"))
-        chartData.add(ChartData(R.drawable.default_card,"Top5","20"))
-        chartData.add(ChartData(R.drawable.default_card,"Top6","19"))
-        chartData.add(ChartData(R.drawable.default_card,"Top7","18"))
-        chartData.add(ChartData(R.drawable.default_card,"Top8","17"))
-        chartData.add(ChartData(R.drawable.default_card,"Top9","16"))
-        chartData.add(ChartData(R.drawable.default_card,"Top10","15"))
-
+            chartData.add(ChartData(R.drawable.default_card,"Top1","24"))
+            chartData.add(ChartData(R.drawable.card011,"Top2","23"))
+            chartData.add(ChartData(R.drawable.card021,"Top3","22"))
+            chartData.add(ChartData(R.drawable.card031,"Top4","21"))
+            chartData.add(ChartData(R.drawable.card012,"Top5","20"))
+            chartData.add(ChartData(R.drawable.card022,"Top6","19"))
+            chartData.add(ChartData(R.drawable.card032,"Top7","18"))
+            chartData.add(ChartData(R.drawable.card011,"Top8","17"))
+            chartData.add(ChartData(R.drawable.card021,"Top9","16"))
+            chartData.add(ChartData(R.drawable.card031,"Top10","15"))
 
             viewModel = ViewModelProvider(this).get(ChartViewModel::class.java)
 
@@ -125,16 +124,16 @@ class ChartFragment : Fragment() {
 
             chartData.clear()
 
-            chartData.add(ChartData(R.drawable.default_card,"Top1","24"))
-            chartData.add(ChartData(R.drawable.default_card,"Top2","23"))
-            chartData.add(ChartData(R.drawable.default_card,"Top3","22"))
-            chartData.add(ChartData(R.drawable.default_card,"Top4","21"))
+            chartData.add(ChartData(R.drawable.card012,"Top1","24"))
+            chartData.add(ChartData(R.drawable.card022,"Top2","23"))
+            chartData.add(ChartData(R.drawable.card031,"Top3","22"))
+            chartData.add(ChartData(R.drawable.card021,"Top4","21"))
             chartData.add(ChartData(R.drawable.default_card,"Top5","20"))
-            chartData.add(ChartData(R.drawable.default_card,"Top6","19"))
-            chartData.add(ChartData(R.drawable.default_card,"Top7","18"))
-            chartData.add(ChartData(R.drawable.default_card,"Top8","17"))
-            chartData.add(ChartData(R.drawable.default_card,"Top9","16"))
-            chartData.add(ChartData(R.drawable.default_card,"Top10","15"))
+            chartData.add(ChartData(R.drawable.card032,"Top6","19"))
+            chartData.add(ChartData(R.drawable.card021,"Top7","18"))
+            chartData.add(ChartData(R.drawable.card022,"Top8","17"))
+            chartData.add(ChartData(R.drawable.card012,"Top9","16"))
+            chartData.add(ChartData(R.drawable.card011,"Top10","15"))
 
         viewModel = ViewModelProvider(this).get(ChartViewModel::class.java)
 
@@ -163,17 +162,15 @@ class ChartFragment : Fragment() {
             chartData.clear()
 
             chartData.add(ChartData(R.drawable.default_card,"Top1","24"))
-            chartData.add(ChartData(R.drawable.default_card,"Top2","23"))
-            chartData.add(ChartData(R.drawable.default_card,"Top3","22"))
-            chartData.add(ChartData(R.drawable.default_card,"Top4","21"))
-            chartData.add(ChartData(R.drawable.default_card,"Top5","20"))
-            chartData.add(ChartData(R.drawable.default_card,"Top6","19"))
-            chartData.add(ChartData(R.drawable.default_card,"Top7","18"))
-            chartData.add(ChartData(R.drawable.default_card,"Top8","17"))
-            chartData.add(ChartData(R.drawable.default_card,"Top9","16"))
-            chartData.add(ChartData(R.drawable.default_card,"Top10","15"))
-
-
+            chartData.add(ChartData(R.drawable.card011,"Top2","23"))
+            chartData.add(ChartData(R.drawable.card021,"Top3","22"))
+            chartData.add(ChartData(R.drawable.card031,"Top4","21"))
+            chartData.add(ChartData(R.drawable.card012,"Top5","20"))
+            chartData.add(ChartData(R.drawable.card022,"Top6","19"))
+            chartData.add(ChartData(R.drawable.card032,"Top7","18"))
+            chartData.add(ChartData(R.drawable.card011,"Top8","17"))
+            chartData.add(ChartData(R.drawable.card021,"Top9","16"))
+            chartData.add(ChartData(R.drawable.card031,"Top10","15"))
 
             viewModel = ViewModelProvider(this).get(ChartViewModel::class.java)
 
@@ -451,12 +448,22 @@ class ChartFragment : Fragment() {
 
         //알람 버튼 클릭
         binding.btnAlarm.setOnClickListener {
-            alarm()
+            val alarm = AlarmFragment()
+            fragmentManager?.beginTransaction()?.apply {
+                replace(R.id.frameArea,alarm)
+                addToBackStack(null)
+                commit()
+            }
         }
 
         //검색 버튼 클릭
         binding.btnSearch.setOnClickListener {
-            search()
+            val search = SearchFragment()
+            fragmentManager?.beginTransaction()?.apply {
+                replace(R.id.frameArea,search)
+                addToBackStack(null)
+                commit()
+            }
         }
 
 
