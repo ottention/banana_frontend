@@ -43,7 +43,7 @@ class JoinActivity : AppCompatActivity() {
         // kakao joining
         findViewById<LinearLayout>(R.id.kakao_join_btn).setOnClickListener {
             LoginRepository().kakaoLogin(this)
-            if((LoginRepository().kakaoLogin(this)) != -1) {
+            if ((LoginRepository().kakaoLogin(this)) != -1) {
                 var intent = Intent(this, FragmentActivity::class.java)
                 ContextCompat.startActivity(this, intent, null)
             }
@@ -63,16 +63,17 @@ class JoinActivity : AppCompatActivity() {
         Log.d(TAG, "signIn")
     }
 
-    private val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        if (result.resultCode == Activity.RESULT_OK) {
-            val data: Intent? = result.data
-            val task: Task<GoogleSignInAccount> =
-                GoogleSignIn.getSignedInAccountFromIntent(data)
-            handleSignInResult(task)
-        }else {
-            Log.d(TAG, "failed : " + result.resultCode)
+    private val resultLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val data: Intent? = result.data
+                val task: Task<GoogleSignInAccount> =
+                    GoogleSignIn.getSignedInAccountFromIntent(data)
+                handleSignInResult(task)
+            } else {
+                Log.d(TAG, "failed : " + result.resultCode)
+            }
         }
-    }
 
     fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
         try {
@@ -86,14 +87,13 @@ class JoinActivity : AppCompatActivity() {
                         "\n이름: ${account?.displayName.toString()}"
             )
 
-            if(account!=null) {
-//                var code =
-                    LoginRepository().sendGoogleToken(account.idToken.toString())
-//                if( code != -1) {
-//                    Log.d("Login", code.toString() )
-//                    var intent = Intent(this, FragmentActivity::class.java)
-//                    ContextCompat.startActivity(this, intent, null)
-//                }
+            if (account != null) {
+                var code = LoginRepository().sendGoogleToken(account.idToken.toString())
+                if (code != -1) {
+                    Log.d("Login", code.toString())
+                    var intent = Intent(this, FragmentActivity::class.java)
+                    ContextCompat.startActivity(this, intent, null)
+                }
             }
             googleLogout()
         } catch (e: ApiException) {

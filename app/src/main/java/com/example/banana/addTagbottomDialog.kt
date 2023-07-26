@@ -1,8 +1,6 @@
 package com.example.banana
 
 import android.content.Context
-import android.content.DialogInterface
-import android.net.Uri
 import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -21,10 +19,10 @@ import com.google.android.flexbox.JustifyContent
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 
-class addTagbottomDialog (context: Context, private val onSave: (tagList: MutableList<String>) -> Unit) : BottomSheetDialogFragment()
+class addTagbottomDialog (context: Context, tagList: MutableList<String>, private val onSave: (tagList: MutableList<String>) -> Unit) : BottomSheetDialogFragment()
 {
 
-    lateinit var tagList : MutableList<String>
+    var tagList : MutableList<String> = tagList
     lateinit var  flexBoxAdapter : TagViewAdapter
 
     override fun onCreateView(
@@ -35,9 +33,6 @@ class addTagbottomDialog (context: Context, private val onSave: (tagList: Mutabl
     {
         super.onCreateView(inflater, container, savedInstanceState)
         setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogStyle)
-        tagList = mutableListOf()
-        tagList.add("학생")
-        tagList.add("디자이너")
 
         val view = inflater.inflate(R.layout.fragment_tag_bottomsheet, container, false)
 
@@ -70,11 +65,6 @@ class addTagbottomDialog (context: Context, private val onSave: (tagList: Mutabl
                 flexBoxAdapter.notifyDataSetChanged()
             }
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        onSave.invoke(tagList)
     }
 
     fun removeTag(pos : Int) {
